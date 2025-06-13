@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import prisma from "../../lib/prisma";
+import { errorHandler } from "../../utils/error";
 export const AddUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
         const { email, password, firstName, lastName, roleId, hotelId, tenantId } = req.body;
@@ -14,10 +15,14 @@ export const AddUser = async (req: Request, res: Response, next: NextFunction): 
             !hotelId ||
             !tenantId
         ) {
-            res.status(400).json({ message: "All fields are required" });
-            return;
+            return next(errorHandler(400, "All fields are required"));
         }
-
+        const existingUser = await prisma.user.findUnique({
+            where: { tenantId_email: { tenantId, email } }
+        })
+        if (existingUser) {
+            return next(errorHandler(400, "User with this email already exists"));
+        }
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const newUser = await prisma.user.create({ 
@@ -32,10 +37,13 @@ export const AddUser = async (req: Request, res: Response, next: NextFunction): 
             } 
         });
 
-        res.status(201).json(newUser);
+
+        res.status(201).json({
+            status: "200",
+            message: "User created successfully",
+            data:newUser});
     } catch (error) {
-        console.error("AddUser error:", error);
-        res.status(500).json({ message: "Internal server error" });
+    next(errorHandler(500, "Internal server error"));
     }
 };
 
@@ -44,36 +52,31 @@ export const Login = async (req: Request, res: Response, next: NextFunction): Pr
     const { email, password } = req.body;
 
     if ( !email || !password) {
-      res.status(400).json({ message: "email, and password are required" });
-      return;
+        return next(errorHandler(400, "Email and password are required"));
     }
 
-const user = await prisma.user.findFirst({
-  where: { email },
-  include: {
-    role: {
-      include: {
-        RolePermission: {
-          include: {
-            permission: true,
-          },
+    const user = await prisma.user.findFirst({
+    where: { email },
+    include: {
+        role: {
+        include: {
+            RolePermission: {
+            include: {
+                permission: true,
+            },
+            },
         },
-      },
+        },
     },
-  },
-});
-
-
+    });
     if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
-      res.status(401).json({ message: "Invalid email or password" });
-      return;
+        return next(errorHandler(401, "Invalid email or password"));
     }
 
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: "1h" });
 
     res.json({ token, user });
   } catch (error) {
-    console.error("Login error:", error);
-    res.status(500).json({ message: "Internal server error" });
+    next(errorHandler(500, "Internal server error"));
   }
 };
