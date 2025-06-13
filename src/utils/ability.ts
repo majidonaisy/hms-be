@@ -7,8 +7,8 @@ import {
   Subject,
 } from "@casl/ability";
 import prisma from "../lib/prisma";
-import { ApiError } from "./api-error";
 import { Permission, Role, User } from "../generated/prisma";
+import { errorHandler } from "./error";
 
 // Define proper types based on your schema
 export type AppSubjects = 
@@ -61,7 +61,7 @@ export async function defineAbilitiesForUser(
     });
 
     if (!user) {
-      throw new ApiError(404, `User with ID ${userId} not found`);
+      throw errorHandler(404, "User not found");
     }
 
     const { can, build } = new AbilityBuilder<AppAbility>(createMongoAbility);
@@ -97,7 +97,7 @@ export async function defineAbilitiesForUser(
     return ability;
   } catch (error) {
     console.error(`Error defining abilities for user ${userId}:`, error);
-    throw new ApiError(500, "Failed to define user abilities");
+    throw errorHandler(500, "Failed to define user abilities");
   }
 }
 
