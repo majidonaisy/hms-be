@@ -1,6 +1,9 @@
+
+// src/middleware/auth.ts
+
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import prisma from "../lib/prisma";
+import {prisma} from "../lib/prisma";
 import { AbilityTuple, MongoAbility } from "@casl/ability";
 import { MongoQuery } from "@ucast/mongo";
 import { User } from "../generated/prisma";
@@ -9,7 +12,7 @@ const JWT_SECRET = process.env.JWT_SECRET!;
 if (!JWT_SECRET) throw new Error("JWT_SECRET is not set");
 
 interface JwtPayload {
-  userId: string; // Changed to string since we use CUID
+  userId: string;
   iat: number;
   exp: number;
 }
@@ -30,7 +33,9 @@ export async function authenticateJWT(
 ): Promise<void> {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    res.status(401).json({ message: "Authorization header missing or malformed" });
+    res
+      .status(401)
+      .json({ message: "Authorization header missing or malformed" });
     return;
   }
 
