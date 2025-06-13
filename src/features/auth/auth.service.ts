@@ -1,16 +1,9 @@
 import prisma from "../../lib/prisma";
 import bcrypt from "bcrypt";
 import { generateAccessToken, generateRefreshToken } from "../../utils/generateToken";
+import { CreateUserParams } from "./auth.type";
 
-interface CreateUserParams {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  roleId: string;
-  tenantId: string;
-  hotelId: string;
-}
+
 
 export default class AuthService {
   constructor() {
