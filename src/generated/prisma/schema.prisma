@@ -1,0 +1,252 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tenant {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  hotels    Hotel[]
+
+  Users User[]
+
+  Role Role[]
+
+  RoomType RoomType[]
+
+  Room Room[]
+
+  Guest Guest[]
+
+  Reservation Reservation[]
+
+  Folio     Folio[]
+  POSOutlet POSOutlet[]
+
+  RatePlan RatePlan[]
+}
+
+model Hotel {
+  id       String @id @default(cuid())
+  name     String
+  country  String
+  city     String
+  address  String
+  tenantId String
+  tenant   Tenant @relation(fields: [tenantId], references: [id])
+
+  Guest Guest[]
+
+  RoomType RoomType[]
+
+  Room Room[]
+
+  Role Role[]
+
+  User User[]
+
+  Reservation Reservation[]
+
+  Folio     Folio[]
+  POSOutlet POSOutlet[]
+
+  RatePlan RatePlan[]
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String
+  passwordHash String
+  firstName    String
+  lastName     String
+  tenantId     String
+  isActive     Boolean  @default(true)
+  tenant       Tenant   @relation(fields: [tenantId], references: [id])
+  hotelId      String
+  hotel        Hotel    @relation(fields: [hotelId], references: [id])
+  roleId       String
+  role         Role     @relation(fields: [roleId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([tenantId, email])
+}
+
+model Role {
+  id          String       @id @default(cuid())
+  name        String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  tenantId    String
+  tenant      Tenant       @relation(fields: [tenantId], references: [id])
+  hotelId     String
+  hotel       Hotel        @relation(fields: [hotelId], references: [id])
+  Users       User[]
+  permissions Permission[]
+
+  @@unique([tenantId, hotelId, name])
+}
+
+model Permission {
+  id         String   @id @default(cuid())
+  subject    String
+  action     String
+  conditions Json?
+  roleId     String
+  role       Role     @relation(fields: [roleId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Room {
+  id         String     @id @default(cuid())
+  roomNumber String
+  status     RoomStatus @default(AVAILABLE)
+  roomTypeId String
+  roomType   RoomType   @relation(fields: [roomTypeId], references: [id])
+  tenantId   String
+  tenant     Tenant     @relation(fields: [tenantId], references: [id])
+  hotelId    String
+  hotel      Hotel      @relation(fields: [hotelId], references: [id])
+
+  Reservation Reservation[]
+
+  @@unique([tenantId, hotelId, roomNumber])
+}
+
+model RoomType {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  baseRate    Decimal  @default(0) @db.Decimal(10, 2)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  tenantId    String
+  tenant      Tenant   @relation(fields: [tenantId], references: [id])
+  hotelId     String
+  hotel       Hotel    @relation(fields: [hotelId], references: [id])
+
+  Room Room[]
+}
+
+model RatePlan {
+  id          String   @id @default(cuid())
+  tenantId    String
+  Tenant      Tenant   @relation(fields: [tenantId], references: [id])
+  hotelId     String
+  Hotel       Hotel    @relation(fields: [hotelId], references: [id])
+  code        String // “BAR”, “CORP10”
+  name        String
+  baseAdjType AdjType // PERCENT | FIXED
+  baseAdjVal  Decimal  @db.Decimal(6, 2) // +10 % or –15 USD
+  currency    String // ISO-4217, follow room-type currency
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([tenantId, hotelId, code])
+}
+
+model Guest {
+  id          String   @id @default(cuid())
+  firstName   String
+  lastName    String
+  email       String?
+  phoneNumber String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  tenantId    String
+  tenant      Tenant   @relation(fields: [tenantId], references: [id])
+  hotelId     String
+  hotel       Hotel    @relation(fields: [hotelId], references: [id])
+
+  Reservation Reservation[]
+  Folio       Folio[]
+
+  @@unique([tenantId, email])
+}
+
+model Reservation {
+  id       String            @id @default(cuid())
+  checkIn  DateTime
+  checkOut DateTime
+  status   ReservationStatus @default(HELD)
+  guestId  String
+  guest    Guest             @relation(fields: [guestId], references: [id])
+  roomId   String
+  room     Room              @relation(fields: [roomId], references: [id])
+  tenantId String
+  tenant   Tenant            @relation(fields: [tenantId], references: [id])
+  hotelId  String
+  hotel    Hotel             @relation(fields: [hotelId], references: [id])
+}
+
+model Folio {
+  id        String      @id @default(cuid())
+  guestId   String
+  guest     Guest       @relation(fields: [guestId], references: [id])
+  balance   Decimal     @default(0) @db.Decimal(12, 2)
+  status    FolioStatus @default(OPEN)
+  tenantId  String
+  tenant    Tenant      @relation(fields: [tenantId], references: [id])
+  hotelId   String
+  hotel     Hotel       @relation(fields: [hotelId], references: [id])
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model POSOutlet {
+  id        String   @id @default(cuid())
+  name      String
+  tenantId  String
+  tenant    Tenant   @relation(fields: [tenantId], references: [id])
+  hotelId   String
+  hotel     Hotel    @relation(fields: [hotelId], references: [id])
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum FolioStatus {
+  OPEN
+  CLOSED
+  DISPUTED
+}
+
+enum RoomStatus {
+  AVAILABLE
+  OCCUPIED
+  MAINTENANCE
+  DIRTY
+  CLEANING
+  RESERVED
+  OUT_OF_SERVICE
+}
+
+enum AdjType {
+  PERCENT
+  FIXED
+}
+
+enum ReservationStatus {
+  DRAFT
+  CONFIRMED
+  CHECKED_IN
+  CHECKED_OUT
+  CANCELLED
+  NO_SHOW
+  HELD
+}
