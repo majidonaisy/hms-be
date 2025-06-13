@@ -59,14 +59,10 @@ export default class AuthService {
       include: {
         role: {
           include: {
-            RolePermission: {
-              include: {
-                permission: true,
-              },
-            },
-          },
-        },
-      },
+            permissions: true
+          }
+        }
+      }
     });
 
     if (!user) {
