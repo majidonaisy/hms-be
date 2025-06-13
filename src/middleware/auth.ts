@@ -1,3 +1,4 @@
+
 // src/middleware/auth.ts
 
 import { Request, Response, NextFunction } from "express";
@@ -46,11 +47,15 @@ export async function authenticateJWT(
       where: { id: payload.userId },
       include: {
         role: {
-          include:{
-            RolePermission:true
+          include: {
+            RolePermission: {
+              include: {
+                permission: true
+              }
+            }
           }
-        },
-      },
+        }
+      }
     });
 
     if (!user) {
