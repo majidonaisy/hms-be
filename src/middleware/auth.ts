@@ -3,16 +3,18 @@
 
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import {prisma} from "../lib/prisma";
 import { AbilityTuple, MongoAbility } from "@casl/ability";
 import { MongoQuery } from "@ucast/mongo";
 import { User } from "../generated/prisma";
+import { errorHandler } from "../utils/error";
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 if (!JWT_SECRET) throw new Error("JWT_SECRET is not set");
 
 interface JwtPayload {
   userId: string;
+  tenantId: string;
+  hotelId: string;
   iat: number;
   exp: number;
 }
@@ -20,7 +22,9 @@ interface JwtPayload {
 declare global {
   namespace Express {
     interface Request {
-      user?: User;
+      userId?: string;
+      tenantId?: string;
+      hotelId?: string;
       ability?: MongoAbility<AbilityTuple, MongoQuery>;
     }
   }
@@ -33,37 +37,17 @@ export async function authenticateJWT(
 ): Promise<void> {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    res
-      .status(401)
-      .json({ message: "Authorization header missing or malformed" });
-    return;
+    throw errorHandler(401, "Authorization header is missing or invalid");
   }
 
   const token = authHeader.split(" ")[1];
 
   try {
     const payload = jwt.verify(token, JWT_SECRET) as JwtPayload;
-    const user = await prisma.user.findUnique({
-      where: { id: payload.userId },
-      include: {
-        role: {
-          include: {
-            RolePermission: {
-              include: {
-                permission: true
-              }
-            }
-          }
-        }
-      }
-    });
+    req.userId = payload.userId;
+    req.tenantId = payload.tenantId;
+    req.hotelId = payload.hotelId;
 
-    if (!user) {
-      res.status(401).json({ message: "User not found" });
-      return;
-    }
-
-    req.user = user;
     next();
   } catch (err) {
     res.status(401).json({ message: "Invalid or expired token" });
