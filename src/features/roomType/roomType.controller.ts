@@ -33,7 +33,7 @@ export const addRoomType = async (req: Request, res: Response, next: NextFunctio
       data: newRoomType,
     });
   } catch (error) {
-    next(error);
+    next(errorHandler(500, "Failed to create room type"));
   }
 };
 
