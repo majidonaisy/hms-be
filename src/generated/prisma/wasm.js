@@ -164,7 +164,6 @@ exports.Prisma.PermissionScalarFieldEnum = {
   subject: 'subject',
   action: 'action',
   conditions: 'conditions',
-  roleId: 'roleId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
