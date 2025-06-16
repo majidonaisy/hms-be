@@ -3,7 +3,6 @@ import { RoomStatus } from "../../generated/prisma";
 
 export const createRoomSchema = z.object({
   roomNumber: z.string().min(1, "Room number is required"),
-  status: z.nativeEnum(RoomStatus).optional().default(RoomStatus.AVAILABLE),
   roomTypeId: z.string().min(1, "Room type ID is required"),
 });
 

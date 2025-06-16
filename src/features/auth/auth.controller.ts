@@ -14,6 +14,8 @@ export const AddUser = async (req: Request, res: Response, next: NextFunction): 
     }
     const tenantId = req.tenantId;
     const hotelId = req.hotelId;
+
+   
     if (!tenantId || !hotelId) {
       return next(errorHandler(400, "Tenant ID and Hotel ID are required"));
     }
