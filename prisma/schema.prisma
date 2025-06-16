@@ -149,12 +149,15 @@ model RatePlan {
   Hotel       Hotel    @relation(fields: [hotelId], references: [id])
   code        String // “BAR”, “CORP10”
   name        String
+  reservation Reservation[]
   baseAdjType AdjType // PERCENT | FIXED
   baseAdjVal  Decimal  @db.Decimal(6, 2) // +10 % or –15 USD
-  currency    String // ISO-4217, follow room-type currency
+  currencyId  String
+  currency    Currency @relation(fields: [currencyId], references: [code])
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
 
   @@unique([tenantId, hotelId, code])
 }
@@ -179,34 +182,38 @@ model Guest {
 }
 
 model Reservation {
-  id       String            @id @default(cuid())
-  checkIn  DateTime
-  checkOut DateTime
-  status   ReservationStatus @default(HELD)
-  guestId  String
-  guest    Guest             @relation(fields: [guestId], references: [id])
-  roomId   String
-  room     Room              @relation(fields: [roomId], references: [id])
-  tenantId String
-  tenant   Tenant            @relation(fields: [tenantId], references: [id])
-  hotelId  String
-  hotel    Hotel             @relation(fields: [hotelId], references: [id])
+  id         String            @id @default(cuid())
+  checkIn    DateTime
+  checkOut   DateTime
+  status     ReservationStatus @default(HELD)
+  guestId    String
+  guest      Guest             @relation(fields: [guestId], references: [id])
+  roomId     String
+  room       Room              @relation(fields: [roomId], references: [id])
+  tenantId   String
+  tenant     Tenant            @relation(fields: [tenantId], references: [id])
+  hotelId    String
+  hotel      Hotel             @relation(fields: [hotelId], references: [id])
+  ratePlanId String
+  ratePlan   RatePlan          @relation(fields: [ratePlanId], references: [id])
+  folio      Folio?            // Changed to optional one-to-one
 }
 
 model Folio {
-  id        String      @id @default(cuid())
-  guestId   String
-  guest     Guest       @relation(fields: [guestId], references: [id])
-  balance   Decimal     @default(0) @db.Decimal(12, 2)
-  status    FolioStatus @default(OPEN)
-  tenantId  String
-  tenant    Tenant      @relation(fields: [tenantId], references: [id])
-  hotelId   String
-  hotel     Hotel       @relation(fields: [hotelId], references: [id])
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
+  id            String      @id @default(cuid())
+  guestId       String
+  guest         Guest       @relation(fields: [guestId], references: [id])
+  balance       Decimal     @default(0) @db.Decimal(12, 2)
+  status        FolioStatus @default(OPEN)
+  tenantId      String
+  tenant        Tenant      @relation(fields: [tenantId], references: [id])
+  hotelId       String
+  hotel         Hotel       @relation(fields: [hotelId], references: [id])
+  reservationId String?      @unique    // Made unique for one-to-one relation
+  reservation   Reservation? @relation(fields: [reservationId], references: [id])
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 }
-
 model POSOutlet {
   id        String   @id @default(cuid())
   name      String
@@ -218,7 +225,29 @@ model POSOutlet {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+model ExchangeRate {
+  id              String   @id @default(cuid())
+  baseCurrency    String
+  targetCurrency  String
+  rate            Decimal  @db.Decimal(10, 6)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  base            Currency @relation("BaseCurrency", fields: [baseCurrency], references: [code])
+  target          Currency @relation("TargetCurrency", fields: [targetCurrency], references: [code])
 
+  @@unique([baseCurrency, targetCurrency])
+}
+
+model Currency {
+  id              String         @id @default(cuid())
+  code            String         @unique
+  name            String
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  baseRates       ExchangeRate[] @relation("BaseCurrency")
+  targetRates     ExchangeRate[] @relation("TargetCurrency")
+  RatePlan        RatePlan[]
+}
 enum FolioStatus {
   OPEN
   CLOSED
