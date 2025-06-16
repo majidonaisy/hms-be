@@ -37,6 +37,7 @@ model Tenant {
   POSOutlet POSOutlet[]
 
   RatePlan RatePlan[]
+  exchangeRates ExchangeRate[]
 }
 
 model Hotel {
@@ -64,6 +65,7 @@ model Hotel {
   POSOutlet POSOutlet[]
 
   RatePlan RatePlan[]
+  exchangeRates ExchangeRate[]
 }
 
 model User {
@@ -234,6 +236,10 @@ model ExchangeRate {
   updatedAt       DateTime @updatedAt
   base            Currency @relation("BaseCurrency", fields: [baseCurrency], references: [code])
   target          Currency @relation("TargetCurrency", fields: [targetCurrency], references: [code])
+  tenantId        String
+  tenant          Tenant   @relation(fields: [tenantId], references: [id])
+  hotelId         String
+  hotel           Hotel    @relation(fields: [hotelId], references: [id])
 
   @@unique([baseCurrency, targetCurrency])
 }

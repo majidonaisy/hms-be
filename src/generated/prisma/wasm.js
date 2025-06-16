@@ -196,7 +196,7 @@ exports.Prisma.RatePlanScalarFieldEnum = {
   name: 'name',
   baseAdjType: 'baseAdjType',
   baseAdjVal: 'baseAdjVal',
-  currency: 'currency',
+  currencyId: 'currencyId',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -222,7 +222,8 @@ exports.Prisma.ReservationScalarFieldEnum = {
   guestId: 'guestId',
   roomId: 'roomId',
   tenantId: 'tenantId',
-  hotelId: 'hotelId'
+  hotelId: 'hotelId',
+  ratePlanId: 'ratePlanId'
 };
 
 exports.Prisma.FolioScalarFieldEnum = {
@@ -232,6 +233,7 @@ exports.Prisma.FolioScalarFieldEnum = {
   status: 'status',
   tenantId: 'tenantId',
   hotelId: 'hotelId',
+  reservationId: 'reservationId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -242,6 +244,25 @@ exports.Prisma.POSOutletScalarFieldEnum = {
   tenantId: 'tenantId',
   hotelId: 'hotelId',
   isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ExchangeRateScalarFieldEnum = {
+  id: 'id',
+  baseCurrency: 'baseCurrency',
+  targetCurrency: 'targetCurrency',
+  rate: 'rate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  tenantId: 'tenantId',
+  hotelId: 'hotelId'
+};
+
+exports.Prisma.CurrencyScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -314,7 +335,9 @@ exports.Prisma.ModelName = {
   Guest: 'Guest',
   Reservation: 'Reservation',
   Folio: 'Folio',
-  POSOutlet: 'POSOutlet'
+  POSOutlet: 'POSOutlet',
+  ExchangeRate: 'ExchangeRate',
+  Currency: 'Currency'
 };
 
 /**
