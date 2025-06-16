@@ -26,13 +26,6 @@ export type AppSubjects =
 export type AppActions = "create" | "read" | "update" | "delete" | "manage";
 export type AppAbility = Ability<[AppActions, AppSubjects]>;
 
-interface UserWithRole extends User {
-  role: Role & {
-    RolePermission: Array<{
-      permission: Permission;
-    }>;
-  };
-}
 
 // Cache for abilities (optional - for better performance)
 const abilityCache = new Map<string, AppAbility>(); // Changed to string for CUID
@@ -50,11 +43,7 @@ export async function defineAbilitiesForUser(
       include: {
         role: {
           include: {
-            RolePermission: {
-              include: {
-                permission: true
-              }
-            }
+                permissions: true
           }
         }
       }
@@ -65,7 +54,7 @@ export async function defineAbilitiesForUser(
     }
 
     const { can, build } = new AbilityBuilder<AppAbility>(createMongoAbility);
-    const permissions = user.role?.RolePermission.map(rp => rp.permission) || [];
+    const permissions = user.role?.permissions || [];
 
     for (const permission of permissions) {
       try {
@@ -103,7 +92,7 @@ export async function defineAbilitiesForUser(
 
 function resolvePlaceholders(
   conditions: any,
-  user: UserWithRole
+  user: User
 ): MongoQuery | null {
   if (!conditions || typeof conditions !== "object") {
     return conditions;

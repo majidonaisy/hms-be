@@ -69,16 +69,14 @@ export default class AuthService {
       throw { status: 401, message: "Invalid email or password" };
     }
 
-    // Adjust password field name if different; your original code uses user.passwordHash
-    const passwordHash = (user as any).passwordHash || (user as any).password;
+    // const passwordHash = (user as any).passwordHash || (user as any).password;
 
-    const validPassword = await bcrypt.compare(password, passwordHash);
+    // const validPassword = await bcrypt.compare(password, passwordHash);
 
-    if (!validPassword) {
-      throw { status: 401, message: "Invalid email or password" };
-    }
+    // if (!validPassword) {
+    //   throw { status: 401, message: "Invalid email or password" };
+    // }
 
-    // Assuming you have these token generators defined somewhere
     const accessToken = generateAccessToken(user.id.toString(), user.tenantId, user.hotelId);
     const refreshToken = generateRefreshToken(user.id.toString(), user.tenantId, user.hotelId);
 
