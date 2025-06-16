@@ -1,10 +1,10 @@
+import { RoomStatus } from "../../generated/prisma";
 import prisma from "../../lib/prisma";
 import { CreateRoomParams, UpdateRoomParams } from "./room.types";
 
 export default class RoomService {
     async createRoom({
         roomNumber,
-        status,
         roomTypeId,
         tenantId,
         hotelId,
@@ -37,7 +37,7 @@ export default class RoomService {
             const room = await prisma.room.create({
                 data: {
                     roomNumber,
-                    status,
+                    status:RoomStatus.AVAILABLE,
                     roomTypeId,
                     tenantId,
                     hotelId,

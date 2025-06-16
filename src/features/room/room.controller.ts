@@ -17,11 +17,10 @@ export const addRoom = async (req: Request, res: Response, next: NextFunction) =
             return next(errorHandler(403, "Forbidden: insufficient permissions"));
         }
 
-        const { roomNumber, status, roomTypeId } = req.body;
+        const { roomNumber, roomTypeId } = req.body;
 
         const newRoom = await roomService.createRoom({
             roomNumber,
-            status,
             roomTypeId,
             tenantId,
             hotelId,

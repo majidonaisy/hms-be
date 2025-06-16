@@ -8,7 +8,7 @@ export interface Payload {
 export const generateAccessToken = (userId: string,tenantId:string,hotelId:string): string => {
     const payload: Payload = { userId,tenantId,hotelId};
     const accessToken = jwt.sign(payload, process.env.JWT_SECRET as string, {
-        expiresIn: '20m',
+        expiresIn: '2h',
     });
     return accessToken;
 };
