@@ -3,8 +3,6 @@ import bcrypt from "bcrypt";
 import { generateAccessToken, generateRefreshToken } from "../../utils/generateToken";
 import { CreateUserParams } from "./auth.type";
 
-
-
 export default class AuthService {
   constructor() {
     // You can initialize things here if needed
@@ -25,7 +23,34 @@ export default class AuthService {
       });
 
       if (existingUser) {
-        throw new Error("User already exists");
+        throw { statusCode: 400, message: "User already exists" };
+      }
+
+      // Verify that the tenant exists
+      const tenant = await prisma.tenant.findUnique({
+        where: { id: tenantId },
+      });
+
+      if (!tenant) {
+        throw { statusCode: 400, message: "Invalid tenant ID" };
+      }
+
+      // Verify that the hotel exists and belongs to the tenant
+      const hotel = await prisma.hotel.findFirst({
+        where: { id: hotelId, tenantId },
+      });
+
+      if (!hotel) {
+        throw { statusCode: 400, message: "Invalid hotel ID" };
+      }
+
+      // Verify that the role exists and belongs to the tenant
+      const role = await prisma.role.findFirst({
+        where: { id: roleId, tenantId },
+      });
+
+      if (!role) {
+        throw { statusCode: 400, message: "Invalid role ID" };
       }
 
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -40,38 +65,73 @@ export default class AuthService {
           tenantId,
           hotelId,
         },
+        include: {
+          role: true,
+          tenant: true,
+          hotel: true,
+        },
       });
 
-      return newUser;
-    } catch (error) {
+      // Remove sensitive data before returning
+      const { passwordHash, ...userWithoutPassword } = newUser;
+      return userWithoutPassword;
+    } catch (error: any) {
       console.error("Error creating user:", error);
-      throw new Error("Failed to create user");
+
+      // If it's already a custom error object, throw it as is
+      if (error.statusCode) {
+        throw error;
+      }
+
+      // Otherwise, throw a generic error
+      throw { statusCode: 500, message: "Failed to create user" };
     }
   }
 
   async login(email: string, password: string) {
-    if (!email || !password) {
-      throw { status: 400, message: "Email and password are required" };
-    }
-
-    const user = await prisma.user.findFirst({
-      where: { email },
-      include: {
-        role: {
-          include: {
-            permissions: true
-          }
-        }
+    try {
+      if (!email || !password) {
+        throw { statusCode: 400, message: "Email and password are required" };
       }
-    });
 
-    if (!user) {
-      throw { status: 401, message: "Invalid email or password" };
+      const user = await prisma.user.findFirst({
+        where: { email },
+        include: {
+          role: {
+            include: {
+              permissions: true,
+            },
+          },
+        },
+      });
+
+      if (!user) {
+        throw { statusCode: 401, message: "Invalid email or password" };
+      }
+
+      // Verify password
+      const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
+      if (!isPasswordValid) {
+        throw { statusCode: 401, message: "Invalid email or password" };
+      }
+
+      const accessToken = generateAccessToken(user.id, user.tenantId, user.hotelId);
+      const refreshToken = generateRefreshToken(user.id, user.tenantId, user.hotelId);
+
+      // Remove sensitive data before returning
+      const { passwordHash, ...userWithoutPassword } = user;
+
+      return { user: userWithoutPassword, accessToken, refreshToken };
+    } catch (error: any) {
+      console.error("Error during login:", error);
+
+      // If it's already a custom error object, throw it as is
+      if (error.statusCode) {
+        throw error;
+      }
+
+      // Otherwise, throw a generic error
+      throw { statusCode: 500, message: "Login failed" };
     }
-
-    const accessToken = generateAccessToken(user.id, user.tenantId, user.hotelId);
-    const refreshToken = generateRefreshToken(user.id, user.tenantId, user.hotelId);
-
-    return { user, accessToken, refreshToken };
   }
 }
