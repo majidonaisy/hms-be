@@ -69,16 +69,8 @@ export default class AuthService {
       throw { status: 401, message: "Invalid email or password" };
     }
 
-    // const passwordHash = (user as any).passwordHash || (user as any).password;
-
-    // const validPassword = await bcrypt.compare(password, passwordHash);
-
-    // if (!validPassword) {
-    //   throw { status: 401, message: "Invalid email or password" };
-    // }
-
-    const accessToken = generateAccessToken(user.id.toString(), user.tenantId, user.hotelId);
-    const refreshToken = generateRefreshToken(user.id.toString(), user.tenantId, user.hotelId);
+    const accessToken = generateAccessToken(user.id, user.tenantId, user.hotelId);
+    const refreshToken = generateRefreshToken(user.id, user.tenantId, user.hotelId);
 
     return { user, accessToken, refreshToken };
   }
