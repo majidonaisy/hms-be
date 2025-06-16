@@ -1,26 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
-import { ApiError } from '../utils/api-error';
 
-export function errorHandler(
-  err: Error | ApiError,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  console.error(err); // Replace with a logger in prod
-
-
-  if (err instanceof ApiError) {
-    res.status(err.statusCode).json({
-      status: 'error',
-      message: err.message,
-    });
-    return;
-  }
-
-    res.status(500).json({
-    status: 'error',
-    message: 'Internal Server Error',
-  });
-  return;
+interface CustomError extends Error {
+    statusCode?: number;
 }
+
+const errorMiddleware = (err: CustomError, req: Request, res: Response, next: NextFunction): void => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error';
+    res.status(statusCode).json({
+        statusCode,
+        message,
+    });
+};
+
+export default errorMiddleware;

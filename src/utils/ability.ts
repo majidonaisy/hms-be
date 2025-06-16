@@ -7,8 +7,8 @@ import {
   Subject,
 } from "@casl/ability";
 import prisma from "../lib/prisma";
-import { ApiError } from "./api-error";
 import { Permission, Role, User } from "../generated/prisma";
+import { errorHandler } from "./error";
 
 // Define proper types based on your schema
 export type AppSubjects = 
@@ -26,13 +26,6 @@ export type AppSubjects =
 export type AppActions = "create" | "read" | "update" | "delete" | "manage";
 export type AppAbility = Ability<[AppActions, AppSubjects]>;
 
-interface UserWithRole extends User {
-  role: Role & {
-    RolePermission: Array<{
-      permission: Permission;
-    }>;
-  };
-}
 
 // Cache for abilities (optional - for better performance)
 const abilityCache = new Map<string, AppAbility>(); // Changed to string for CUID
@@ -50,22 +43,18 @@ export async function defineAbilitiesForUser(
       include: {
         role: {
           include: {
-            RolePermission: {
-              include: {
-                permission: true
-              }
-            }
+                permissions: true
           }
         }
       }
     });
 
     if (!user) {
-      throw new ApiError(404, `User with ID ${userId} not found`);
+      throw errorHandler(404, "User not found");
     }
 
     const { can, build } = new AbilityBuilder<AppAbility>(createMongoAbility);
-    const permissions = user.role?.RolePermission.map(rp => rp.permission) || [];
+    const permissions = user.role?.permissions || [];
 
     for (const permission of permissions) {
       try {
@@ -97,13 +86,13 @@ export async function defineAbilitiesForUser(
     return ability;
   } catch (error) {
     console.error(`Error defining abilities for user ${userId}:`, error);
-    throw new ApiError(500, "Failed to define user abilities");
+    throw errorHandler(500, "Failed to define user abilities");
   }
 }
 
 function resolvePlaceholders(
   conditions: any,
-  user: UserWithRole
+  user: User
 ): MongoQuery | null {
   if (!conditions || typeof conditions !== "object") {
     return conditions;

@@ -3,7 +3,7 @@ import { defineAbilitiesForUser } from '../utils/ability';
 
 export async function defineAbilities(req: Request, res: Response, next: NextFunction) {
   try {
-    const userId = req.user?.id; // assuming you've already populated req.user via auth middleware
+    const userId = req.userId;
 
     if (!userId) {
       res.status(401).json({ message: 'Unauthorized' });

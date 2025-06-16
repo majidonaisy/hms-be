@@ -19,7 +19,7 @@ model Tenant {
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  hotels     Hotel[]
+  hotels    Hotel[]
 
   Users User[]
 
@@ -45,7 +45,7 @@ model Hotel {
   country  String
   city     String
   address  String
-  tenantId String 
+  tenantId String
   tenant   Tenant @relation(fields: [tenantId], references: [id])
 
   Guest Guest[]
@@ -68,7 +68,7 @@ model Hotel {
 
 model User {
   id           String   @id @default(cuid())
-  email        String   
+  email        String
   passwordHash String
   firstName    String
   lastName     String
@@ -81,22 +81,23 @@ model User {
   role         Role     @relation(fields: [roleId], references: [id])
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
   @@unique([tenantId, email])
 }
 
 model Role {
-  id             String           @id @default(cuid())
-  name           String
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  tenantId       String
-  tenant         Tenant           @relation(fields: [tenantId], references: [id])
-  hotelId        String
-  hotel          Hotel            @relation(fields: [hotelId], references: [id])
-  Users          User[]
-  RolePermission RolePermission[]
+  id          String       @id @default(cuid())
+  name        String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  tenantId    String
+  tenant      Tenant       @relation(fields: [tenantId], references: [id])
+  hotelId     String
+  hotel       Hotel        @relation(fields: [hotelId], references: [id])
+  Users       User[]
+  permissions Permission[]
 
-  @@unique([tenantId,hotelId, name])
+  @@unique([tenantId, hotelId, name])
 }
 
 model Permission {
@@ -104,19 +105,9 @@ model Permission {
   subject    String
   action     String
   conditions Json?
+  roles      Role[]   
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-
-  RolePermission RolePermission[]
-}
-
-model RolePermission {
-  roleId       String
-  permissionId String
-  role         Role       @relation(fields: [roleId], references: [id])
-  permission   Permission @relation(fields: [permissionId], references: [id])
-
-  @@id([roleId, permissionId])
 }
 
 model Room {
@@ -132,14 +123,14 @@ model Room {
 
   Reservation Reservation[]
 
-  @@unique([tenantId, hotelId,roomNumber])
+  @@unique([tenantId, hotelId, roomNumber])
 }
 
 model RoomType {
   id          String   @id @default(cuid())
   name        String
   description String?
-  baseRate    Decimal  @db.Decimal(10,2) @default(0)
+  baseRate    Decimal  @default(0) @db.Decimal(10, 2)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   tenantId    String
@@ -158,8 +149,8 @@ model RatePlan {
   Hotel       Hotel    @relation(fields: [hotelId], references: [id])
   code        String // “BAR”, “CORP10”
   name        String
-  baseAdjType AdjType  // PERCENT | FIXED
-  baseAdjVal  Decimal  @db.Decimal(6,2)// +10 % or –15 USD
+  baseAdjType AdjType // PERCENT | FIXED
+  baseAdjVal  Decimal  @db.Decimal(6, 2) // +10 % or –15 USD
   currency    String // ISO-4217, follow room-type currency
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
@@ -188,25 +179,25 @@ model Guest {
 }
 
 model Reservation {
-  id       String   @id @default(cuid())
+  id       String            @id @default(cuid())
   checkIn  DateTime
   checkOut DateTime
-  status  ReservationStatus @default(HELD)
+  status   ReservationStatus @default(HELD)
   guestId  String
-  guest    Guest    @relation(fields: [guestId], references: [id])
+  guest    Guest             @relation(fields: [guestId], references: [id])
   roomId   String
-  room     Room     @relation(fields: [roomId], references: [id])
+  room     Room              @relation(fields: [roomId], references: [id])
   tenantId String
-  tenant   Tenant   @relation(fields: [tenantId], references: [id])
+  tenant   Tenant            @relation(fields: [tenantId], references: [id])
   hotelId  String
-  hotel    Hotel    @relation(fields: [hotelId], references: [id])
+  hotel    Hotel             @relation(fields: [hotelId], references: [id])
 }
 
 model Folio {
   id        String      @id @default(cuid())
   guestId   String
   guest     Guest       @relation(fields: [guestId], references: [id])
-  balance   Decimal     @db.Decimal(12,2) @default(0)
+  balance   Decimal     @default(0) @db.Decimal(12, 2)
   status    FolioStatus @default(OPEN)
   tenantId  String
   tenant    Tenant      @relation(fields: [tenantId], references: [id])
