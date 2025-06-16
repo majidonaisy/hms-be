@@ -105,8 +105,7 @@ model Permission {
   subject    String
   action     String
   conditions Json?
-  roleId     String
-  role       Role     @relation(fields: [roleId], references: [id])
+  roles      Role[]   
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
