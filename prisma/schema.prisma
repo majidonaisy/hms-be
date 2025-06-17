@@ -38,6 +38,8 @@ model Tenant {
 
   RatePlan      RatePlan[]
   exchangeRates ExchangeRate[]
+
+  Amenity Amenity[]
 }
 
 model Hotel {
@@ -66,6 +68,8 @@ model Hotel {
 
   RatePlan      RatePlan[]
   exchangeRates ExchangeRate[]
+
+  Amenity Amenity[]
 }
 
 model User {
@@ -141,6 +145,8 @@ model RoomType {
   hotel       Hotel    @relation(fields: [hotelId], references: [id])
 
   Room Room[]
+
+  Amenity Amenity[]
 }
 
 model RatePlan {
@@ -254,6 +260,20 @@ model Currency {
   baseRates   ExchangeRate[] @relation("BaseCurrency")
   targetRates ExchangeRate[] @relation("TargetCurrency")
   RatePlan    RatePlan[]
+}
+
+
+model Amenity {
+  id          String   @id @default(cuid())
+  name        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  tenantId    String
+  tenant      Tenant   @relation(fields: [tenantId], references: [id])
+  hotelId     String
+  hotel       Hotel    @relation(fields: [hotelId], references: [id])
+
+  RoomType RoomType[]
 }
 
 enum FolioStatus {

@@ -267,6 +267,15 @@ exports.Prisma.CurrencyScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.AmenityScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  tenantId: 'tenantId',
+  hotelId: 'hotelId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -337,7 +346,8 @@ exports.Prisma.ModelName = {
   Folio: 'Folio',
   POSOutlet: 'POSOutlet',
   ExchangeRate: 'ExchangeRate',
-  Currency: 'Currency'
+  Currency: 'Currency',
+  Amenity: 'Amenity'
 };
 
 /**
