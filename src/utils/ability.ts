@@ -17,6 +17,7 @@ export type AppSubjects =
   | "Room"
   | "RoomType"
   | "Guest"
+  | "Amenity"
   | "Reservation"
   |"ExchangeRate"
   | "Folio"
