@@ -20448,7 +20448,7 @@ export namespace Prisma {
 
   export type ExchangeRateWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    baseCurrency_targetCurrency?: ExchangeRateBaseCurrencyTargetCurrencyCompoundUniqueInput
+    baseCurrency_targetCurrency_tenantId_hotelId?: ExchangeRateBaseCurrencyTargetCurrencyTenantIdHotelIdCompoundUniqueInput
     AND?: ExchangeRateWhereInput | ExchangeRateWhereInput[]
     OR?: ExchangeRateWhereInput[]
     NOT?: ExchangeRateWhereInput | ExchangeRateWhereInput[]
@@ -20463,7 +20463,7 @@ export namespace Prisma {
     target?: XOR<CurrencyScalarRelationFilter, CurrencyWhereInput>
     tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
     hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
-  }, "id" | "baseCurrency_targetCurrency">
+  }, "id" | "baseCurrency_targetCurrency_tenantId_hotelId">
 
   export type ExchangeRateOrderByWithAggregationInput = {
     id?: SortOrder
@@ -22543,9 +22543,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type ExchangeRateBaseCurrencyTargetCurrencyCompoundUniqueInput = {
+  export type ExchangeRateBaseCurrencyTargetCurrencyTenantIdHotelIdCompoundUniqueInput = {
     baseCurrency: string
     targetCurrency: string
+    tenantId: string
+    hotelId: string
   }
 
   export type ExchangeRateCountOrderByAggregateInput = {
