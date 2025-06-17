@@ -155,12 +155,10 @@ model RatePlan {
   baseAdjType AdjType // PERCENT | FIXED
   baseAdjVal  Decimal  @db.Decimal(6, 2) // +10 % or –15 USD
   currencyId  String
-  currency    Currency @relation(fields: [currencyId], references: [code])
+  currency    Currency @relation(fields: [currencyId], references: [id])
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
-
   @@unique([tenantId, hotelId, code])
 }
 
