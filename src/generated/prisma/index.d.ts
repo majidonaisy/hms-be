@@ -83,6 +83,11 @@ export type ExchangeRate = $Result.DefaultSelection<Prisma.$ExchangeRatePayload>
  * 
  */
 export type Currency = $Result.DefaultSelection<Prisma.$CurrencyPayload>
+/**
+ * Model Amenity
+ * 
+ */
+export type Amenity = $Result.DefaultSelection<Prisma.$AmenityPayload>
 
 /**
  * Enums
@@ -412,6 +417,16 @@ export class PrismaClient<
     * ```
     */
   get currency(): Prisma.CurrencyDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.amenity`: Exposes CRUD operations for the **Amenity** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Amenities
+    * const amenities = await prisma.amenity.findMany()
+    * ```
+    */
+  get amenity(): Prisma.AmenityDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -865,7 +880,8 @@ export namespace Prisma {
     Folio: 'Folio',
     POSOutlet: 'POSOutlet',
     ExchangeRate: 'ExchangeRate',
-    Currency: 'Currency'
+    Currency: 'Currency',
+    Amenity: 'Amenity'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -884,7 +900,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "tenant" | "hotel" | "user" | "role" | "permission" | "room" | "roomType" | "ratePlan" | "guest" | "reservation" | "folio" | "pOSOutlet" | "exchangeRate" | "currency"
+      modelProps: "tenant" | "hotel" | "user" | "role" | "permission" | "room" | "roomType" | "ratePlan" | "guest" | "reservation" | "folio" | "pOSOutlet" | "exchangeRate" | "currency" | "amenity"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1924,6 +1940,80 @@ export namespace Prisma {
           }
         }
       }
+      Amenity: {
+        payload: Prisma.$AmenityPayload<ExtArgs>
+        fields: Prisma.AmenityFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AmenityFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmenityPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AmenityFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmenityPayload>
+          }
+          findFirst: {
+            args: Prisma.AmenityFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmenityPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AmenityFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmenityPayload>
+          }
+          findMany: {
+            args: Prisma.AmenityFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmenityPayload>[]
+          }
+          create: {
+            args: Prisma.AmenityCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmenityPayload>
+          }
+          createMany: {
+            args: Prisma.AmenityCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AmenityCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmenityPayload>[]
+          }
+          delete: {
+            args: Prisma.AmenityDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmenityPayload>
+          }
+          update: {
+            args: Prisma.AmenityUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmenityPayload>
+          }
+          deleteMany: {
+            args: Prisma.AmenityDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AmenityUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AmenityUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmenityPayload>[]
+          }
+          upsert: {
+            args: Prisma.AmenityUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AmenityPayload>
+          }
+          aggregate: {
+            args: Prisma.AmenityAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAmenity>
+          }
+          groupBy: {
+            args: Prisma.AmenityGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AmenityGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AmenityCountArgs<ExtArgs>
+            result: $Utils.Optional<AmenityCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2022,6 +2112,7 @@ export namespace Prisma {
     pOSOutlet?: POSOutletOmit
     exchangeRate?: ExchangeRateOmit
     currency?: CurrencyOmit
+    amenity?: AmenityOmit
   }
 
   /* Types for Logging */
@@ -2127,6 +2218,7 @@ export namespace Prisma {
     POSOutlet: number
     RatePlan: number
     exchangeRates: number
+    Amenity: number
   }
 
   export type TenantCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2141,6 +2233,7 @@ export namespace Prisma {
     POSOutlet?: boolean | TenantCountOutputTypeCountPOSOutletArgs
     RatePlan?: boolean | TenantCountOutputTypeCountRatePlanArgs
     exchangeRates?: boolean | TenantCountOutputTypeCountExchangeRatesArgs
+    Amenity?: boolean | TenantCountOutputTypeCountAmenityArgs
   }
 
   // Custom InputTypes
@@ -2231,6 +2324,13 @@ export namespace Prisma {
     where?: ExchangeRateWhereInput
   }
 
+  /**
+   * TenantCountOutputType without action
+   */
+  export type TenantCountOutputTypeCountAmenityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AmenityWhereInput
+  }
+
 
   /**
    * Count Type HotelCountOutputType
@@ -2247,6 +2347,7 @@ export namespace Prisma {
     POSOutlet: number
     RatePlan: number
     exchangeRates: number
+    Amenity: number
   }
 
   export type HotelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2260,6 +2361,7 @@ export namespace Prisma {
     POSOutlet?: boolean | HotelCountOutputTypeCountPOSOutletArgs
     RatePlan?: boolean | HotelCountOutputTypeCountRatePlanArgs
     exchangeRates?: boolean | HotelCountOutputTypeCountExchangeRatesArgs
+    Amenity?: boolean | HotelCountOutputTypeCountAmenityArgs
   }
 
   // Custom InputTypes
@@ -2341,6 +2443,13 @@ export namespace Prisma {
    */
   export type HotelCountOutputTypeCountExchangeRatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ExchangeRateWhereInput
+  }
+
+  /**
+   * HotelCountOutputType without action
+   */
+  export type HotelCountOutputTypeCountAmenityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AmenityWhereInput
   }
 
 
@@ -2452,10 +2561,12 @@ export namespace Prisma {
 
   export type RoomTypeCountOutputType = {
     Room: number
+    Amenity: number
   }
 
   export type RoomTypeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Room?: boolean | RoomTypeCountOutputTypeCountRoomArgs
+    Amenity?: boolean | RoomTypeCountOutputTypeCountAmenityArgs
   }
 
   // Custom InputTypes
@@ -2474,6 +2585,13 @@ export namespace Prisma {
    */
   export type RoomTypeCountOutputTypeCountRoomArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RoomWhereInput
+  }
+
+  /**
+   * RoomTypeCountOutputType without action
+   */
+  export type RoomTypeCountOutputTypeCountAmenityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AmenityWhereInput
   }
 
 
@@ -2594,6 +2712,37 @@ export namespace Prisma {
    */
   export type CurrencyCountOutputTypeCountRatePlanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RatePlanWhereInput
+  }
+
+
+  /**
+   * Count Type AmenityCountOutputType
+   */
+
+  export type AmenityCountOutputType = {
+    RoomType: number
+  }
+
+  export type AmenityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    RoomType?: boolean | AmenityCountOutputTypeCountRoomTypeArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AmenityCountOutputType without action
+   */
+  export type AmenityCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AmenityCountOutputType
+     */
+    select?: AmenityCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AmenityCountOutputType without action
+   */
+  export type AmenityCountOutputTypeCountRoomTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RoomTypeWhereInput
   }
 
 
@@ -2768,6 +2917,7 @@ export namespace Prisma {
     POSOutlet?: boolean | Tenant$POSOutletArgs<ExtArgs>
     RatePlan?: boolean | Tenant$RatePlanArgs<ExtArgs>
     exchangeRates?: boolean | Tenant$exchangeRatesArgs<ExtArgs>
+    Amenity?: boolean | Tenant$AmenityArgs<ExtArgs>
     _count?: boolean | TenantCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tenant"]>
 
@@ -2805,6 +2955,7 @@ export namespace Prisma {
     POSOutlet?: boolean | Tenant$POSOutletArgs<ExtArgs>
     RatePlan?: boolean | Tenant$RatePlanArgs<ExtArgs>
     exchangeRates?: boolean | Tenant$exchangeRatesArgs<ExtArgs>
+    Amenity?: boolean | Tenant$AmenityArgs<ExtArgs>
     _count?: boolean | TenantCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TenantIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2824,6 +2975,7 @@ export namespace Prisma {
       POSOutlet: Prisma.$POSOutletPayload<ExtArgs>[]
       RatePlan: Prisma.$RatePlanPayload<ExtArgs>[]
       exchangeRates: Prisma.$ExchangeRatePayload<ExtArgs>[]
+      Amenity: Prisma.$AmenityPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3235,6 +3387,7 @@ export namespace Prisma {
     POSOutlet<T extends Tenant$POSOutletArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$POSOutletArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$POSOutletPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     RatePlan<T extends Tenant$RatePlanArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$RatePlanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RatePlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     exchangeRates<T extends Tenant$exchangeRatesArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$exchangeRatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Amenity<T extends Tenant$AmenityArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$AmenityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3920,6 +4073,30 @@ export namespace Prisma {
   }
 
   /**
+   * Tenant.Amenity
+   */
+  export type Tenant$AmenityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    where?: AmenityWhereInput
+    orderBy?: AmenityOrderByWithRelationInput | AmenityOrderByWithRelationInput[]
+    cursor?: AmenityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AmenityScalarFieldEnum | AmenityScalarFieldEnum[]
+  }
+
+  /**
    * Tenant without action
    */
   export type TenantDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4121,6 +4298,7 @@ export namespace Prisma {
     POSOutlet?: boolean | Hotel$POSOutletArgs<ExtArgs>
     RatePlan?: boolean | Hotel$RatePlanArgs<ExtArgs>
     exchangeRates?: boolean | Hotel$exchangeRatesArgs<ExtArgs>
+    Amenity?: boolean | Hotel$AmenityArgs<ExtArgs>
     _count?: boolean | HotelCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hotel"]>
 
@@ -4166,6 +4344,7 @@ export namespace Prisma {
     POSOutlet?: boolean | Hotel$POSOutletArgs<ExtArgs>
     RatePlan?: boolean | Hotel$RatePlanArgs<ExtArgs>
     exchangeRates?: boolean | Hotel$exchangeRatesArgs<ExtArgs>
+    Amenity?: boolean | Hotel$AmenityArgs<ExtArgs>
     _count?: boolean | HotelCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type HotelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4189,6 +4368,7 @@ export namespace Prisma {
       POSOutlet: Prisma.$POSOutletPayload<ExtArgs>[]
       RatePlan: Prisma.$RatePlanPayload<ExtArgs>[]
       exchangeRates: Prisma.$ExchangeRatePayload<ExtArgs>[]
+      Amenity: Prisma.$AmenityPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4602,6 +4782,7 @@ export namespace Prisma {
     POSOutlet<T extends Hotel$POSOutletArgs<ExtArgs> = {}>(args?: Subset<T, Hotel$POSOutletArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$POSOutletPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     RatePlan<T extends Hotel$RatePlanArgs<ExtArgs> = {}>(args?: Subset<T, Hotel$RatePlanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RatePlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     exchangeRates<T extends Hotel$exchangeRatesArgs<ExtArgs> = {}>(args?: Subset<T, Hotel$exchangeRatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Amenity<T extends Hotel$AmenityArgs<ExtArgs> = {}>(args?: Subset<T, Hotel$AmenityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5270,6 +5451,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ExchangeRateScalarFieldEnum | ExchangeRateScalarFieldEnum[]
+  }
+
+  /**
+   * Hotel.Amenity
+   */
+  export type Hotel$AmenityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    where?: AmenityWhereInput
+    orderBy?: AmenityOrderByWithRelationInput | AmenityOrderByWithRelationInput[]
+    cursor?: AmenityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AmenityScalarFieldEnum | AmenityScalarFieldEnum[]
   }
 
   /**
@@ -10001,6 +10206,7 @@ export namespace Prisma {
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
     Room?: boolean | RoomType$RoomArgs<ExtArgs>
+    Amenity?: boolean | RoomType$AmenityArgs<ExtArgs>
     _count?: boolean | RoomTypeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["roomType"]>
 
@@ -10046,6 +10252,7 @@ export namespace Prisma {
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
     Room?: boolean | RoomType$RoomArgs<ExtArgs>
+    Amenity?: boolean | RoomType$AmenityArgs<ExtArgs>
     _count?: boolean | RoomTypeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type RoomTypeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10063,6 +10270,7 @@ export namespace Prisma {
       tenant: Prisma.$TenantPayload<ExtArgs>
       hotel: Prisma.$HotelPayload<ExtArgs>
       Room: Prisma.$RoomPayload<ExtArgs>[]
+      Amenity: Prisma.$AmenityPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -10470,6 +10678,7 @@ export namespace Prisma {
     tenant<T extends TenantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TenantDefaultArgs<ExtArgs>>): Prisma__TenantClient<$Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     hotel<T extends HotelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HotelDefaultArgs<ExtArgs>>): Prisma__HotelClient<$Result.GetResult<Prisma.$HotelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     Room<T extends RoomType$RoomArgs<ExtArgs> = {}>(args?: Subset<T, RoomType$RoomArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoomPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Amenity<T extends RoomType$AmenityArgs<ExtArgs> = {}>(args?: Subset<T, RoomType$AmenityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10924,6 +11133,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: RoomScalarFieldEnum | RoomScalarFieldEnum[]
+  }
+
+  /**
+   * RoomType.Amenity
+   */
+  export type RoomType$AmenityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    where?: AmenityWhereInput
+    orderBy?: AmenityOrderByWithRelationInput | AmenityOrderByWithRelationInput[]
+    cursor?: AmenityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AmenityScalarFieldEnum | AmenityScalarFieldEnum[]
   }
 
   /**
@@ -19063,6 +19296,1115 @@ export namespace Prisma {
 
 
   /**
+   * Model Amenity
+   */
+
+  export type AggregateAmenity = {
+    _count: AmenityCountAggregateOutputType | null
+    _min: AmenityMinAggregateOutputType | null
+    _max: AmenityMaxAggregateOutputType | null
+  }
+
+  export type AmenityMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    tenantId: string | null
+    hotelId: string | null
+  }
+
+  export type AmenityMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    tenantId: string | null
+    hotelId: string | null
+  }
+
+  export type AmenityCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    tenantId: number
+    hotelId: number
+    _all: number
+  }
+
+
+  export type AmenityMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    tenantId?: true
+    hotelId?: true
+  }
+
+  export type AmenityMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    tenantId?: true
+    hotelId?: true
+  }
+
+  export type AmenityCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    tenantId?: true
+    hotelId?: true
+    _all?: true
+  }
+
+  export type AmenityAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Amenity to aggregate.
+     */
+    where?: AmenityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Amenities to fetch.
+     */
+    orderBy?: AmenityOrderByWithRelationInput | AmenityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AmenityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Amenities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Amenities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Amenities
+    **/
+    _count?: true | AmenityCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AmenityMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AmenityMaxAggregateInputType
+  }
+
+  export type GetAmenityAggregateType<T extends AmenityAggregateArgs> = {
+        [P in keyof T & keyof AggregateAmenity]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAmenity[P]>
+      : GetScalarType<T[P], AggregateAmenity[P]>
+  }
+
+
+
+
+  export type AmenityGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AmenityWhereInput
+    orderBy?: AmenityOrderByWithAggregationInput | AmenityOrderByWithAggregationInput[]
+    by: AmenityScalarFieldEnum[] | AmenityScalarFieldEnum
+    having?: AmenityScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AmenityCountAggregateInputType | true
+    _min?: AmenityMinAggregateInputType
+    _max?: AmenityMaxAggregateInputType
+  }
+
+  export type AmenityGroupByOutputType = {
+    id: string
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    tenantId: string
+    hotelId: string
+    _count: AmenityCountAggregateOutputType | null
+    _min: AmenityMinAggregateOutputType | null
+    _max: AmenityMaxAggregateOutputType | null
+  }
+
+  type GetAmenityGroupByPayload<T extends AmenityGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AmenityGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AmenityGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AmenityGroupByOutputType[P]>
+            : GetScalarType<T[P], AmenityGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AmenitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    tenantId?: boolean
+    hotelId?: boolean
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    RoomType?: boolean | Amenity$RoomTypeArgs<ExtArgs>
+    _count?: boolean | AmenityCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["amenity"]>
+
+  export type AmenitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    tenantId?: boolean
+    hotelId?: boolean
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["amenity"]>
+
+  export type AmenitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    tenantId?: boolean
+    hotelId?: boolean
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["amenity"]>
+
+  export type AmenitySelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    tenantId?: boolean
+    hotelId?: boolean
+  }
+
+  export type AmenityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "tenantId" | "hotelId", ExtArgs["result"]["amenity"]>
+  export type AmenityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    RoomType?: boolean | Amenity$RoomTypeArgs<ExtArgs>
+    _count?: boolean | AmenityCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type AmenityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+  }
+  export type AmenityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+  }
+
+  export type $AmenityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Amenity"
+    objects: {
+      tenant: Prisma.$TenantPayload<ExtArgs>
+      hotel: Prisma.$HotelPayload<ExtArgs>
+      RoomType: Prisma.$RoomTypePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      createdAt: Date
+      updatedAt: Date
+      tenantId: string
+      hotelId: string
+    }, ExtArgs["result"]["amenity"]>
+    composites: {}
+  }
+
+  type AmenityGetPayload<S extends boolean | null | undefined | AmenityDefaultArgs> = $Result.GetResult<Prisma.$AmenityPayload, S>
+
+  type AmenityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AmenityFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AmenityCountAggregateInputType | true
+    }
+
+  export interface AmenityDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Amenity'], meta: { name: 'Amenity' } }
+    /**
+     * Find zero or one Amenity that matches the filter.
+     * @param {AmenityFindUniqueArgs} args - Arguments to find a Amenity
+     * @example
+     * // Get one Amenity
+     * const amenity = await prisma.amenity.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AmenityFindUniqueArgs>(args: SelectSubset<T, AmenityFindUniqueArgs<ExtArgs>>): Prisma__AmenityClient<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Amenity that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AmenityFindUniqueOrThrowArgs} args - Arguments to find a Amenity
+     * @example
+     * // Get one Amenity
+     * const amenity = await prisma.amenity.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AmenityFindUniqueOrThrowArgs>(args: SelectSubset<T, AmenityFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AmenityClient<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Amenity that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmenityFindFirstArgs} args - Arguments to find a Amenity
+     * @example
+     * // Get one Amenity
+     * const amenity = await prisma.amenity.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AmenityFindFirstArgs>(args?: SelectSubset<T, AmenityFindFirstArgs<ExtArgs>>): Prisma__AmenityClient<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Amenity that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmenityFindFirstOrThrowArgs} args - Arguments to find a Amenity
+     * @example
+     * // Get one Amenity
+     * const amenity = await prisma.amenity.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AmenityFindFirstOrThrowArgs>(args?: SelectSubset<T, AmenityFindFirstOrThrowArgs<ExtArgs>>): Prisma__AmenityClient<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Amenities that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmenityFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Amenities
+     * const amenities = await prisma.amenity.findMany()
+     * 
+     * // Get first 10 Amenities
+     * const amenities = await prisma.amenity.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const amenityWithIdOnly = await prisma.amenity.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AmenityFindManyArgs>(args?: SelectSubset<T, AmenityFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Amenity.
+     * @param {AmenityCreateArgs} args - Arguments to create a Amenity.
+     * @example
+     * // Create one Amenity
+     * const Amenity = await prisma.amenity.create({
+     *   data: {
+     *     // ... data to create a Amenity
+     *   }
+     * })
+     * 
+     */
+    create<T extends AmenityCreateArgs>(args: SelectSubset<T, AmenityCreateArgs<ExtArgs>>): Prisma__AmenityClient<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Amenities.
+     * @param {AmenityCreateManyArgs} args - Arguments to create many Amenities.
+     * @example
+     * // Create many Amenities
+     * const amenity = await prisma.amenity.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AmenityCreateManyArgs>(args?: SelectSubset<T, AmenityCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Amenities and returns the data saved in the database.
+     * @param {AmenityCreateManyAndReturnArgs} args - Arguments to create many Amenities.
+     * @example
+     * // Create many Amenities
+     * const amenity = await prisma.amenity.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Amenities and only return the `id`
+     * const amenityWithIdOnly = await prisma.amenity.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AmenityCreateManyAndReturnArgs>(args?: SelectSubset<T, AmenityCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Amenity.
+     * @param {AmenityDeleteArgs} args - Arguments to delete one Amenity.
+     * @example
+     * // Delete one Amenity
+     * const Amenity = await prisma.amenity.delete({
+     *   where: {
+     *     // ... filter to delete one Amenity
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AmenityDeleteArgs>(args: SelectSubset<T, AmenityDeleteArgs<ExtArgs>>): Prisma__AmenityClient<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Amenity.
+     * @param {AmenityUpdateArgs} args - Arguments to update one Amenity.
+     * @example
+     * // Update one Amenity
+     * const amenity = await prisma.amenity.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AmenityUpdateArgs>(args: SelectSubset<T, AmenityUpdateArgs<ExtArgs>>): Prisma__AmenityClient<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Amenities.
+     * @param {AmenityDeleteManyArgs} args - Arguments to filter Amenities to delete.
+     * @example
+     * // Delete a few Amenities
+     * const { count } = await prisma.amenity.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AmenityDeleteManyArgs>(args?: SelectSubset<T, AmenityDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Amenities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmenityUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Amenities
+     * const amenity = await prisma.amenity.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AmenityUpdateManyArgs>(args: SelectSubset<T, AmenityUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Amenities and returns the data updated in the database.
+     * @param {AmenityUpdateManyAndReturnArgs} args - Arguments to update many Amenities.
+     * @example
+     * // Update many Amenities
+     * const amenity = await prisma.amenity.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Amenities and only return the `id`
+     * const amenityWithIdOnly = await prisma.amenity.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AmenityUpdateManyAndReturnArgs>(args: SelectSubset<T, AmenityUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Amenity.
+     * @param {AmenityUpsertArgs} args - Arguments to update or create a Amenity.
+     * @example
+     * // Update or create a Amenity
+     * const amenity = await prisma.amenity.upsert({
+     *   create: {
+     *     // ... data to create a Amenity
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Amenity we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AmenityUpsertArgs>(args: SelectSubset<T, AmenityUpsertArgs<ExtArgs>>): Prisma__AmenityClient<$Result.GetResult<Prisma.$AmenityPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Amenities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmenityCountArgs} args - Arguments to filter Amenities to count.
+     * @example
+     * // Count the number of Amenities
+     * const count = await prisma.amenity.count({
+     *   where: {
+     *     // ... the filter for the Amenities we want to count
+     *   }
+     * })
+    **/
+    count<T extends AmenityCountArgs>(
+      args?: Subset<T, AmenityCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AmenityCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Amenity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmenityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AmenityAggregateArgs>(args: Subset<T, AmenityAggregateArgs>): Prisma.PrismaPromise<GetAmenityAggregateType<T>>
+
+    /**
+     * Group by Amenity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AmenityGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AmenityGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AmenityGroupByArgs['orderBy'] }
+        : { orderBy?: AmenityGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AmenityGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAmenityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Amenity model
+   */
+  readonly fields: AmenityFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Amenity.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AmenityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tenant<T extends TenantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TenantDefaultArgs<ExtArgs>>): Prisma__TenantClient<$Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    hotel<T extends HotelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HotelDefaultArgs<ExtArgs>>): Prisma__HotelClient<$Result.GetResult<Prisma.$HotelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    RoomType<T extends Amenity$RoomTypeArgs<ExtArgs> = {}>(args?: Subset<T, Amenity$RoomTypeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RoomTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Amenity model
+   */
+  interface AmenityFieldRefs {
+    readonly id: FieldRef<"Amenity", 'String'>
+    readonly name: FieldRef<"Amenity", 'String'>
+    readonly createdAt: FieldRef<"Amenity", 'DateTime'>
+    readonly updatedAt: FieldRef<"Amenity", 'DateTime'>
+    readonly tenantId: FieldRef<"Amenity", 'String'>
+    readonly hotelId: FieldRef<"Amenity", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Amenity findUnique
+   */
+  export type AmenityFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    /**
+     * Filter, which Amenity to fetch.
+     */
+    where: AmenityWhereUniqueInput
+  }
+
+  /**
+   * Amenity findUniqueOrThrow
+   */
+  export type AmenityFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    /**
+     * Filter, which Amenity to fetch.
+     */
+    where: AmenityWhereUniqueInput
+  }
+
+  /**
+   * Amenity findFirst
+   */
+  export type AmenityFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    /**
+     * Filter, which Amenity to fetch.
+     */
+    where?: AmenityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Amenities to fetch.
+     */
+    orderBy?: AmenityOrderByWithRelationInput | AmenityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Amenities.
+     */
+    cursor?: AmenityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Amenities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Amenities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Amenities.
+     */
+    distinct?: AmenityScalarFieldEnum | AmenityScalarFieldEnum[]
+  }
+
+  /**
+   * Amenity findFirstOrThrow
+   */
+  export type AmenityFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    /**
+     * Filter, which Amenity to fetch.
+     */
+    where?: AmenityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Amenities to fetch.
+     */
+    orderBy?: AmenityOrderByWithRelationInput | AmenityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Amenities.
+     */
+    cursor?: AmenityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Amenities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Amenities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Amenities.
+     */
+    distinct?: AmenityScalarFieldEnum | AmenityScalarFieldEnum[]
+  }
+
+  /**
+   * Amenity findMany
+   */
+  export type AmenityFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    /**
+     * Filter, which Amenities to fetch.
+     */
+    where?: AmenityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Amenities to fetch.
+     */
+    orderBy?: AmenityOrderByWithRelationInput | AmenityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Amenities.
+     */
+    cursor?: AmenityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Amenities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Amenities.
+     */
+    skip?: number
+    distinct?: AmenityScalarFieldEnum | AmenityScalarFieldEnum[]
+  }
+
+  /**
+   * Amenity create
+   */
+  export type AmenityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Amenity.
+     */
+    data: XOR<AmenityCreateInput, AmenityUncheckedCreateInput>
+  }
+
+  /**
+   * Amenity createMany
+   */
+  export type AmenityCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Amenities.
+     */
+    data: AmenityCreateManyInput | AmenityCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Amenity createManyAndReturn
+   */
+  export type AmenityCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * The data used to create many Amenities.
+     */
+    data: AmenityCreateManyInput | AmenityCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Amenity update
+   */
+  export type AmenityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Amenity.
+     */
+    data: XOR<AmenityUpdateInput, AmenityUncheckedUpdateInput>
+    /**
+     * Choose, which Amenity to update.
+     */
+    where: AmenityWhereUniqueInput
+  }
+
+  /**
+   * Amenity updateMany
+   */
+  export type AmenityUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Amenities.
+     */
+    data: XOR<AmenityUpdateManyMutationInput, AmenityUncheckedUpdateManyInput>
+    /**
+     * Filter which Amenities to update
+     */
+    where?: AmenityWhereInput
+    /**
+     * Limit how many Amenities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Amenity updateManyAndReturn
+   */
+  export type AmenityUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * The data used to update Amenities.
+     */
+    data: XOR<AmenityUpdateManyMutationInput, AmenityUncheckedUpdateManyInput>
+    /**
+     * Filter which Amenities to update
+     */
+    where?: AmenityWhereInput
+    /**
+     * Limit how many Amenities to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Amenity upsert
+   */
+  export type AmenityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Amenity to update in case it exists.
+     */
+    where: AmenityWhereUniqueInput
+    /**
+     * In case the Amenity found by the `where` argument doesn't exist, create a new Amenity with this data.
+     */
+    create: XOR<AmenityCreateInput, AmenityUncheckedCreateInput>
+    /**
+     * In case the Amenity was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AmenityUpdateInput, AmenityUncheckedUpdateInput>
+  }
+
+  /**
+   * Amenity delete
+   */
+  export type AmenityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+    /**
+     * Filter which Amenity to delete.
+     */
+    where: AmenityWhereUniqueInput
+  }
+
+  /**
+   * Amenity deleteMany
+   */
+  export type AmenityDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Amenities to delete
+     */
+    where?: AmenityWhereInput
+    /**
+     * Limit how many Amenities to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Amenity.RoomType
+   */
+  export type Amenity$RoomTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RoomType
+     */
+    select?: RoomTypeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RoomType
+     */
+    omit?: RoomTypeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RoomTypeInclude<ExtArgs> | null
+    where?: RoomTypeWhereInput
+    orderBy?: RoomTypeOrderByWithRelationInput | RoomTypeOrderByWithRelationInput[]
+    cursor?: RoomTypeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RoomTypeScalarFieldEnum | RoomTypeScalarFieldEnum[]
+  }
+
+  /**
+   * Amenity without action
+   */
+  export type AmenityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Amenity
+     */
+    select?: AmenitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Amenity
+     */
+    omit?: AmenityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AmenityInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -19263,6 +20605,18 @@ export namespace Prisma {
   };
 
   export type CurrencyScalarFieldEnum = (typeof CurrencyScalarFieldEnum)[keyof typeof CurrencyScalarFieldEnum]
+
+
+  export const AmenityScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    tenantId: 'tenantId',
+    hotelId: 'hotelId'
+  };
+
+  export type AmenityScalarFieldEnum = (typeof AmenityScalarFieldEnum)[keyof typeof AmenityScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -19466,6 +20820,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletListRelationFilter
     RatePlan?: RatePlanListRelationFilter
     exchangeRates?: ExchangeRateListRelationFilter
+    Amenity?: AmenityListRelationFilter
   }
 
   export type TenantOrderByWithRelationInput = {
@@ -19484,6 +20839,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletOrderByRelationAggregateInput
     RatePlan?: RatePlanOrderByRelationAggregateInput
     exchangeRates?: ExchangeRateOrderByRelationAggregateInput
+    Amenity?: AmenityOrderByRelationAggregateInput
   }
 
   export type TenantWhereUniqueInput = Prisma.AtLeast<{
@@ -19505,6 +20861,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletListRelationFilter
     RatePlan?: RatePlanListRelationFilter
     exchangeRates?: ExchangeRateListRelationFilter
+    Amenity?: AmenityListRelationFilter
   }, "id">
 
   export type TenantOrderByWithAggregationInput = {
@@ -19548,6 +20905,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletListRelationFilter
     RatePlan?: RatePlanListRelationFilter
     exchangeRates?: ExchangeRateListRelationFilter
+    Amenity?: AmenityListRelationFilter
   }
 
   export type HotelOrderByWithRelationInput = {
@@ -19568,6 +20926,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletOrderByRelationAggregateInput
     RatePlan?: RatePlanOrderByRelationAggregateInput
     exchangeRates?: ExchangeRateOrderByRelationAggregateInput
+    Amenity?: AmenityOrderByRelationAggregateInput
   }
 
   export type HotelWhereUniqueInput = Prisma.AtLeast<{
@@ -19591,6 +20950,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletListRelationFilter
     RatePlan?: RatePlanListRelationFilter
     exchangeRates?: ExchangeRateListRelationFilter
+    Amenity?: AmenityListRelationFilter
   }, "id">
 
   export type HotelOrderByWithAggregationInput = {
@@ -19924,6 +21284,7 @@ export namespace Prisma {
     tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
     hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
     Room?: RoomListRelationFilter
+    Amenity?: AmenityListRelationFilter
   }
 
   export type RoomTypeOrderByWithRelationInput = {
@@ -19938,6 +21299,7 @@ export namespace Prisma {
     tenant?: TenantOrderByWithRelationInput
     hotel?: HotelOrderByWithRelationInput
     Room?: RoomOrderByRelationAggregateInput
+    Amenity?: AmenityOrderByRelationAggregateInput
   }
 
   export type RoomTypeWhereUniqueInput = Prisma.AtLeast<{
@@ -19955,6 +21317,7 @@ export namespace Prisma {
     tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
     hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
     Room?: RoomListRelationFilter
+    Amenity?: AmenityListRelationFilter
   }, "id">
 
   export type RoomTypeOrderByWithAggregationInput = {
@@ -20556,6 +21919,72 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Currency"> | Date | string
   }
 
+  export type AmenityWhereInput = {
+    AND?: AmenityWhereInput | AmenityWhereInput[]
+    OR?: AmenityWhereInput[]
+    NOT?: AmenityWhereInput | AmenityWhereInput[]
+    id?: StringFilter<"Amenity"> | string
+    name?: StringFilter<"Amenity"> | string
+    createdAt?: DateTimeFilter<"Amenity"> | Date | string
+    updatedAt?: DateTimeFilter<"Amenity"> | Date | string
+    tenantId?: StringFilter<"Amenity"> | string
+    hotelId?: StringFilter<"Amenity"> | string
+    tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
+    hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
+    RoomType?: RoomTypeListRelationFilter
+  }
+
+  export type AmenityOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    tenantId?: SortOrder
+    hotelId?: SortOrder
+    tenant?: TenantOrderByWithRelationInput
+    hotel?: HotelOrderByWithRelationInput
+    RoomType?: RoomTypeOrderByRelationAggregateInput
+  }
+
+  export type AmenityWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AmenityWhereInput | AmenityWhereInput[]
+    OR?: AmenityWhereInput[]
+    NOT?: AmenityWhereInput | AmenityWhereInput[]
+    name?: StringFilter<"Amenity"> | string
+    createdAt?: DateTimeFilter<"Amenity"> | Date | string
+    updatedAt?: DateTimeFilter<"Amenity"> | Date | string
+    tenantId?: StringFilter<"Amenity"> | string
+    hotelId?: StringFilter<"Amenity"> | string
+    tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
+    hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
+    RoomType?: RoomTypeListRelationFilter
+  }, "id">
+
+  export type AmenityOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    tenantId?: SortOrder
+    hotelId?: SortOrder
+    _count?: AmenityCountOrderByAggregateInput
+    _max?: AmenityMaxOrderByAggregateInput
+    _min?: AmenityMinOrderByAggregateInput
+  }
+
+  export type AmenityScalarWhereWithAggregatesInput = {
+    AND?: AmenityScalarWhereWithAggregatesInput | AmenityScalarWhereWithAggregatesInput[]
+    OR?: AmenityScalarWhereWithAggregatesInput[]
+    NOT?: AmenityScalarWhereWithAggregatesInput | AmenityScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Amenity"> | string
+    name?: StringWithAggregatesFilter<"Amenity"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Amenity"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Amenity"> | Date | string
+    tenantId?: StringWithAggregatesFilter<"Amenity"> | string
+    hotelId?: StringWithAggregatesFilter<"Amenity"> | string
+  }
+
   export type TenantCreateInput = {
     id?: string
     name: string
@@ -20572,6 +22001,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateInput = {
@@ -20590,6 +22020,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUpdateInput = {
@@ -20608,6 +22039,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateInput = {
@@ -20626,6 +22058,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantCreateManyInput = {
@@ -20666,6 +22099,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateInput = {
@@ -20685,6 +22119,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUpdateInput = {
@@ -20704,6 +22139,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateInput = {
@@ -20723,6 +22159,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelCreateManyInput = {
@@ -21056,6 +22493,7 @@ export namespace Prisma {
     tenant: TenantCreateNestedOneWithoutRoomTypeInput
     hotel: HotelCreateNestedOneWithoutRoomTypeInput
     Room?: RoomCreateNestedManyWithoutRoomTypeInput
+    Amenity?: AmenityCreateNestedManyWithoutRoomTypeInput
   }
 
   export type RoomTypeUncheckedCreateInput = {
@@ -21068,6 +22506,7 @@ export namespace Prisma {
     tenantId: string
     hotelId: string
     Room?: RoomUncheckedCreateNestedManyWithoutRoomTypeInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutRoomTypeInput
   }
 
   export type RoomTypeUpdateInput = {
@@ -21080,6 +22519,7 @@ export namespace Prisma {
     tenant?: TenantUpdateOneRequiredWithoutRoomTypeNestedInput
     hotel?: HotelUpdateOneRequiredWithoutRoomTypeNestedInput
     Room?: RoomUpdateManyWithoutRoomTypeNestedInput
+    Amenity?: AmenityUpdateManyWithoutRoomTypeNestedInput
   }
 
   export type RoomTypeUncheckedUpdateInput = {
@@ -21092,6 +22532,7 @@ export namespace Prisma {
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
     Room?: RoomUncheckedUpdateManyWithoutRoomTypeNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutRoomTypeNestedInput
   }
 
   export type RoomTypeCreateManyInput = {
@@ -21686,6 +23127,71 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AmenityCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenant: TenantCreateNestedOneWithoutAmenityInput
+    hotel: HotelCreateNestedOneWithoutAmenityInput
+    RoomType?: RoomTypeCreateNestedManyWithoutAmenityInput
+  }
+
+  export type AmenityUncheckedCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+    hotelId: string
+    RoomType?: RoomTypeUncheckedCreateNestedManyWithoutAmenityInput
+  }
+
+  export type AmenityUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenant?: TenantUpdateOneRequiredWithoutAmenityNestedInput
+    hotel?: HotelUpdateOneRequiredWithoutAmenityNestedInput
+    RoomType?: RoomTypeUpdateManyWithoutAmenityNestedInput
+  }
+
+  export type AmenityUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+    RoomType?: RoomTypeUncheckedUpdateManyWithoutAmenityNestedInput
+  }
+
+  export type AmenityCreateManyInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+    hotelId: string
+  }
+
+  export type AmenityUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AmenityUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -21778,6 +23284,12 @@ export namespace Prisma {
     none?: ExchangeRateWhereInput
   }
 
+  export type AmenityListRelationFilter = {
+    every?: AmenityWhereInput
+    some?: AmenityWhereInput
+    none?: AmenityWhereInput
+  }
+
   export type HotelOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -21819,6 +23331,10 @@ export namespace Prisma {
   }
 
   export type ExchangeRateOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AmenityOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -22613,6 +24129,33 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type AmenityCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    tenantId?: SortOrder
+    hotelId?: SortOrder
+  }
+
+  export type AmenityMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    tenantId?: SortOrder
+    hotelId?: SortOrder
+  }
+
+  export type AmenityMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    tenantId?: SortOrder
+    hotelId?: SortOrder
+  }
+
   export type HotelCreateNestedManyWithoutTenantInput = {
     create?: XOR<HotelCreateWithoutTenantInput, HotelUncheckedCreateWithoutTenantInput> | HotelCreateWithoutTenantInput[] | HotelUncheckedCreateWithoutTenantInput[]
     connectOrCreate?: HotelCreateOrConnectWithoutTenantInput | HotelCreateOrConnectWithoutTenantInput[]
@@ -22690,6 +24233,13 @@ export namespace Prisma {
     connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
   }
 
+  export type AmenityCreateNestedManyWithoutTenantInput = {
+    create?: XOR<AmenityCreateWithoutTenantInput, AmenityUncheckedCreateWithoutTenantInput> | AmenityCreateWithoutTenantInput[] | AmenityUncheckedCreateWithoutTenantInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutTenantInput | AmenityCreateOrConnectWithoutTenantInput[]
+    createMany?: AmenityCreateManyTenantInputEnvelope
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+  }
+
   export type HotelUncheckedCreateNestedManyWithoutTenantInput = {
     create?: XOR<HotelCreateWithoutTenantInput, HotelUncheckedCreateWithoutTenantInput> | HotelCreateWithoutTenantInput[] | HotelUncheckedCreateWithoutTenantInput[]
     connectOrCreate?: HotelCreateOrConnectWithoutTenantInput | HotelCreateOrConnectWithoutTenantInput[]
@@ -22765,6 +24315,13 @@ export namespace Prisma {
     connectOrCreate?: ExchangeRateCreateOrConnectWithoutTenantInput | ExchangeRateCreateOrConnectWithoutTenantInput[]
     createMany?: ExchangeRateCreateManyTenantInputEnvelope
     connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+  }
+
+  export type AmenityUncheckedCreateNestedManyWithoutTenantInput = {
+    create?: XOR<AmenityCreateWithoutTenantInput, AmenityUncheckedCreateWithoutTenantInput> | AmenityCreateWithoutTenantInput[] | AmenityUncheckedCreateWithoutTenantInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutTenantInput | AmenityCreateOrConnectWithoutTenantInput[]
+    createMany?: AmenityCreateManyTenantInputEnvelope
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -22929,6 +24486,20 @@ export namespace Prisma {
     deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
   }
 
+  export type AmenityUpdateManyWithoutTenantNestedInput = {
+    create?: XOR<AmenityCreateWithoutTenantInput, AmenityUncheckedCreateWithoutTenantInput> | AmenityCreateWithoutTenantInput[] | AmenityUncheckedCreateWithoutTenantInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutTenantInput | AmenityCreateOrConnectWithoutTenantInput[]
+    upsert?: AmenityUpsertWithWhereUniqueWithoutTenantInput | AmenityUpsertWithWhereUniqueWithoutTenantInput[]
+    createMany?: AmenityCreateManyTenantInputEnvelope
+    set?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    disconnect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    delete?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    update?: AmenityUpdateWithWhereUniqueWithoutTenantInput | AmenityUpdateWithWhereUniqueWithoutTenantInput[]
+    updateMany?: AmenityUpdateManyWithWhereWithoutTenantInput | AmenityUpdateManyWithWhereWithoutTenantInput[]
+    deleteMany?: AmenityScalarWhereInput | AmenityScalarWhereInput[]
+  }
+
   export type HotelUncheckedUpdateManyWithoutTenantNestedInput = {
     create?: XOR<HotelCreateWithoutTenantInput, HotelUncheckedCreateWithoutTenantInput> | HotelCreateWithoutTenantInput[] | HotelUncheckedCreateWithoutTenantInput[]
     connectOrCreate?: HotelCreateOrConnectWithoutTenantInput | HotelCreateOrConnectWithoutTenantInput[]
@@ -23083,6 +24654,20 @@ export namespace Prisma {
     deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
   }
 
+  export type AmenityUncheckedUpdateManyWithoutTenantNestedInput = {
+    create?: XOR<AmenityCreateWithoutTenantInput, AmenityUncheckedCreateWithoutTenantInput> | AmenityCreateWithoutTenantInput[] | AmenityUncheckedCreateWithoutTenantInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutTenantInput | AmenityCreateOrConnectWithoutTenantInput[]
+    upsert?: AmenityUpsertWithWhereUniqueWithoutTenantInput | AmenityUpsertWithWhereUniqueWithoutTenantInput[]
+    createMany?: AmenityCreateManyTenantInputEnvelope
+    set?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    disconnect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    delete?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    update?: AmenityUpdateWithWhereUniqueWithoutTenantInput | AmenityUpdateWithWhereUniqueWithoutTenantInput[]
+    updateMany?: AmenityUpdateManyWithWhereWithoutTenantInput | AmenityUpdateManyWithWhereWithoutTenantInput[]
+    deleteMany?: AmenityScalarWhereInput | AmenityScalarWhereInput[]
+  }
+
   export type TenantCreateNestedOneWithoutHotelsInput = {
     create?: XOR<TenantCreateWithoutHotelsInput, TenantUncheckedCreateWithoutHotelsInput>
     connectOrCreate?: TenantCreateOrConnectWithoutHotelsInput
@@ -23159,6 +24744,13 @@ export namespace Prisma {
     connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
   }
 
+  export type AmenityCreateNestedManyWithoutHotelInput = {
+    create?: XOR<AmenityCreateWithoutHotelInput, AmenityUncheckedCreateWithoutHotelInput> | AmenityCreateWithoutHotelInput[] | AmenityUncheckedCreateWithoutHotelInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutHotelInput | AmenityCreateOrConnectWithoutHotelInput[]
+    createMany?: AmenityCreateManyHotelInputEnvelope
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+  }
+
   export type GuestUncheckedCreateNestedManyWithoutHotelInput = {
     create?: XOR<GuestCreateWithoutHotelInput, GuestUncheckedCreateWithoutHotelInput> | GuestCreateWithoutHotelInput[] | GuestUncheckedCreateWithoutHotelInput[]
     connectOrCreate?: GuestCreateOrConnectWithoutHotelInput | GuestCreateOrConnectWithoutHotelInput[]
@@ -23227,6 +24819,13 @@ export namespace Prisma {
     connectOrCreate?: ExchangeRateCreateOrConnectWithoutHotelInput | ExchangeRateCreateOrConnectWithoutHotelInput[]
     createMany?: ExchangeRateCreateManyHotelInputEnvelope
     connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+  }
+
+  export type AmenityUncheckedCreateNestedManyWithoutHotelInput = {
+    create?: XOR<AmenityCreateWithoutHotelInput, AmenityUncheckedCreateWithoutHotelInput> | AmenityCreateWithoutHotelInput[] | AmenityUncheckedCreateWithoutHotelInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutHotelInput | AmenityCreateOrConnectWithoutHotelInput[]
+    createMany?: AmenityCreateManyHotelInputEnvelope
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
   }
 
   export type TenantUpdateOneRequiredWithoutHotelsNestedInput = {
@@ -23377,6 +24976,20 @@ export namespace Prisma {
     deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
   }
 
+  export type AmenityUpdateManyWithoutHotelNestedInput = {
+    create?: XOR<AmenityCreateWithoutHotelInput, AmenityUncheckedCreateWithoutHotelInput> | AmenityCreateWithoutHotelInput[] | AmenityUncheckedCreateWithoutHotelInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutHotelInput | AmenityCreateOrConnectWithoutHotelInput[]
+    upsert?: AmenityUpsertWithWhereUniqueWithoutHotelInput | AmenityUpsertWithWhereUniqueWithoutHotelInput[]
+    createMany?: AmenityCreateManyHotelInputEnvelope
+    set?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    disconnect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    delete?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    update?: AmenityUpdateWithWhereUniqueWithoutHotelInput | AmenityUpdateWithWhereUniqueWithoutHotelInput[]
+    updateMany?: AmenityUpdateManyWithWhereWithoutHotelInput | AmenityUpdateManyWithWhereWithoutHotelInput[]
+    deleteMany?: AmenityScalarWhereInput | AmenityScalarWhereInput[]
+  }
+
   export type GuestUncheckedUpdateManyWithoutHotelNestedInput = {
     create?: XOR<GuestCreateWithoutHotelInput, GuestUncheckedCreateWithoutHotelInput> | GuestCreateWithoutHotelInput[] | GuestUncheckedCreateWithoutHotelInput[]
     connectOrCreate?: GuestCreateOrConnectWithoutHotelInput | GuestCreateOrConnectWithoutHotelInput[]
@@ -23515,6 +25128,20 @@ export namespace Prisma {
     update?: ExchangeRateUpdateWithWhereUniqueWithoutHotelInput | ExchangeRateUpdateWithWhereUniqueWithoutHotelInput[]
     updateMany?: ExchangeRateUpdateManyWithWhereWithoutHotelInput | ExchangeRateUpdateManyWithWhereWithoutHotelInput[]
     deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
+  }
+
+  export type AmenityUncheckedUpdateManyWithoutHotelNestedInput = {
+    create?: XOR<AmenityCreateWithoutHotelInput, AmenityUncheckedCreateWithoutHotelInput> | AmenityCreateWithoutHotelInput[] | AmenityUncheckedCreateWithoutHotelInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutHotelInput | AmenityCreateOrConnectWithoutHotelInput[]
+    upsert?: AmenityUpsertWithWhereUniqueWithoutHotelInput | AmenityUpsertWithWhereUniqueWithoutHotelInput[]
+    createMany?: AmenityCreateManyHotelInputEnvelope
+    set?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    disconnect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    delete?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    update?: AmenityUpdateWithWhereUniqueWithoutHotelInput | AmenityUpdateWithWhereUniqueWithoutHotelInput[]
+    updateMany?: AmenityUpdateManyWithWhereWithoutHotelInput | AmenityUpdateManyWithWhereWithoutHotelInput[]
+    deleteMany?: AmenityScalarWhereInput | AmenityScalarWhereInput[]
   }
 
   export type TenantCreateNestedOneWithoutUsersInput = {
@@ -23816,11 +25443,23 @@ export namespace Prisma {
     connect?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
   }
 
+  export type AmenityCreateNestedManyWithoutRoomTypeInput = {
+    create?: XOR<AmenityCreateWithoutRoomTypeInput, AmenityUncheckedCreateWithoutRoomTypeInput> | AmenityCreateWithoutRoomTypeInput[] | AmenityUncheckedCreateWithoutRoomTypeInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutRoomTypeInput | AmenityCreateOrConnectWithoutRoomTypeInput[]
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+  }
+
   export type RoomUncheckedCreateNestedManyWithoutRoomTypeInput = {
     create?: XOR<RoomCreateWithoutRoomTypeInput, RoomUncheckedCreateWithoutRoomTypeInput> | RoomCreateWithoutRoomTypeInput[] | RoomUncheckedCreateWithoutRoomTypeInput[]
     connectOrCreate?: RoomCreateOrConnectWithoutRoomTypeInput | RoomCreateOrConnectWithoutRoomTypeInput[]
     createMany?: RoomCreateManyRoomTypeInputEnvelope
     connect?: RoomWhereUniqueInput | RoomWhereUniqueInput[]
+  }
+
+  export type AmenityUncheckedCreateNestedManyWithoutRoomTypeInput = {
+    create?: XOR<AmenityCreateWithoutRoomTypeInput, AmenityUncheckedCreateWithoutRoomTypeInput> | AmenityCreateWithoutRoomTypeInput[] | AmenityUncheckedCreateWithoutRoomTypeInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutRoomTypeInput | AmenityCreateOrConnectWithoutRoomTypeInput[]
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -23865,6 +25504,19 @@ export namespace Prisma {
     deleteMany?: RoomScalarWhereInput | RoomScalarWhereInput[]
   }
 
+  export type AmenityUpdateManyWithoutRoomTypeNestedInput = {
+    create?: XOR<AmenityCreateWithoutRoomTypeInput, AmenityUncheckedCreateWithoutRoomTypeInput> | AmenityCreateWithoutRoomTypeInput[] | AmenityUncheckedCreateWithoutRoomTypeInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutRoomTypeInput | AmenityCreateOrConnectWithoutRoomTypeInput[]
+    upsert?: AmenityUpsertWithWhereUniqueWithoutRoomTypeInput | AmenityUpsertWithWhereUniqueWithoutRoomTypeInput[]
+    set?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    disconnect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    delete?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    update?: AmenityUpdateWithWhereUniqueWithoutRoomTypeInput | AmenityUpdateWithWhereUniqueWithoutRoomTypeInput[]
+    updateMany?: AmenityUpdateManyWithWhereWithoutRoomTypeInput | AmenityUpdateManyWithWhereWithoutRoomTypeInput[]
+    deleteMany?: AmenityScalarWhereInput | AmenityScalarWhereInput[]
+  }
+
   export type RoomUncheckedUpdateManyWithoutRoomTypeNestedInput = {
     create?: XOR<RoomCreateWithoutRoomTypeInput, RoomUncheckedCreateWithoutRoomTypeInput> | RoomCreateWithoutRoomTypeInput[] | RoomUncheckedCreateWithoutRoomTypeInput[]
     connectOrCreate?: RoomCreateOrConnectWithoutRoomTypeInput | RoomCreateOrConnectWithoutRoomTypeInput[]
@@ -23877,6 +25529,19 @@ export namespace Prisma {
     update?: RoomUpdateWithWhereUniqueWithoutRoomTypeInput | RoomUpdateWithWhereUniqueWithoutRoomTypeInput[]
     updateMany?: RoomUpdateManyWithWhereWithoutRoomTypeInput | RoomUpdateManyWithWhereWithoutRoomTypeInput[]
     deleteMany?: RoomScalarWhereInput | RoomScalarWhereInput[]
+  }
+
+  export type AmenityUncheckedUpdateManyWithoutRoomTypeNestedInput = {
+    create?: XOR<AmenityCreateWithoutRoomTypeInput, AmenityUncheckedCreateWithoutRoomTypeInput> | AmenityCreateWithoutRoomTypeInput[] | AmenityUncheckedCreateWithoutRoomTypeInput[]
+    connectOrCreate?: AmenityCreateOrConnectWithoutRoomTypeInput | AmenityCreateOrConnectWithoutRoomTypeInput[]
+    upsert?: AmenityUpsertWithWhereUniqueWithoutRoomTypeInput | AmenityUpsertWithWhereUniqueWithoutRoomTypeInput[]
+    set?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    disconnect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    delete?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    connect?: AmenityWhereUniqueInput | AmenityWhereUniqueInput[]
+    update?: AmenityUpdateWithWhereUniqueWithoutRoomTypeInput | AmenityUpdateWithWhereUniqueWithoutRoomTypeInput[]
+    updateMany?: AmenityUpdateManyWithWhereWithoutRoomTypeInput | AmenityUpdateManyWithWhereWithoutRoomTypeInput[]
+    deleteMany?: AmenityScalarWhereInput | AmenityScalarWhereInput[]
   }
 
   export type TenantCreateNestedOneWithoutRatePlanInput = {
@@ -24457,6 +26122,72 @@ export namespace Prisma {
     deleteMany?: RatePlanScalarWhereInput | RatePlanScalarWhereInput[]
   }
 
+  export type TenantCreateNestedOneWithoutAmenityInput = {
+    create?: XOR<TenantCreateWithoutAmenityInput, TenantUncheckedCreateWithoutAmenityInput>
+    connectOrCreate?: TenantCreateOrConnectWithoutAmenityInput
+    connect?: TenantWhereUniqueInput
+  }
+
+  export type HotelCreateNestedOneWithoutAmenityInput = {
+    create?: XOR<HotelCreateWithoutAmenityInput, HotelUncheckedCreateWithoutAmenityInput>
+    connectOrCreate?: HotelCreateOrConnectWithoutAmenityInput
+    connect?: HotelWhereUniqueInput
+  }
+
+  export type RoomTypeCreateNestedManyWithoutAmenityInput = {
+    create?: XOR<RoomTypeCreateWithoutAmenityInput, RoomTypeUncheckedCreateWithoutAmenityInput> | RoomTypeCreateWithoutAmenityInput[] | RoomTypeUncheckedCreateWithoutAmenityInput[]
+    connectOrCreate?: RoomTypeCreateOrConnectWithoutAmenityInput | RoomTypeCreateOrConnectWithoutAmenityInput[]
+    connect?: RoomTypeWhereUniqueInput | RoomTypeWhereUniqueInput[]
+  }
+
+  export type RoomTypeUncheckedCreateNestedManyWithoutAmenityInput = {
+    create?: XOR<RoomTypeCreateWithoutAmenityInput, RoomTypeUncheckedCreateWithoutAmenityInput> | RoomTypeCreateWithoutAmenityInput[] | RoomTypeUncheckedCreateWithoutAmenityInput[]
+    connectOrCreate?: RoomTypeCreateOrConnectWithoutAmenityInput | RoomTypeCreateOrConnectWithoutAmenityInput[]
+    connect?: RoomTypeWhereUniqueInput | RoomTypeWhereUniqueInput[]
+  }
+
+  export type TenantUpdateOneRequiredWithoutAmenityNestedInput = {
+    create?: XOR<TenantCreateWithoutAmenityInput, TenantUncheckedCreateWithoutAmenityInput>
+    connectOrCreate?: TenantCreateOrConnectWithoutAmenityInput
+    upsert?: TenantUpsertWithoutAmenityInput
+    connect?: TenantWhereUniqueInput
+    update?: XOR<XOR<TenantUpdateToOneWithWhereWithoutAmenityInput, TenantUpdateWithoutAmenityInput>, TenantUncheckedUpdateWithoutAmenityInput>
+  }
+
+  export type HotelUpdateOneRequiredWithoutAmenityNestedInput = {
+    create?: XOR<HotelCreateWithoutAmenityInput, HotelUncheckedCreateWithoutAmenityInput>
+    connectOrCreate?: HotelCreateOrConnectWithoutAmenityInput
+    upsert?: HotelUpsertWithoutAmenityInput
+    connect?: HotelWhereUniqueInput
+    update?: XOR<XOR<HotelUpdateToOneWithWhereWithoutAmenityInput, HotelUpdateWithoutAmenityInput>, HotelUncheckedUpdateWithoutAmenityInput>
+  }
+
+  export type RoomTypeUpdateManyWithoutAmenityNestedInput = {
+    create?: XOR<RoomTypeCreateWithoutAmenityInput, RoomTypeUncheckedCreateWithoutAmenityInput> | RoomTypeCreateWithoutAmenityInput[] | RoomTypeUncheckedCreateWithoutAmenityInput[]
+    connectOrCreate?: RoomTypeCreateOrConnectWithoutAmenityInput | RoomTypeCreateOrConnectWithoutAmenityInput[]
+    upsert?: RoomTypeUpsertWithWhereUniqueWithoutAmenityInput | RoomTypeUpsertWithWhereUniqueWithoutAmenityInput[]
+    set?: RoomTypeWhereUniqueInput | RoomTypeWhereUniqueInput[]
+    disconnect?: RoomTypeWhereUniqueInput | RoomTypeWhereUniqueInput[]
+    delete?: RoomTypeWhereUniqueInput | RoomTypeWhereUniqueInput[]
+    connect?: RoomTypeWhereUniqueInput | RoomTypeWhereUniqueInput[]
+    update?: RoomTypeUpdateWithWhereUniqueWithoutAmenityInput | RoomTypeUpdateWithWhereUniqueWithoutAmenityInput[]
+    updateMany?: RoomTypeUpdateManyWithWhereWithoutAmenityInput | RoomTypeUpdateManyWithWhereWithoutAmenityInput[]
+    deleteMany?: RoomTypeScalarWhereInput | RoomTypeScalarWhereInput[]
+  }
+
+  export type RoomTypeUncheckedUpdateManyWithoutAmenityNestedInput = {
+    create?: XOR<RoomTypeCreateWithoutAmenityInput, RoomTypeUncheckedCreateWithoutAmenityInput> | RoomTypeCreateWithoutAmenityInput[] | RoomTypeUncheckedCreateWithoutAmenityInput[]
+    connectOrCreate?: RoomTypeCreateOrConnectWithoutAmenityInput | RoomTypeCreateOrConnectWithoutAmenityInput[]
+    upsert?: RoomTypeUpsertWithWhereUniqueWithoutAmenityInput | RoomTypeUpsertWithWhereUniqueWithoutAmenityInput[]
+    set?: RoomTypeWhereUniqueInput | RoomTypeWhereUniqueInput[]
+    disconnect?: RoomTypeWhereUniqueInput | RoomTypeWhereUniqueInput[]
+    delete?: RoomTypeWhereUniqueInput | RoomTypeWhereUniqueInput[]
+    connect?: RoomTypeWhereUniqueInput | RoomTypeWhereUniqueInput[]
+    update?: RoomTypeUpdateWithWhereUniqueWithoutAmenityInput | RoomTypeUpdateWithWhereUniqueWithoutAmenityInput[]
+    updateMany?: RoomTypeUpdateManyWithWhereWithoutAmenityInput | RoomTypeUpdateManyWithWhereWithoutAmenityInput[]
+    deleteMany?: RoomTypeScalarWhereInput | RoomTypeScalarWhereInput[]
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -24713,6 +26444,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutTenantInput = {
@@ -24731,6 +26463,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutTenantInput = {
@@ -24818,6 +26551,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     hotel: HotelCreateNestedOneWithoutRoomTypeInput
     Room?: RoomCreateNestedManyWithoutRoomTypeInput
+    Amenity?: AmenityCreateNestedManyWithoutRoomTypeInput
   }
 
   export type RoomTypeUncheckedCreateWithoutTenantInput = {
@@ -24829,6 +26563,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     hotelId: string
     Room?: RoomUncheckedCreateNestedManyWithoutRoomTypeInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutRoomTypeInput
   }
 
   export type RoomTypeCreateOrConnectWithoutTenantInput = {
@@ -25064,6 +26799,34 @@ export namespace Prisma {
 
   export type ExchangeRateCreateManyTenantInputEnvelope = {
     data: ExchangeRateCreateManyTenantInput | ExchangeRateCreateManyTenantInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AmenityCreateWithoutTenantInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hotel: HotelCreateNestedOneWithoutAmenityInput
+    RoomType?: RoomTypeCreateNestedManyWithoutAmenityInput
+  }
+
+  export type AmenityUncheckedCreateWithoutTenantInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hotelId: string
+    RoomType?: RoomTypeUncheckedCreateNestedManyWithoutAmenityInput
+  }
+
+  export type AmenityCreateOrConnectWithoutTenantInput = {
+    where: AmenityWhereUniqueInput
+    create: XOR<AmenityCreateWithoutTenantInput, AmenityUncheckedCreateWithoutTenantInput>
+  }
+
+  export type AmenityCreateManyTenantInputEnvelope = {
+    data: AmenityCreateManyTenantInput | AmenityCreateManyTenantInput[]
     skipDuplicates?: boolean
   }
 
@@ -25399,6 +27162,34 @@ export namespace Prisma {
     hotelId?: StringFilter<"ExchangeRate"> | string
   }
 
+  export type AmenityUpsertWithWhereUniqueWithoutTenantInput = {
+    where: AmenityWhereUniqueInput
+    update: XOR<AmenityUpdateWithoutTenantInput, AmenityUncheckedUpdateWithoutTenantInput>
+    create: XOR<AmenityCreateWithoutTenantInput, AmenityUncheckedCreateWithoutTenantInput>
+  }
+
+  export type AmenityUpdateWithWhereUniqueWithoutTenantInput = {
+    where: AmenityWhereUniqueInput
+    data: XOR<AmenityUpdateWithoutTenantInput, AmenityUncheckedUpdateWithoutTenantInput>
+  }
+
+  export type AmenityUpdateManyWithWhereWithoutTenantInput = {
+    where: AmenityScalarWhereInput
+    data: XOR<AmenityUpdateManyMutationInput, AmenityUncheckedUpdateManyWithoutTenantInput>
+  }
+
+  export type AmenityScalarWhereInput = {
+    AND?: AmenityScalarWhereInput | AmenityScalarWhereInput[]
+    OR?: AmenityScalarWhereInput[]
+    NOT?: AmenityScalarWhereInput | AmenityScalarWhereInput[]
+    id?: StringFilter<"Amenity"> | string
+    name?: StringFilter<"Amenity"> | string
+    createdAt?: DateTimeFilter<"Amenity"> | Date | string
+    updatedAt?: DateTimeFilter<"Amenity"> | Date | string
+    tenantId?: StringFilter<"Amenity"> | string
+    hotelId?: StringFilter<"Amenity"> | string
+  }
+
   export type TenantCreateWithoutHotelsInput = {
     id?: string
     name: string
@@ -25414,6 +27205,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutHotelsInput = {
@@ -25431,6 +27223,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutHotelsInput = {
@@ -25483,6 +27276,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     tenant: TenantCreateNestedOneWithoutRoomTypeInput
     Room?: RoomCreateNestedManyWithoutRoomTypeInput
+    Amenity?: AmenityCreateNestedManyWithoutRoomTypeInput
   }
 
   export type RoomTypeUncheckedCreateWithoutHotelInput = {
@@ -25494,6 +27288,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     tenantId: string
     Room?: RoomUncheckedCreateNestedManyWithoutRoomTypeInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutRoomTypeInput
   }
 
   export type RoomTypeCreateOrConnectWithoutHotelInput = {
@@ -25762,6 +27557,34 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AmenityCreateWithoutHotelInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenant: TenantCreateNestedOneWithoutAmenityInput
+    RoomType?: RoomTypeCreateNestedManyWithoutAmenityInput
+  }
+
+  export type AmenityUncheckedCreateWithoutHotelInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+    RoomType?: RoomTypeUncheckedCreateNestedManyWithoutAmenityInput
+  }
+
+  export type AmenityCreateOrConnectWithoutHotelInput = {
+    where: AmenityWhereUniqueInput
+    create: XOR<AmenityCreateWithoutHotelInput, AmenityUncheckedCreateWithoutHotelInput>
+  }
+
+  export type AmenityCreateManyHotelInputEnvelope = {
+    data: AmenityCreateManyHotelInput | AmenityCreateManyHotelInput[]
+    skipDuplicates?: boolean
+  }
+
   export type TenantUpsertWithoutHotelsInput = {
     update: XOR<TenantUpdateWithoutHotelsInput, TenantUncheckedUpdateWithoutHotelsInput>
     create: XOR<TenantCreateWithoutHotelsInput, TenantUncheckedCreateWithoutHotelsInput>
@@ -25788,6 +27611,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutHotelsInput = {
@@ -25805,6 +27629,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type GuestUpsertWithWhereUniqueWithoutHotelInput = {
@@ -25967,6 +27792,22 @@ export namespace Prisma {
     data: XOR<ExchangeRateUpdateManyMutationInput, ExchangeRateUncheckedUpdateManyWithoutHotelInput>
   }
 
+  export type AmenityUpsertWithWhereUniqueWithoutHotelInput = {
+    where: AmenityWhereUniqueInput
+    update: XOR<AmenityUpdateWithoutHotelInput, AmenityUncheckedUpdateWithoutHotelInput>
+    create: XOR<AmenityCreateWithoutHotelInput, AmenityUncheckedCreateWithoutHotelInput>
+  }
+
+  export type AmenityUpdateWithWhereUniqueWithoutHotelInput = {
+    where: AmenityWhereUniqueInput
+    data: XOR<AmenityUpdateWithoutHotelInput, AmenityUncheckedUpdateWithoutHotelInput>
+  }
+
+  export type AmenityUpdateManyWithWhereWithoutHotelInput = {
+    where: AmenityScalarWhereInput
+    data: XOR<AmenityUpdateManyMutationInput, AmenityUncheckedUpdateManyWithoutHotelInput>
+  }
+
   export type TenantCreateWithoutUsersInput = {
     id?: string
     name: string
@@ -25982,6 +27823,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutUsersInput = {
@@ -25999,6 +27841,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutUsersInput = {
@@ -26022,6 +27865,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutUserInput = {
@@ -26040,6 +27884,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutUserInput = {
@@ -26098,6 +27943,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutUsersInput = {
@@ -26115,6 +27961,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutUserInput = {
@@ -26144,6 +27991,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutUserInput = {
@@ -26162,6 +28010,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type RoleUpsertWithoutUsersInput = {
@@ -26210,6 +28059,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutRoleInput = {
@@ -26227,6 +28077,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutRoleInput = {
@@ -26250,6 +28101,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutRoleInput = {
@@ -26268,6 +28120,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutRoleInput = {
@@ -26360,6 +28213,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutRoleInput = {
@@ -26377,6 +28231,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutRoleInput = {
@@ -26406,6 +28261,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutRoleInput = {
@@ -26424,6 +28280,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type UserUpsertWithWhereUniqueWithoutRoleInput = {
@@ -26520,6 +28377,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     tenant: TenantCreateNestedOneWithoutRoomTypeInput
     hotel: HotelCreateNestedOneWithoutRoomTypeInput
+    Amenity?: AmenityCreateNestedManyWithoutRoomTypeInput
   }
 
   export type RoomTypeUncheckedCreateWithoutRoomInput = {
@@ -26531,6 +28389,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     tenantId: string
     hotelId: string
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutRoomTypeInput
   }
 
   export type RoomTypeCreateOrConnectWithoutRoomInput = {
@@ -26553,6 +28412,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutRoomInput = {
@@ -26570,6 +28430,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutRoomInput = {
@@ -26593,6 +28454,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutRoomInput = {
@@ -26611,6 +28473,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutRoomInput = {
@@ -26672,6 +28535,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenant?: TenantUpdateOneRequiredWithoutRoomTypeNestedInput
     hotel?: HotelUpdateOneRequiredWithoutRoomTypeNestedInput
+    Amenity?: AmenityUpdateManyWithoutRoomTypeNestedInput
   }
 
   export type RoomTypeUncheckedUpdateWithoutRoomInput = {
@@ -26683,6 +28547,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    Amenity?: AmenityUncheckedUpdateManyWithoutRoomTypeNestedInput
   }
 
   export type TenantUpsertWithoutRoomInput = {
@@ -26711,6 +28576,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutRoomInput = {
@@ -26728,6 +28594,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutRoomInput = {
@@ -26757,6 +28624,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutRoomInput = {
@@ -26775,6 +28643,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type ReservationUpsertWithWhereUniqueWithoutRoomInput = {
@@ -26808,6 +28677,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutRoomTypeInput = {
@@ -26825,6 +28695,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutRoomTypeInput = {
@@ -26848,6 +28719,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutRoomTypeInput = {
@@ -26866,6 +28738,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutRoomTypeInput = {
@@ -26901,6 +28774,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AmenityCreateWithoutRoomTypeInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenant: TenantCreateNestedOneWithoutAmenityInput
+    hotel: HotelCreateNestedOneWithoutAmenityInput
+  }
+
+  export type AmenityUncheckedCreateWithoutRoomTypeInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+    hotelId: string
+  }
+
+  export type AmenityCreateOrConnectWithoutRoomTypeInput = {
+    where: AmenityWhereUniqueInput
+    create: XOR<AmenityCreateWithoutRoomTypeInput, AmenityUncheckedCreateWithoutRoomTypeInput>
+  }
+
   export type TenantUpsertWithoutRoomTypeInput = {
     update: XOR<TenantUpdateWithoutRoomTypeInput, TenantUncheckedUpdateWithoutRoomTypeInput>
     create: XOR<TenantCreateWithoutRoomTypeInput, TenantUncheckedCreateWithoutRoomTypeInput>
@@ -26927,6 +28823,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutRoomTypeInput = {
@@ -26944,6 +28841,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutRoomTypeInput = {
@@ -26973,6 +28871,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutRoomTypeInput = {
@@ -26991,6 +28890,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type RoomUpsertWithWhereUniqueWithoutRoomTypeInput = {
@@ -27009,6 +28909,22 @@ export namespace Prisma {
     data: XOR<RoomUpdateManyMutationInput, RoomUncheckedUpdateManyWithoutRoomTypeInput>
   }
 
+  export type AmenityUpsertWithWhereUniqueWithoutRoomTypeInput = {
+    where: AmenityWhereUniqueInput
+    update: XOR<AmenityUpdateWithoutRoomTypeInput, AmenityUncheckedUpdateWithoutRoomTypeInput>
+    create: XOR<AmenityCreateWithoutRoomTypeInput, AmenityUncheckedCreateWithoutRoomTypeInput>
+  }
+
+  export type AmenityUpdateWithWhereUniqueWithoutRoomTypeInput = {
+    where: AmenityWhereUniqueInput
+    data: XOR<AmenityUpdateWithoutRoomTypeInput, AmenityUncheckedUpdateWithoutRoomTypeInput>
+  }
+
+  export type AmenityUpdateManyWithWhereWithoutRoomTypeInput = {
+    where: AmenityScalarWhereInput
+    data: XOR<AmenityUpdateManyMutationInput, AmenityUncheckedUpdateManyWithoutRoomTypeInput>
+  }
+
   export type TenantCreateWithoutRatePlanInput = {
     id?: string
     name: string
@@ -27024,6 +28940,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutRatePlanInput = {
@@ -27041,6 +28958,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutRatePlanInput = {
@@ -27064,6 +28982,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutRatePlanInput = {
@@ -27082,6 +29001,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutRatePlanInput = {
@@ -27174,6 +29094,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutRatePlanInput = {
@@ -27191,6 +29112,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutRatePlanInput = {
@@ -27220,6 +29142,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutRatePlanInput = {
@@ -27238,6 +29161,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type ReservationUpsertWithWhereUniqueWithoutRatePlanInput = {
@@ -27302,6 +29226,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutGuestInput = {
@@ -27319,6 +29244,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutGuestInput = {
@@ -27342,6 +29268,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutGuestInput = {
@@ -27360,6 +29287,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutGuestInput = {
@@ -27459,6 +29387,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutGuestInput = {
@@ -27476,6 +29405,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutGuestInput = {
@@ -27505,6 +29435,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutGuestInput = {
@@ -27523,6 +29454,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type ReservationUpsertWithWhereUniqueWithoutGuestInput = {
@@ -27626,6 +29558,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutReservationInput = {
@@ -27643,6 +29576,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutReservationInput = {
@@ -27666,6 +29600,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutReservationInput = {
@@ -27684,6 +29619,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutReservationInput = {
@@ -27843,6 +29779,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutReservationInput = {
@@ -27860,6 +29797,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutReservationInput = {
@@ -27889,6 +29827,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutReservationInput = {
@@ -27907,6 +29846,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type RatePlanUpsertWithoutReservationInput = {
@@ -28027,6 +29967,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutFolioInput = {
@@ -28044,6 +29985,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutFolioInput = {
@@ -28067,6 +30009,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutFolioInput = {
@@ -28085,6 +30028,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutFolioInput = {
@@ -28184,6 +30128,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutFolioInput = {
@@ -28201,6 +30146,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutFolioInput = {
@@ -28230,6 +30176,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutFolioInput = {
@@ -28248,6 +30195,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type ReservationUpsertWithoutFolioInput = {
@@ -28300,6 +30248,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutPOSOutletInput = {
@@ -28317,6 +30266,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutPOSOutletInput = {
@@ -28340,6 +30290,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutPOSOutletInput = {
@@ -28358,6 +30309,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
     exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutPOSOutletInput = {
@@ -28391,6 +30343,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutPOSOutletInput = {
@@ -28408,6 +30361,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutPOSOutletInput = {
@@ -28437,6 +30391,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutPOSOutletInput = {
@@ -28455,6 +30410,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type CurrencyCreateWithoutBaseRatesInput = {
@@ -28522,6 +30478,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutExchangeRatesInput = {
@@ -28539,6 +30496,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutExchangeRatesInput = {
@@ -28562,6 +30520,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutExchangeRatesInput = {
@@ -28580,6 +30539,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    Amenity?: AmenityUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutExchangeRatesInput = {
@@ -28675,6 +30635,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutExchangeRatesInput = {
@@ -28692,6 +30653,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutExchangeRatesInput = {
@@ -28721,6 +30683,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutExchangeRatesInput = {
@@ -28739,6 +30702,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type ExchangeRateCreateWithoutBaseInput = {
@@ -28887,6 +30851,231 @@ export namespace Prisma {
     data: XOR<RatePlanUpdateManyMutationInput, RatePlanUncheckedUpdateManyWithoutCurrencyInput>
   }
 
+  export type TenantCreateWithoutAmenityInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hotels?: HotelCreateNestedManyWithoutTenantInput
+    Users?: UserCreateNestedManyWithoutTenantInput
+    Role?: RoleCreateNestedManyWithoutTenantInput
+    RoomType?: RoomTypeCreateNestedManyWithoutTenantInput
+    Room?: RoomCreateNestedManyWithoutTenantInput
+    Guest?: GuestCreateNestedManyWithoutTenantInput
+    Reservation?: ReservationCreateNestedManyWithoutTenantInput
+    Folio?: FolioCreateNestedManyWithoutTenantInput
+    POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
+    RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
+  }
+
+  export type TenantUncheckedCreateWithoutAmenityInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hotels?: HotelUncheckedCreateNestedManyWithoutTenantInput
+    Users?: UserUncheckedCreateNestedManyWithoutTenantInput
+    Role?: RoleUncheckedCreateNestedManyWithoutTenantInput
+    RoomType?: RoomTypeUncheckedCreateNestedManyWithoutTenantInput
+    Room?: RoomUncheckedCreateNestedManyWithoutTenantInput
+    Guest?: GuestUncheckedCreateNestedManyWithoutTenantInput
+    Reservation?: ReservationUncheckedCreateNestedManyWithoutTenantInput
+    Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
+    POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
+    RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
+  }
+
+  export type TenantCreateOrConnectWithoutAmenityInput = {
+    where: TenantWhereUniqueInput
+    create: XOR<TenantCreateWithoutAmenityInput, TenantUncheckedCreateWithoutAmenityInput>
+  }
+
+  export type HotelCreateWithoutAmenityInput = {
+    id?: string
+    name: string
+    country: string
+    city: string
+    address: string
+    tenant: TenantCreateNestedOneWithoutHotelsInput
+    Guest?: GuestCreateNestedManyWithoutHotelInput
+    RoomType?: RoomTypeCreateNestedManyWithoutHotelInput
+    Room?: RoomCreateNestedManyWithoutHotelInput
+    Role?: RoleCreateNestedManyWithoutHotelInput
+    User?: UserCreateNestedManyWithoutHotelInput
+    Reservation?: ReservationCreateNestedManyWithoutHotelInput
+    Folio?: FolioCreateNestedManyWithoutHotelInput
+    POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
+    RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
+  }
+
+  export type HotelUncheckedCreateWithoutAmenityInput = {
+    id?: string
+    name: string
+    country: string
+    city: string
+    address: string
+    tenantId: string
+    Guest?: GuestUncheckedCreateNestedManyWithoutHotelInput
+    RoomType?: RoomTypeUncheckedCreateNestedManyWithoutHotelInput
+    Room?: RoomUncheckedCreateNestedManyWithoutHotelInput
+    Role?: RoleUncheckedCreateNestedManyWithoutHotelInput
+    User?: UserUncheckedCreateNestedManyWithoutHotelInput
+    Reservation?: ReservationUncheckedCreateNestedManyWithoutHotelInput
+    Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
+    POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
+    RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
+  }
+
+  export type HotelCreateOrConnectWithoutAmenityInput = {
+    where: HotelWhereUniqueInput
+    create: XOR<HotelCreateWithoutAmenityInput, HotelUncheckedCreateWithoutAmenityInput>
+  }
+
+  export type RoomTypeCreateWithoutAmenityInput = {
+    id?: string
+    name: string
+    description?: string | null
+    baseRate?: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenant: TenantCreateNestedOneWithoutRoomTypeInput
+    hotel: HotelCreateNestedOneWithoutRoomTypeInput
+    Room?: RoomCreateNestedManyWithoutRoomTypeInput
+  }
+
+  export type RoomTypeUncheckedCreateWithoutAmenityInput = {
+    id?: string
+    name: string
+    description?: string | null
+    baseRate?: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+    hotelId: string
+    Room?: RoomUncheckedCreateNestedManyWithoutRoomTypeInput
+  }
+
+  export type RoomTypeCreateOrConnectWithoutAmenityInput = {
+    where: RoomTypeWhereUniqueInput
+    create: XOR<RoomTypeCreateWithoutAmenityInput, RoomTypeUncheckedCreateWithoutAmenityInput>
+  }
+
+  export type TenantUpsertWithoutAmenityInput = {
+    update: XOR<TenantUpdateWithoutAmenityInput, TenantUncheckedUpdateWithoutAmenityInput>
+    create: XOR<TenantCreateWithoutAmenityInput, TenantUncheckedCreateWithoutAmenityInput>
+    where?: TenantWhereInput
+  }
+
+  export type TenantUpdateToOneWithWhereWithoutAmenityInput = {
+    where?: TenantWhereInput
+    data: XOR<TenantUpdateWithoutAmenityInput, TenantUncheckedUpdateWithoutAmenityInput>
+  }
+
+  export type TenantUpdateWithoutAmenityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hotels?: HotelUpdateManyWithoutTenantNestedInput
+    Users?: UserUpdateManyWithoutTenantNestedInput
+    Role?: RoleUpdateManyWithoutTenantNestedInput
+    RoomType?: RoomTypeUpdateManyWithoutTenantNestedInput
+    Room?: RoomUpdateManyWithoutTenantNestedInput
+    Guest?: GuestUpdateManyWithoutTenantNestedInput
+    Reservation?: ReservationUpdateManyWithoutTenantNestedInput
+    Folio?: FolioUpdateManyWithoutTenantNestedInput
+    POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
+    RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
+  }
+
+  export type TenantUncheckedUpdateWithoutAmenityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hotels?: HotelUncheckedUpdateManyWithoutTenantNestedInput
+    Users?: UserUncheckedUpdateManyWithoutTenantNestedInput
+    Role?: RoleUncheckedUpdateManyWithoutTenantNestedInput
+    RoomType?: RoomTypeUncheckedUpdateManyWithoutTenantNestedInput
+    Room?: RoomUncheckedUpdateManyWithoutTenantNestedInput
+    Guest?: GuestUncheckedUpdateManyWithoutTenantNestedInput
+    Reservation?: ReservationUncheckedUpdateManyWithoutTenantNestedInput
+    Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
+    POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
+    RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
+  }
+
+  export type HotelUpsertWithoutAmenityInput = {
+    update: XOR<HotelUpdateWithoutAmenityInput, HotelUncheckedUpdateWithoutAmenityInput>
+    create: XOR<HotelCreateWithoutAmenityInput, HotelUncheckedCreateWithoutAmenityInput>
+    where?: HotelWhereInput
+  }
+
+  export type HotelUpdateToOneWithWhereWithoutAmenityInput = {
+    where?: HotelWhereInput
+    data: XOR<HotelUpdateWithoutAmenityInput, HotelUncheckedUpdateWithoutAmenityInput>
+  }
+
+  export type HotelUpdateWithoutAmenityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    tenant?: TenantUpdateOneRequiredWithoutHotelsNestedInput
+    Guest?: GuestUpdateManyWithoutHotelNestedInput
+    RoomType?: RoomTypeUpdateManyWithoutHotelNestedInput
+    Room?: RoomUpdateManyWithoutHotelNestedInput
+    Role?: RoleUpdateManyWithoutHotelNestedInput
+    User?: UserUpdateManyWithoutHotelNestedInput
+    Reservation?: ReservationUpdateManyWithoutHotelNestedInput
+    Folio?: FolioUpdateManyWithoutHotelNestedInput
+    POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
+    RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+  }
+
+  export type HotelUncheckedUpdateWithoutAmenityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    Guest?: GuestUncheckedUpdateManyWithoutHotelNestedInput
+    RoomType?: RoomTypeUncheckedUpdateManyWithoutHotelNestedInput
+    Room?: RoomUncheckedUpdateManyWithoutHotelNestedInput
+    Role?: RoleUncheckedUpdateManyWithoutHotelNestedInput
+    User?: UserUncheckedUpdateManyWithoutHotelNestedInput
+    Reservation?: ReservationUncheckedUpdateManyWithoutHotelNestedInput
+    Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
+    POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
+    RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+  }
+
+  export type RoomTypeUpsertWithWhereUniqueWithoutAmenityInput = {
+    where: RoomTypeWhereUniqueInput
+    update: XOR<RoomTypeUpdateWithoutAmenityInput, RoomTypeUncheckedUpdateWithoutAmenityInput>
+    create: XOR<RoomTypeCreateWithoutAmenityInput, RoomTypeUncheckedCreateWithoutAmenityInput>
+  }
+
+  export type RoomTypeUpdateWithWhereUniqueWithoutAmenityInput = {
+    where: RoomTypeWhereUniqueInput
+    data: XOR<RoomTypeUpdateWithoutAmenityInput, RoomTypeUncheckedUpdateWithoutAmenityInput>
+  }
+
+  export type RoomTypeUpdateManyWithWhereWithoutAmenityInput = {
+    where: RoomTypeScalarWhereInput
+    data: XOR<RoomTypeUpdateManyMutationInput, RoomTypeUncheckedUpdateManyWithoutAmenityInput>
+  }
+
   export type HotelCreateManyTenantInput = {
     id?: string
     name: string
@@ -28999,6 +31188,14 @@ export namespace Prisma {
     hotelId: string
   }
 
+  export type AmenityCreateManyTenantInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hotelId: string
+  }
+
   export type HotelUpdateWithoutTenantInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -29015,6 +31212,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutTenantInput = {
@@ -29033,6 +31231,7 @@ export namespace Prisma {
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
     exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateManyWithoutTenantInput = {
@@ -29119,6 +31318,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     hotel?: HotelUpdateOneRequiredWithoutRoomTypeNestedInput
     Room?: RoomUpdateManyWithoutRoomTypeNestedInput
+    Amenity?: AmenityUpdateManyWithoutRoomTypeNestedInput
   }
 
   export type RoomTypeUncheckedUpdateWithoutTenantInput = {
@@ -29130,6 +31330,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     hotelId?: StringFieldUpdateOperationsInput | string
     Room?: RoomUncheckedUpdateManyWithoutRoomTypeNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutRoomTypeNestedInput
   }
 
   export type RoomTypeUncheckedUpdateManyWithoutTenantInput = {
@@ -29371,6 +31572,32 @@ export namespace Prisma {
     hotelId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type AmenityUpdateWithoutTenantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hotel?: HotelUpdateOneRequiredWithoutAmenityNestedInput
+    RoomType?: RoomTypeUpdateManyWithoutAmenityNestedInput
+  }
+
+  export type AmenityUncheckedUpdateWithoutTenantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+    RoomType?: RoomTypeUncheckedUpdateManyWithoutAmenityNestedInput
+  }
+
+  export type AmenityUncheckedUpdateManyWithoutTenantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type GuestCreateManyHotelInput = {
     id?: string
     firstName: string
@@ -29475,6 +31702,14 @@ export namespace Prisma {
     tenantId: string
   }
 
+  export type AmenityCreateManyHotelInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+  }
+
   export type GuestUpdateWithoutHotelInput = {
     id?: StringFieldUpdateOperationsInput | string
     firstName?: StringFieldUpdateOperationsInput | string
@@ -29521,6 +31756,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenant?: TenantUpdateOneRequiredWithoutRoomTypeNestedInput
     Room?: RoomUpdateManyWithoutRoomTypeNestedInput
+    Amenity?: AmenityUpdateManyWithoutRoomTypeNestedInput
   }
 
   export type RoomTypeUncheckedUpdateWithoutHotelInput = {
@@ -29532,6 +31768,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: StringFieldUpdateOperationsInput | string
     Room?: RoomUncheckedUpdateManyWithoutRoomTypeNestedInput
+    Amenity?: AmenityUncheckedUpdateManyWithoutRoomTypeNestedInput
   }
 
   export type RoomTypeUncheckedUpdateManyWithoutHotelInput = {
@@ -29803,6 +32040,32 @@ export namespace Prisma {
     tenantId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type AmenityUpdateWithoutHotelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenant?: TenantUpdateOneRequiredWithoutAmenityNestedInput
+    RoomType?: RoomTypeUpdateManyWithoutAmenityNestedInput
+  }
+
+  export type AmenityUncheckedUpdateWithoutHotelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    RoomType?: RoomTypeUncheckedUpdateManyWithoutAmenityNestedInput
+  }
+
+  export type AmenityUncheckedUpdateManyWithoutHotelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type UserCreateManyRoleInput = {
     id?: string
     email: string
@@ -29987,6 +32250,33 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     roomNumber?: StringFieldUpdateOperationsInput | string
     status?: EnumRoomStatusFieldUpdateOperationsInput | $Enums.RoomStatus
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AmenityUpdateWithoutRoomTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenant?: TenantUpdateOneRequiredWithoutAmenityNestedInput
+    hotel?: HotelUpdateOneRequiredWithoutAmenityNestedInput
+  }
+
+  export type AmenityUncheckedUpdateWithoutRoomTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AmenityUncheckedUpdateManyWithoutRoomTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
   }
@@ -30259,6 +32549,41 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RoomTypeUpdateWithoutAmenityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    baseRate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenant?: TenantUpdateOneRequiredWithoutRoomTypeNestedInput
+    hotel?: HotelUpdateOneRequiredWithoutRoomTypeNestedInput
+    Room?: RoomUpdateManyWithoutRoomTypeNestedInput
+  }
+
+  export type RoomTypeUncheckedUpdateWithoutAmenityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    baseRate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+    Room?: RoomUncheckedUpdateManyWithoutRoomTypeNestedInput
+  }
+
+  export type RoomTypeUncheckedUpdateManyWithoutAmenityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    baseRate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
   }
 
 
