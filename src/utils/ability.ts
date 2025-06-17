@@ -18,6 +18,7 @@ export type AppSubjects =
   | "RoomType"
   | "Guest"
   | "Reservation"
+  |"ExchangeRate"
   | "Folio"
   | "POSOutlet"
   | "RatePlan"

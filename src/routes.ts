@@ -4,7 +4,7 @@ import guestRouter from "./features/guest/guest.routes";
 import roomTypeRouter from "./features/roomType/roomType.routes";
 import roomRouter from "./features/room/room.routes";
 import ratePlanRouter from "./features/ratePlan/ratePlan.routes";
-
+import exchangeRouter from "./features/exchange/exchange.routes";
 const router = Router();
 
 router.use("/auth", authRouter);
@@ -15,6 +15,8 @@ router.use("/room", roomRouter);
 
 router.use("/guest", guestRouter);
 router.use("/ratePlan", ratePlanRouter);
+router.use("/exchange", exchangeRouter);
+
 
 
 export default router;
