@@ -8,9 +8,9 @@ import { addGuestSchema, guestIdSchema, updateGuestSchema } from './guest.valida
 
 const router=express.Router();
 
-router.post('/add-guest', authenticateJWT, defineAbilities, validateRequest({body:addGuestSchema}), addGuest);
-router.get('/get-guests', authenticateJWT, defineAbilities,getGuests);
-router.get('/get-guest/:id', authenticateJWT, defineAbilities, validateRequest({params:guestIdSchema}),getGuest);
-router.put('/update-guest/:id',authenticateJWT, defineAbilities, validateRequest({params:guestIdSchema,body:updateGuestSchema}), updateGuest);
-router.delete('/delete-guest/:id', authenticateJWT, defineAbilities,validateRequest({params:guestIdSchema}),deleteGuest);
+router.post('/add', authenticateJWT, defineAbilities, validateRequest({body:addGuestSchema}), addGuest);
+router.get('/get/:id', authenticateJWT, defineAbilities, validateRequest({params:guestIdSchema}),getGuest);
+router.get('/get', authenticateJWT, defineAbilities,getGuests);
+router.put('/update/:id',authenticateJWT, defineAbilities, validateRequest({params:guestIdSchema,body:updateGuestSchema}), updateGuest);
+router.delete('/delete/:id', authenticateJWT, defineAbilities,validateRequest({params:guestIdSchema}),deleteGuest);
 export default router;

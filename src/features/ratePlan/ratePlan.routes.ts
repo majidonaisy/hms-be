@@ -9,8 +9,8 @@ import { addRatePlan, deleteRatePlan, getRatePlan, getRatePlans, updateRatePlan 
 const router=express.Router();
 
 router.post('/add', authenticateJWT, defineAbilities, validateRequest({body:addRatePlanSchema}), addRatePlan);
-router.get('/get', authenticateJWT, defineAbilities,getRatePlans);
 router.get('/get/:id', authenticateJWT, defineAbilities, validateRequest({params:ratePlanIdSchema}),getRatePlan);
+router.get('/get', authenticateJWT, defineAbilities,getRatePlans);
 router.put('/update/:id',authenticateJWT, defineAbilities, validateRequest({params:ratePlanIdSchema,body:updateRatePlanSchema}), updateRatePlan);
 router.delete('/delete/:id', authenticateJWT, defineAbilities,validateRequest({params:ratePlanIdSchema}),deleteRatePlan);
 export default router;

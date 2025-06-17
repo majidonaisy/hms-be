@@ -7,27 +7,29 @@ import { createRoomSchema, updateRoomSchema, roomParamsSchema } from "./room.val
 
 const router = express.Router();
 
-router.post('/add-room',
+router.post('/add',
     authenticateJWT,
     defineAbilities,
     validateRequest({ body: createRoomSchema }),
     addRoom
 );
 
-router.get('/get-rooms',
-    authenticateJWT,
-    defineAbilities,
-    getRooms
-);
-
-router.get('/get-room/:id',
+router.get('/get/:id',
     authenticateJWT,
     defineAbilities,
     validateRequest({ params: roomParamsSchema }),
     getRoom
 );
 
-router.put('/update-room/:id',
+
+router.get('/get',
+    authenticateJWT,
+    defineAbilities,
+    getRooms
+);
+
+
+router.put('/update/:id',
     authenticateJWT,
     defineAbilities,
     validateRequest({
@@ -37,7 +39,7 @@ router.put('/update-room/:id',
     updateRoom
 );
 
-router.delete('/delete-room/:id',
+router.delete('/delete/:id',
     authenticateJWT,
     defineAbilities,
     validateRequest({ params: roomParamsSchema }),
