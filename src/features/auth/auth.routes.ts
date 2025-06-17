@@ -10,6 +10,6 @@ const router=express.Router();
 
 // router.post('/signup',Signup);
 router.post('/login',validateRequest({body:loginSchema}), loginController);
-router.post('/add-user',authenticateJWT, validateRequest({body:createUserSchema}) ,defineAbilities,AddUser);
+router.post('/add',authenticateJWT, validateRequest({body:createUserSchema}) ,defineAbilities,AddUser);
 
 export default router;

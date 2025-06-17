@@ -7,27 +7,29 @@ import { createRoomTypeSchema, updateRoomTypeSchema, roomTypeParamsSchema } from
 
 const router = express.Router();
 
-router.post('/add-room-type',
+router.post('/add',
     authenticateJWT,
     defineAbilities,
     validateRequest({ body: createRoomTypeSchema }),
     addRoomType
 );
 
-router.get('/get-room-types',
-    authenticateJWT,
-    defineAbilities,
-    getRoomTypes
-);
 
-router.get('/get-room-type/:id',
+router.get('/get/:id',
     authenticateJWT,
     defineAbilities,
     validateRequest({ params: roomTypeParamsSchema }),
     getRoomType
 );
 
-router.put('/update-room-type/:id',
+router.get('/get',
+    authenticateJWT,
+    defineAbilities,
+    getRoomTypes
+);
+
+
+router.put('/update/:id',
     authenticateJWT,
     defineAbilities,
     validateRequest({
@@ -37,7 +39,7 @@ router.put('/update-room-type/:id',
     updateRoomType
 );
 
-router.delete('/delete-room-type/:id',
+router.delete('/delete/:id',
     authenticateJWT,
     defineAbilities,
     validateRequest({ params: roomTypeParamsSchema }),
