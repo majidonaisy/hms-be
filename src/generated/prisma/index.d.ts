@@ -73,6 +73,16 @@ export type Folio = $Result.DefaultSelection<Prisma.$FolioPayload>
  * 
  */
 export type POSOutlet = $Result.DefaultSelection<Prisma.$POSOutletPayload>
+/**
+ * Model ExchangeRate
+ * 
+ */
+export type ExchangeRate = $Result.DefaultSelection<Prisma.$ExchangeRatePayload>
+/**
+ * Model Currency
+ * 
+ */
+export type Currency = $Result.DefaultSelection<Prisma.$CurrencyPayload>
 
 /**
  * Enums
@@ -382,6 +392,26 @@ export class PrismaClient<
     * ```
     */
   get pOSOutlet(): Prisma.POSOutletDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.exchangeRate`: Exposes CRUD operations for the **ExchangeRate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ExchangeRates
+    * const exchangeRates = await prisma.exchangeRate.findMany()
+    * ```
+    */
+  get exchangeRate(): Prisma.ExchangeRateDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.currency`: Exposes CRUD operations for the **Currency** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Currencies
+    * const currencies = await prisma.currency.findMany()
+    * ```
+    */
+  get currency(): Prisma.CurrencyDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -833,7 +863,9 @@ export namespace Prisma {
     Guest: 'Guest',
     Reservation: 'Reservation',
     Folio: 'Folio',
-    POSOutlet: 'POSOutlet'
+    POSOutlet: 'POSOutlet',
+    ExchangeRate: 'ExchangeRate',
+    Currency: 'Currency'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -852,7 +884,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "tenant" | "hotel" | "user" | "role" | "permission" | "room" | "roomType" | "ratePlan" | "guest" | "reservation" | "folio" | "pOSOutlet"
+      modelProps: "tenant" | "hotel" | "user" | "role" | "permission" | "room" | "roomType" | "ratePlan" | "guest" | "reservation" | "folio" | "pOSOutlet" | "exchangeRate" | "currency"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1744,6 +1776,154 @@ export namespace Prisma {
           }
         }
       }
+      ExchangeRate: {
+        payload: Prisma.$ExchangeRatePayload<ExtArgs>
+        fields: Prisma.ExchangeRateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ExchangeRateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExchangeRatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ExchangeRateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExchangeRatePayload>
+          }
+          findFirst: {
+            args: Prisma.ExchangeRateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExchangeRatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ExchangeRateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExchangeRatePayload>
+          }
+          findMany: {
+            args: Prisma.ExchangeRateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExchangeRatePayload>[]
+          }
+          create: {
+            args: Prisma.ExchangeRateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExchangeRatePayload>
+          }
+          createMany: {
+            args: Prisma.ExchangeRateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ExchangeRateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExchangeRatePayload>[]
+          }
+          delete: {
+            args: Prisma.ExchangeRateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExchangeRatePayload>
+          }
+          update: {
+            args: Prisma.ExchangeRateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExchangeRatePayload>
+          }
+          deleteMany: {
+            args: Prisma.ExchangeRateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ExchangeRateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ExchangeRateUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExchangeRatePayload>[]
+          }
+          upsert: {
+            args: Prisma.ExchangeRateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExchangeRatePayload>
+          }
+          aggregate: {
+            args: Prisma.ExchangeRateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateExchangeRate>
+          }
+          groupBy: {
+            args: Prisma.ExchangeRateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ExchangeRateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ExchangeRateCountArgs<ExtArgs>
+            result: $Utils.Optional<ExchangeRateCountAggregateOutputType> | number
+          }
+        }
+      }
+      Currency: {
+        payload: Prisma.$CurrencyPayload<ExtArgs>
+        fields: Prisma.CurrencyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CurrencyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CurrencyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          findFirst: {
+            args: Prisma.CurrencyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CurrencyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          findMany: {
+            args: Prisma.CurrencyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>[]
+          }
+          create: {
+            args: Prisma.CurrencyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          createMany: {
+            args: Prisma.CurrencyCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CurrencyCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>[]
+          }
+          delete: {
+            args: Prisma.CurrencyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          update: {
+            args: Prisma.CurrencyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          deleteMany: {
+            args: Prisma.CurrencyDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CurrencyUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CurrencyUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>[]
+          }
+          upsert: {
+            args: Prisma.CurrencyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CurrencyPayload>
+          }
+          aggregate: {
+            args: Prisma.CurrencyAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCurrency>
+          }
+          groupBy: {
+            args: Prisma.CurrencyGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CurrencyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CurrencyCountArgs<ExtArgs>
+            result: $Utils.Optional<CurrencyCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1840,6 +2020,8 @@ export namespace Prisma {
     reservation?: ReservationOmit
     folio?: FolioOmit
     pOSOutlet?: POSOutletOmit
+    exchangeRate?: ExchangeRateOmit
+    currency?: CurrencyOmit
   }
 
   /* Types for Logging */
@@ -1944,6 +2126,7 @@ export namespace Prisma {
     Folio: number
     POSOutlet: number
     RatePlan: number
+    exchangeRates: number
   }
 
   export type TenantCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1957,6 +2140,7 @@ export namespace Prisma {
     Folio?: boolean | TenantCountOutputTypeCountFolioArgs
     POSOutlet?: boolean | TenantCountOutputTypeCountPOSOutletArgs
     RatePlan?: boolean | TenantCountOutputTypeCountRatePlanArgs
+    exchangeRates?: boolean | TenantCountOutputTypeCountExchangeRatesArgs
   }
 
   // Custom InputTypes
@@ -2040,6 +2224,13 @@ export namespace Prisma {
     where?: RatePlanWhereInput
   }
 
+  /**
+   * TenantCountOutputType without action
+   */
+  export type TenantCountOutputTypeCountExchangeRatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExchangeRateWhereInput
+  }
+
 
   /**
    * Count Type HotelCountOutputType
@@ -2055,6 +2246,7 @@ export namespace Prisma {
     Folio: number
     POSOutlet: number
     RatePlan: number
+    exchangeRates: number
   }
 
   export type HotelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2067,6 +2259,7 @@ export namespace Prisma {
     Folio?: boolean | HotelCountOutputTypeCountFolioArgs
     POSOutlet?: boolean | HotelCountOutputTypeCountPOSOutletArgs
     RatePlan?: boolean | HotelCountOutputTypeCountRatePlanArgs
+    exchangeRates?: boolean | HotelCountOutputTypeCountExchangeRatesArgs
   }
 
   // Custom InputTypes
@@ -2141,6 +2334,13 @@ export namespace Prisma {
    */
   export type HotelCountOutputTypeCountRatePlanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RatePlanWhereInput
+  }
+
+  /**
+   * HotelCountOutputType without action
+   */
+  export type HotelCountOutputTypeCountExchangeRatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExchangeRateWhereInput
   }
 
 
@@ -2278,6 +2478,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type RatePlanCountOutputType
+   */
+
+  export type RatePlanCountOutputType = {
+    reservation: number
+  }
+
+  export type RatePlanCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reservation?: boolean | RatePlanCountOutputTypeCountReservationArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * RatePlanCountOutputType without action
+   */
+  export type RatePlanCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RatePlanCountOutputType
+     */
+    select?: RatePlanCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * RatePlanCountOutputType without action
+   */
+  export type RatePlanCountOutputTypeCountReservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReservationWhereInput
+  }
+
+
+  /**
    * Count Type GuestCountOutputType
    */
 
@@ -2314,6 +2545,55 @@ export namespace Prisma {
    */
   export type GuestCountOutputTypeCountFolioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FolioWhereInput
+  }
+
+
+  /**
+   * Count Type CurrencyCountOutputType
+   */
+
+  export type CurrencyCountOutputType = {
+    baseRates: number
+    targetRates: number
+    RatePlan: number
+  }
+
+  export type CurrencyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baseRates?: boolean | CurrencyCountOutputTypeCountBaseRatesArgs
+    targetRates?: boolean | CurrencyCountOutputTypeCountTargetRatesArgs
+    RatePlan?: boolean | CurrencyCountOutputTypeCountRatePlanArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CurrencyCountOutputType without action
+   */
+  export type CurrencyCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CurrencyCountOutputType
+     */
+    select?: CurrencyCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CurrencyCountOutputType without action
+   */
+  export type CurrencyCountOutputTypeCountBaseRatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExchangeRateWhereInput
+  }
+
+  /**
+   * CurrencyCountOutputType without action
+   */
+  export type CurrencyCountOutputTypeCountTargetRatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExchangeRateWhereInput
+  }
+
+  /**
+   * CurrencyCountOutputType without action
+   */
+  export type CurrencyCountOutputTypeCountRatePlanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RatePlanWhereInput
   }
 
 
@@ -2487,6 +2767,7 @@ export namespace Prisma {
     Folio?: boolean | Tenant$FolioArgs<ExtArgs>
     POSOutlet?: boolean | Tenant$POSOutletArgs<ExtArgs>
     RatePlan?: boolean | Tenant$RatePlanArgs<ExtArgs>
+    exchangeRates?: boolean | Tenant$exchangeRatesArgs<ExtArgs>
     _count?: boolean | TenantCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tenant"]>
 
@@ -2523,6 +2804,7 @@ export namespace Prisma {
     Folio?: boolean | Tenant$FolioArgs<ExtArgs>
     POSOutlet?: boolean | Tenant$POSOutletArgs<ExtArgs>
     RatePlan?: boolean | Tenant$RatePlanArgs<ExtArgs>
+    exchangeRates?: boolean | Tenant$exchangeRatesArgs<ExtArgs>
     _count?: boolean | TenantCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TenantIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2541,6 +2823,7 @@ export namespace Prisma {
       Folio: Prisma.$FolioPayload<ExtArgs>[]
       POSOutlet: Prisma.$POSOutletPayload<ExtArgs>[]
       RatePlan: Prisma.$RatePlanPayload<ExtArgs>[]
+      exchangeRates: Prisma.$ExchangeRatePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2951,6 +3234,7 @@ export namespace Prisma {
     Folio<T extends Tenant$FolioArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$FolioArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FolioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     POSOutlet<T extends Tenant$POSOutletArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$POSOutletArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$POSOutletPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     RatePlan<T extends Tenant$RatePlanArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$RatePlanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RatePlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    exchangeRates<T extends Tenant$exchangeRatesArgs<ExtArgs> = {}>(args?: Subset<T, Tenant$exchangeRatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3612,6 +3896,30 @@ export namespace Prisma {
   }
 
   /**
+   * Tenant.exchangeRates
+   */
+  export type Tenant$exchangeRatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    where?: ExchangeRateWhereInput
+    orderBy?: ExchangeRateOrderByWithRelationInput | ExchangeRateOrderByWithRelationInput[]
+    cursor?: ExchangeRateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ExchangeRateScalarFieldEnum | ExchangeRateScalarFieldEnum[]
+  }
+
+  /**
    * Tenant without action
    */
   export type TenantDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3812,6 +4120,7 @@ export namespace Prisma {
     Folio?: boolean | Hotel$FolioArgs<ExtArgs>
     POSOutlet?: boolean | Hotel$POSOutletArgs<ExtArgs>
     RatePlan?: boolean | Hotel$RatePlanArgs<ExtArgs>
+    exchangeRates?: boolean | Hotel$exchangeRatesArgs<ExtArgs>
     _count?: boolean | HotelCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hotel"]>
 
@@ -3856,6 +4165,7 @@ export namespace Prisma {
     Folio?: boolean | Hotel$FolioArgs<ExtArgs>
     POSOutlet?: boolean | Hotel$POSOutletArgs<ExtArgs>
     RatePlan?: boolean | Hotel$RatePlanArgs<ExtArgs>
+    exchangeRates?: boolean | Hotel$exchangeRatesArgs<ExtArgs>
     _count?: boolean | HotelCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type HotelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3878,6 +4188,7 @@ export namespace Prisma {
       Folio: Prisma.$FolioPayload<ExtArgs>[]
       POSOutlet: Prisma.$POSOutletPayload<ExtArgs>[]
       RatePlan: Prisma.$RatePlanPayload<ExtArgs>[]
+      exchangeRates: Prisma.$ExchangeRatePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4290,6 +4601,7 @@ export namespace Prisma {
     Folio<T extends Hotel$FolioArgs<ExtArgs> = {}>(args?: Subset<T, Hotel$FolioArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FolioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     POSOutlet<T extends Hotel$POSOutletArgs<ExtArgs> = {}>(args?: Subset<T, Hotel$POSOutletArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$POSOutletPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     RatePlan<T extends Hotel$RatePlanArgs<ExtArgs> = {}>(args?: Subset<T, Hotel$RatePlanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RatePlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    exchangeRates<T extends Hotel$exchangeRatesArgs<ExtArgs> = {}>(args?: Subset<T, Hotel$exchangeRatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4934,6 +5246,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: RatePlanScalarFieldEnum | RatePlanScalarFieldEnum[]
+  }
+
+  /**
+   * Hotel.exchangeRates
+   */
+  export type Hotel$exchangeRatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    where?: ExchangeRateWhereInput
+    orderBy?: ExchangeRateOrderByWithRelationInput | ExchangeRateOrderByWithRelationInput[]
+    cursor?: ExchangeRateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ExchangeRateScalarFieldEnum | ExchangeRateScalarFieldEnum[]
   }
 
   /**
@@ -10637,7 +10973,7 @@ export namespace Prisma {
     name: string | null
     baseAdjType: $Enums.AdjType | null
     baseAdjVal: Decimal | null
-    currency: string | null
+    currencyId: string | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -10651,7 +10987,7 @@ export namespace Prisma {
     name: string | null
     baseAdjType: $Enums.AdjType | null
     baseAdjVal: Decimal | null
-    currency: string | null
+    currencyId: string | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -10665,7 +11001,7 @@ export namespace Prisma {
     name: number
     baseAdjType: number
     baseAdjVal: number
-    currency: number
+    currencyId: number
     isActive: number
     createdAt: number
     updatedAt: number
@@ -10689,7 +11025,7 @@ export namespace Prisma {
     name?: true
     baseAdjType?: true
     baseAdjVal?: true
-    currency?: true
+    currencyId?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -10703,7 +11039,7 @@ export namespace Prisma {
     name?: true
     baseAdjType?: true
     baseAdjVal?: true
-    currency?: true
+    currencyId?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -10717,7 +11053,7 @@ export namespace Prisma {
     name?: true
     baseAdjType?: true
     baseAdjVal?: true
-    currency?: true
+    currencyId?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -10818,7 +11154,7 @@ export namespace Prisma {
     name: string
     baseAdjType: $Enums.AdjType
     baseAdjVal: Decimal
-    currency: string
+    currencyId: string
     isActive: boolean
     createdAt: Date
     updatedAt: Date
@@ -10851,12 +11187,15 @@ export namespace Prisma {
     name?: boolean
     baseAdjType?: boolean
     baseAdjVal?: boolean
-    currency?: boolean
+    currencyId?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     Tenant?: boolean | TenantDefaultArgs<ExtArgs>
     Hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    reservation?: boolean | RatePlan$reservationArgs<ExtArgs>
+    currency?: boolean | CurrencyDefaultArgs<ExtArgs>
+    _count?: boolean | RatePlanCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ratePlan"]>
 
   export type RatePlanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10867,12 +11206,13 @@ export namespace Prisma {
     name?: boolean
     baseAdjType?: boolean
     baseAdjVal?: boolean
-    currency?: boolean
+    currencyId?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     Tenant?: boolean | TenantDefaultArgs<ExtArgs>
     Hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    currency?: boolean | CurrencyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ratePlan"]>
 
   export type RatePlanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10883,12 +11223,13 @@ export namespace Prisma {
     name?: boolean
     baseAdjType?: boolean
     baseAdjVal?: boolean
-    currency?: boolean
+    currencyId?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     Tenant?: boolean | TenantDefaultArgs<ExtArgs>
     Hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    currency?: boolean | CurrencyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ratePlan"]>
 
   export type RatePlanSelectScalar = {
@@ -10899,24 +11240,29 @@ export namespace Prisma {
     name?: boolean
     baseAdjType?: boolean
     baseAdjVal?: boolean
-    currency?: boolean
+    currencyId?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type RatePlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tenantId" | "hotelId" | "code" | "name" | "baseAdjType" | "baseAdjVal" | "currency" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["ratePlan"]>
+  export type RatePlanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tenantId" | "hotelId" | "code" | "name" | "baseAdjType" | "baseAdjVal" | "currencyId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["ratePlan"]>
   export type RatePlanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Tenant?: boolean | TenantDefaultArgs<ExtArgs>
     Hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    reservation?: boolean | RatePlan$reservationArgs<ExtArgs>
+    currency?: boolean | CurrencyDefaultArgs<ExtArgs>
+    _count?: boolean | RatePlanCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type RatePlanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Tenant?: boolean | TenantDefaultArgs<ExtArgs>
     Hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    currency?: boolean | CurrencyDefaultArgs<ExtArgs>
   }
   export type RatePlanIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Tenant?: boolean | TenantDefaultArgs<ExtArgs>
     Hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    currency?: boolean | CurrencyDefaultArgs<ExtArgs>
   }
 
   export type $RatePlanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10924,6 +11270,8 @@ export namespace Prisma {
     objects: {
       Tenant: Prisma.$TenantPayload<ExtArgs>
       Hotel: Prisma.$HotelPayload<ExtArgs>
+      reservation: Prisma.$ReservationPayload<ExtArgs>[]
+      currency: Prisma.$CurrencyPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -10933,7 +11281,7 @@ export namespace Prisma {
       name: string
       baseAdjType: $Enums.AdjType
       baseAdjVal: Prisma.Decimal
-      currency: string
+      currencyId: string
       isActive: boolean
       createdAt: Date
       updatedAt: Date
@@ -11333,6 +11681,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Tenant<T extends TenantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TenantDefaultArgs<ExtArgs>>): Prisma__TenantClient<$Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     Hotel<T extends HotelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HotelDefaultArgs<ExtArgs>>): Prisma__HotelClient<$Result.GetResult<Prisma.$HotelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    reservation<T extends RatePlan$reservationArgs<ExtArgs> = {}>(args?: Subset<T, RatePlan$reservationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    currency<T extends CurrencyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CurrencyDefaultArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11369,7 +11719,7 @@ export namespace Prisma {
     readonly name: FieldRef<"RatePlan", 'String'>
     readonly baseAdjType: FieldRef<"RatePlan", 'AdjType'>
     readonly baseAdjVal: FieldRef<"RatePlan", 'Decimal'>
-    readonly currency: FieldRef<"RatePlan", 'String'>
+    readonly currencyId: FieldRef<"RatePlan", 'String'>
     readonly isActive: FieldRef<"RatePlan", 'Boolean'>
     readonly createdAt: FieldRef<"RatePlan", 'DateTime'>
     readonly updatedAt: FieldRef<"RatePlan", 'DateTime'>
@@ -11766,6 +12116,30 @@ export namespace Prisma {
      * Limit how many RatePlans to delete.
      */
     limit?: number
+  }
+
+  /**
+   * RatePlan.reservation
+   */
+  export type RatePlan$reservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Reservation
+     */
+    select?: ReservationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Reservation
+     */
+    omit?: ReservationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReservationInclude<ExtArgs> | null
+    where?: ReservationWhereInput
+    orderBy?: ReservationOrderByWithRelationInput | ReservationOrderByWithRelationInput[]
+    cursor?: ReservationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReservationScalarFieldEnum | ReservationScalarFieldEnum[]
   }
 
   /**
@@ -12982,6 +13356,7 @@ export namespace Prisma {
     roomId: string | null
     tenantId: string | null
     hotelId: string | null
+    ratePlanId: string | null
   }
 
   export type ReservationMaxAggregateOutputType = {
@@ -12993,6 +13368,7 @@ export namespace Prisma {
     roomId: string | null
     tenantId: string | null
     hotelId: string | null
+    ratePlanId: string | null
   }
 
   export type ReservationCountAggregateOutputType = {
@@ -13004,6 +13380,7 @@ export namespace Prisma {
     roomId: number
     tenantId: number
     hotelId: number
+    ratePlanId: number
     _all: number
   }
 
@@ -13017,6 +13394,7 @@ export namespace Prisma {
     roomId?: true
     tenantId?: true
     hotelId?: true
+    ratePlanId?: true
   }
 
   export type ReservationMaxAggregateInputType = {
@@ -13028,6 +13406,7 @@ export namespace Prisma {
     roomId?: true
     tenantId?: true
     hotelId?: true
+    ratePlanId?: true
   }
 
   export type ReservationCountAggregateInputType = {
@@ -13039,6 +13418,7 @@ export namespace Prisma {
     roomId?: true
     tenantId?: true
     hotelId?: true
+    ratePlanId?: true
     _all?: true
   }
 
@@ -13123,6 +13503,7 @@ export namespace Prisma {
     roomId: string
     tenantId: string
     hotelId: string
+    ratePlanId: string
     _count: ReservationCountAggregateOutputType | null
     _min: ReservationMinAggregateOutputType | null
     _max: ReservationMaxAggregateOutputType | null
@@ -13151,10 +13532,13 @@ export namespace Prisma {
     roomId?: boolean
     tenantId?: boolean
     hotelId?: boolean
+    ratePlanId?: boolean
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     room?: boolean | RoomDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    ratePlan?: boolean | RatePlanDefaultArgs<ExtArgs>
+    folio?: boolean | Reservation$folioArgs<ExtArgs>
   }, ExtArgs["result"]["reservation"]>
 
   export type ReservationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13166,10 +13550,12 @@ export namespace Prisma {
     roomId?: boolean
     tenantId?: boolean
     hotelId?: boolean
+    ratePlanId?: boolean
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     room?: boolean | RoomDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    ratePlan?: boolean | RatePlanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservation"]>
 
   export type ReservationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13181,10 +13567,12 @@ export namespace Prisma {
     roomId?: boolean
     tenantId?: boolean
     hotelId?: boolean
+    ratePlanId?: boolean
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     room?: boolean | RoomDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    ratePlan?: boolean | RatePlanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reservation"]>
 
   export type ReservationSelectScalar = {
@@ -13196,26 +13584,31 @@ export namespace Prisma {
     roomId?: boolean
     tenantId?: boolean
     hotelId?: boolean
+    ratePlanId?: boolean
   }
 
-  export type ReservationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "checkIn" | "checkOut" | "status" | "guestId" | "roomId" | "tenantId" | "hotelId", ExtArgs["result"]["reservation"]>
+  export type ReservationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "checkIn" | "checkOut" | "status" | "guestId" | "roomId" | "tenantId" | "hotelId" | "ratePlanId", ExtArgs["result"]["reservation"]>
   export type ReservationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     room?: boolean | RoomDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    ratePlan?: boolean | RatePlanDefaultArgs<ExtArgs>
+    folio?: boolean | Reservation$folioArgs<ExtArgs>
   }
   export type ReservationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     room?: boolean | RoomDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    ratePlan?: boolean | RatePlanDefaultArgs<ExtArgs>
   }
   export type ReservationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     room?: boolean | RoomDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    ratePlan?: boolean | RatePlanDefaultArgs<ExtArgs>
   }
 
   export type $ReservationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -13225,6 +13618,8 @@ export namespace Prisma {
       room: Prisma.$RoomPayload<ExtArgs>
       tenant: Prisma.$TenantPayload<ExtArgs>
       hotel: Prisma.$HotelPayload<ExtArgs>
+      ratePlan: Prisma.$RatePlanPayload<ExtArgs>
+      folio: Prisma.$FolioPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -13235,6 +13630,7 @@ export namespace Prisma {
       roomId: string
       tenantId: string
       hotelId: string
+      ratePlanId: string
     }, ExtArgs["result"]["reservation"]>
     composites: {}
   }
@@ -13633,6 +14029,8 @@ export namespace Prisma {
     room<T extends RoomDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoomDefaultArgs<ExtArgs>>): Prisma__RoomClient<$Result.GetResult<Prisma.$RoomPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     tenant<T extends TenantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TenantDefaultArgs<ExtArgs>>): Prisma__TenantClient<$Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     hotel<T extends HotelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HotelDefaultArgs<ExtArgs>>): Prisma__HotelClient<$Result.GetResult<Prisma.$HotelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    ratePlan<T extends RatePlanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RatePlanDefaultArgs<ExtArgs>>): Prisma__RatePlanClient<$Result.GetResult<Prisma.$RatePlanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    folio<T extends Reservation$folioArgs<ExtArgs> = {}>(args?: Subset<T, Reservation$folioArgs<ExtArgs>>): Prisma__FolioClient<$Result.GetResult<Prisma.$FolioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13670,6 +14068,7 @@ export namespace Prisma {
     readonly roomId: FieldRef<"Reservation", 'String'>
     readonly tenantId: FieldRef<"Reservation", 'String'>
     readonly hotelId: FieldRef<"Reservation", 'String'>
+    readonly ratePlanId: FieldRef<"Reservation", 'String'>
   }
     
 
@@ -14066,6 +14465,25 @@ export namespace Prisma {
   }
 
   /**
+   * Reservation.folio
+   */
+  export type Reservation$folioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Folio
+     */
+    select?: FolioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Folio
+     */
+    omit?: FolioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FolioInclude<ExtArgs> | null
+    where?: FolioWhereInput
+  }
+
+  /**
    * Reservation without action
    */
   export type ReservationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14111,6 +14529,7 @@ export namespace Prisma {
     status: $Enums.FolioStatus | null
     tenantId: string | null
     hotelId: string | null
+    reservationId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -14122,6 +14541,7 @@ export namespace Prisma {
     status: $Enums.FolioStatus | null
     tenantId: string | null
     hotelId: string | null
+    reservationId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -14133,6 +14553,7 @@ export namespace Prisma {
     status: number
     tenantId: number
     hotelId: number
+    reservationId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -14154,6 +14575,7 @@ export namespace Prisma {
     status?: true
     tenantId?: true
     hotelId?: true
+    reservationId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -14165,6 +14587,7 @@ export namespace Prisma {
     status?: true
     tenantId?: true
     hotelId?: true
+    reservationId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -14176,6 +14599,7 @@ export namespace Prisma {
     status?: true
     tenantId?: true
     hotelId?: true
+    reservationId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -14274,6 +14698,7 @@ export namespace Prisma {
     status: $Enums.FolioStatus
     tenantId: string
     hotelId: string
+    reservationId: string | null
     createdAt: Date
     updatedAt: Date
     _count: FolioCountAggregateOutputType | null
@@ -14304,11 +14729,13 @@ export namespace Prisma {
     status?: boolean
     tenantId?: boolean
     hotelId?: boolean
+    reservationId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    reservation?: boolean | Folio$reservationArgs<ExtArgs>
   }, ExtArgs["result"]["folio"]>
 
   export type FolioSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -14318,11 +14745,13 @@ export namespace Prisma {
     status?: boolean
     tenantId?: boolean
     hotelId?: boolean
+    reservationId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    reservation?: boolean | Folio$reservationArgs<ExtArgs>
   }, ExtArgs["result"]["folio"]>
 
   export type FolioSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -14332,11 +14761,13 @@ export namespace Prisma {
     status?: boolean
     tenantId?: boolean
     hotelId?: boolean
+    reservationId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    reservation?: boolean | Folio$reservationArgs<ExtArgs>
   }, ExtArgs["result"]["folio"]>
 
   export type FolioSelectScalar = {
@@ -14346,25 +14777,29 @@ export namespace Prisma {
     status?: boolean
     tenantId?: boolean
     hotelId?: boolean
+    reservationId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type FolioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "guestId" | "balance" | "status" | "tenantId" | "hotelId" | "createdAt" | "updatedAt", ExtArgs["result"]["folio"]>
+  export type FolioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "guestId" | "balance" | "status" | "tenantId" | "hotelId" | "reservationId" | "createdAt" | "updatedAt", ExtArgs["result"]["folio"]>
   export type FolioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    reservation?: boolean | Folio$reservationArgs<ExtArgs>
   }
   export type FolioIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    reservation?: boolean | Folio$reservationArgs<ExtArgs>
   }
   export type FolioIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     guest?: boolean | GuestDefaultArgs<ExtArgs>
     tenant?: boolean | TenantDefaultArgs<ExtArgs>
     hotel?: boolean | HotelDefaultArgs<ExtArgs>
+    reservation?: boolean | Folio$reservationArgs<ExtArgs>
   }
 
   export type $FolioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14373,6 +14808,7 @@ export namespace Prisma {
       guest: Prisma.$GuestPayload<ExtArgs>
       tenant: Prisma.$TenantPayload<ExtArgs>
       hotel: Prisma.$HotelPayload<ExtArgs>
+      reservation: Prisma.$ReservationPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -14381,6 +14817,7 @@ export namespace Prisma {
       status: $Enums.FolioStatus
       tenantId: string
       hotelId: string
+      reservationId: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["folio"]>
@@ -14780,6 +15217,7 @@ export namespace Prisma {
     guest<T extends GuestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GuestDefaultArgs<ExtArgs>>): Prisma__GuestClient<$Result.GetResult<Prisma.$GuestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     tenant<T extends TenantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TenantDefaultArgs<ExtArgs>>): Prisma__TenantClient<$Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     hotel<T extends HotelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HotelDefaultArgs<ExtArgs>>): Prisma__HotelClient<$Result.GetResult<Prisma.$HotelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    reservation<T extends Folio$reservationArgs<ExtArgs> = {}>(args?: Subset<T, Folio$reservationArgs<ExtArgs>>): Prisma__ReservationClient<$Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14815,6 +15253,7 @@ export namespace Prisma {
     readonly status: FieldRef<"Folio", 'FolioStatus'>
     readonly tenantId: FieldRef<"Folio", 'String'>
     readonly hotelId: FieldRef<"Folio", 'String'>
+    readonly reservationId: FieldRef<"Folio", 'String'>
     readonly createdAt: FieldRef<"Folio", 'DateTime'>
     readonly updatedAt: FieldRef<"Folio", 'DateTime'>
   }
@@ -15210,6 +15649,25 @@ export namespace Prisma {
      * Limit how many Folios to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Folio.reservation
+   */
+  export type Folio$reservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Reservation
+     */
+    select?: ReservationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Reservation
+     */
+    omit?: ReservationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReservationInclude<ExtArgs> | null
+    where?: ReservationWhereInput
   }
 
   /**
@@ -16324,6 +16782,2287 @@ export namespace Prisma {
 
 
   /**
+   * Model ExchangeRate
+   */
+
+  export type AggregateExchangeRate = {
+    _count: ExchangeRateCountAggregateOutputType | null
+    _avg: ExchangeRateAvgAggregateOutputType | null
+    _sum: ExchangeRateSumAggregateOutputType | null
+    _min: ExchangeRateMinAggregateOutputType | null
+    _max: ExchangeRateMaxAggregateOutputType | null
+  }
+
+  export type ExchangeRateAvgAggregateOutputType = {
+    rate: Decimal | null
+  }
+
+  export type ExchangeRateSumAggregateOutputType = {
+    rate: Decimal | null
+  }
+
+  export type ExchangeRateMinAggregateOutputType = {
+    id: string | null
+    baseCurrency: string | null
+    targetCurrency: string | null
+    rate: Decimal | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    tenantId: string | null
+    hotelId: string | null
+  }
+
+  export type ExchangeRateMaxAggregateOutputType = {
+    id: string | null
+    baseCurrency: string | null
+    targetCurrency: string | null
+    rate: Decimal | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    tenantId: string | null
+    hotelId: string | null
+  }
+
+  export type ExchangeRateCountAggregateOutputType = {
+    id: number
+    baseCurrency: number
+    targetCurrency: number
+    rate: number
+    createdAt: number
+    updatedAt: number
+    tenantId: number
+    hotelId: number
+    _all: number
+  }
+
+
+  export type ExchangeRateAvgAggregateInputType = {
+    rate?: true
+  }
+
+  export type ExchangeRateSumAggregateInputType = {
+    rate?: true
+  }
+
+  export type ExchangeRateMinAggregateInputType = {
+    id?: true
+    baseCurrency?: true
+    targetCurrency?: true
+    rate?: true
+    createdAt?: true
+    updatedAt?: true
+    tenantId?: true
+    hotelId?: true
+  }
+
+  export type ExchangeRateMaxAggregateInputType = {
+    id?: true
+    baseCurrency?: true
+    targetCurrency?: true
+    rate?: true
+    createdAt?: true
+    updatedAt?: true
+    tenantId?: true
+    hotelId?: true
+  }
+
+  export type ExchangeRateCountAggregateInputType = {
+    id?: true
+    baseCurrency?: true
+    targetCurrency?: true
+    rate?: true
+    createdAt?: true
+    updatedAt?: true
+    tenantId?: true
+    hotelId?: true
+    _all?: true
+  }
+
+  export type ExchangeRateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ExchangeRate to aggregate.
+     */
+    where?: ExchangeRateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExchangeRates to fetch.
+     */
+    orderBy?: ExchangeRateOrderByWithRelationInput | ExchangeRateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ExchangeRateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExchangeRates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExchangeRates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ExchangeRates
+    **/
+    _count?: true | ExchangeRateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ExchangeRateAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ExchangeRateSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ExchangeRateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ExchangeRateMaxAggregateInputType
+  }
+
+  export type GetExchangeRateAggregateType<T extends ExchangeRateAggregateArgs> = {
+        [P in keyof T & keyof AggregateExchangeRate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateExchangeRate[P]>
+      : GetScalarType<T[P], AggregateExchangeRate[P]>
+  }
+
+
+
+
+  export type ExchangeRateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExchangeRateWhereInput
+    orderBy?: ExchangeRateOrderByWithAggregationInput | ExchangeRateOrderByWithAggregationInput[]
+    by: ExchangeRateScalarFieldEnum[] | ExchangeRateScalarFieldEnum
+    having?: ExchangeRateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ExchangeRateCountAggregateInputType | true
+    _avg?: ExchangeRateAvgAggregateInputType
+    _sum?: ExchangeRateSumAggregateInputType
+    _min?: ExchangeRateMinAggregateInputType
+    _max?: ExchangeRateMaxAggregateInputType
+  }
+
+  export type ExchangeRateGroupByOutputType = {
+    id: string
+    baseCurrency: string
+    targetCurrency: string
+    rate: Decimal
+    createdAt: Date
+    updatedAt: Date
+    tenantId: string
+    hotelId: string
+    _count: ExchangeRateCountAggregateOutputType | null
+    _avg: ExchangeRateAvgAggregateOutputType | null
+    _sum: ExchangeRateSumAggregateOutputType | null
+    _min: ExchangeRateMinAggregateOutputType | null
+    _max: ExchangeRateMaxAggregateOutputType | null
+  }
+
+  type GetExchangeRateGroupByPayload<T extends ExchangeRateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ExchangeRateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ExchangeRateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ExchangeRateGroupByOutputType[P]>
+            : GetScalarType<T[P], ExchangeRateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ExchangeRateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    baseCurrency?: boolean
+    targetCurrency?: boolean
+    rate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    tenantId?: boolean
+    hotelId?: boolean
+    base?: boolean | CurrencyDefaultArgs<ExtArgs>
+    target?: boolean | CurrencyDefaultArgs<ExtArgs>
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["exchangeRate"]>
+
+  export type ExchangeRateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    baseCurrency?: boolean
+    targetCurrency?: boolean
+    rate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    tenantId?: boolean
+    hotelId?: boolean
+    base?: boolean | CurrencyDefaultArgs<ExtArgs>
+    target?: boolean | CurrencyDefaultArgs<ExtArgs>
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["exchangeRate"]>
+
+  export type ExchangeRateSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    baseCurrency?: boolean
+    targetCurrency?: boolean
+    rate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    tenantId?: boolean
+    hotelId?: boolean
+    base?: boolean | CurrencyDefaultArgs<ExtArgs>
+    target?: boolean | CurrencyDefaultArgs<ExtArgs>
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["exchangeRate"]>
+
+  export type ExchangeRateSelectScalar = {
+    id?: boolean
+    baseCurrency?: boolean
+    targetCurrency?: boolean
+    rate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    tenantId?: boolean
+    hotelId?: boolean
+  }
+
+  export type ExchangeRateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "baseCurrency" | "targetCurrency" | "rate" | "createdAt" | "updatedAt" | "tenantId" | "hotelId", ExtArgs["result"]["exchangeRate"]>
+  export type ExchangeRateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    base?: boolean | CurrencyDefaultArgs<ExtArgs>
+    target?: boolean | CurrencyDefaultArgs<ExtArgs>
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+  }
+  export type ExchangeRateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    base?: boolean | CurrencyDefaultArgs<ExtArgs>
+    target?: boolean | CurrencyDefaultArgs<ExtArgs>
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+  }
+  export type ExchangeRateIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    base?: boolean | CurrencyDefaultArgs<ExtArgs>
+    target?: boolean | CurrencyDefaultArgs<ExtArgs>
+    tenant?: boolean | TenantDefaultArgs<ExtArgs>
+    hotel?: boolean | HotelDefaultArgs<ExtArgs>
+  }
+
+  export type $ExchangeRatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ExchangeRate"
+    objects: {
+      base: Prisma.$CurrencyPayload<ExtArgs>
+      target: Prisma.$CurrencyPayload<ExtArgs>
+      tenant: Prisma.$TenantPayload<ExtArgs>
+      hotel: Prisma.$HotelPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      baseCurrency: string
+      targetCurrency: string
+      rate: Prisma.Decimal
+      createdAt: Date
+      updatedAt: Date
+      tenantId: string
+      hotelId: string
+    }, ExtArgs["result"]["exchangeRate"]>
+    composites: {}
+  }
+
+  type ExchangeRateGetPayload<S extends boolean | null | undefined | ExchangeRateDefaultArgs> = $Result.GetResult<Prisma.$ExchangeRatePayload, S>
+
+  type ExchangeRateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ExchangeRateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ExchangeRateCountAggregateInputType | true
+    }
+
+  export interface ExchangeRateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ExchangeRate'], meta: { name: 'ExchangeRate' } }
+    /**
+     * Find zero or one ExchangeRate that matches the filter.
+     * @param {ExchangeRateFindUniqueArgs} args - Arguments to find a ExchangeRate
+     * @example
+     * // Get one ExchangeRate
+     * const exchangeRate = await prisma.exchangeRate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ExchangeRateFindUniqueArgs>(args: SelectSubset<T, ExchangeRateFindUniqueArgs<ExtArgs>>): Prisma__ExchangeRateClient<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ExchangeRate that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ExchangeRateFindUniqueOrThrowArgs} args - Arguments to find a ExchangeRate
+     * @example
+     * // Get one ExchangeRate
+     * const exchangeRate = await prisma.exchangeRate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ExchangeRateFindUniqueOrThrowArgs>(args: SelectSubset<T, ExchangeRateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ExchangeRateClient<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ExchangeRate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExchangeRateFindFirstArgs} args - Arguments to find a ExchangeRate
+     * @example
+     * // Get one ExchangeRate
+     * const exchangeRate = await prisma.exchangeRate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ExchangeRateFindFirstArgs>(args?: SelectSubset<T, ExchangeRateFindFirstArgs<ExtArgs>>): Prisma__ExchangeRateClient<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ExchangeRate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExchangeRateFindFirstOrThrowArgs} args - Arguments to find a ExchangeRate
+     * @example
+     * // Get one ExchangeRate
+     * const exchangeRate = await prisma.exchangeRate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ExchangeRateFindFirstOrThrowArgs>(args?: SelectSubset<T, ExchangeRateFindFirstOrThrowArgs<ExtArgs>>): Prisma__ExchangeRateClient<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ExchangeRates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExchangeRateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ExchangeRates
+     * const exchangeRates = await prisma.exchangeRate.findMany()
+     * 
+     * // Get first 10 ExchangeRates
+     * const exchangeRates = await prisma.exchangeRate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const exchangeRateWithIdOnly = await prisma.exchangeRate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ExchangeRateFindManyArgs>(args?: SelectSubset<T, ExchangeRateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ExchangeRate.
+     * @param {ExchangeRateCreateArgs} args - Arguments to create a ExchangeRate.
+     * @example
+     * // Create one ExchangeRate
+     * const ExchangeRate = await prisma.exchangeRate.create({
+     *   data: {
+     *     // ... data to create a ExchangeRate
+     *   }
+     * })
+     * 
+     */
+    create<T extends ExchangeRateCreateArgs>(args: SelectSubset<T, ExchangeRateCreateArgs<ExtArgs>>): Prisma__ExchangeRateClient<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ExchangeRates.
+     * @param {ExchangeRateCreateManyArgs} args - Arguments to create many ExchangeRates.
+     * @example
+     * // Create many ExchangeRates
+     * const exchangeRate = await prisma.exchangeRate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ExchangeRateCreateManyArgs>(args?: SelectSubset<T, ExchangeRateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ExchangeRates and returns the data saved in the database.
+     * @param {ExchangeRateCreateManyAndReturnArgs} args - Arguments to create many ExchangeRates.
+     * @example
+     * // Create many ExchangeRates
+     * const exchangeRate = await prisma.exchangeRate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ExchangeRates and only return the `id`
+     * const exchangeRateWithIdOnly = await prisma.exchangeRate.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ExchangeRateCreateManyAndReturnArgs>(args?: SelectSubset<T, ExchangeRateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ExchangeRate.
+     * @param {ExchangeRateDeleteArgs} args - Arguments to delete one ExchangeRate.
+     * @example
+     * // Delete one ExchangeRate
+     * const ExchangeRate = await prisma.exchangeRate.delete({
+     *   where: {
+     *     // ... filter to delete one ExchangeRate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ExchangeRateDeleteArgs>(args: SelectSubset<T, ExchangeRateDeleteArgs<ExtArgs>>): Prisma__ExchangeRateClient<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ExchangeRate.
+     * @param {ExchangeRateUpdateArgs} args - Arguments to update one ExchangeRate.
+     * @example
+     * // Update one ExchangeRate
+     * const exchangeRate = await prisma.exchangeRate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ExchangeRateUpdateArgs>(args: SelectSubset<T, ExchangeRateUpdateArgs<ExtArgs>>): Prisma__ExchangeRateClient<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ExchangeRates.
+     * @param {ExchangeRateDeleteManyArgs} args - Arguments to filter ExchangeRates to delete.
+     * @example
+     * // Delete a few ExchangeRates
+     * const { count } = await prisma.exchangeRate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ExchangeRateDeleteManyArgs>(args?: SelectSubset<T, ExchangeRateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ExchangeRates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExchangeRateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ExchangeRates
+     * const exchangeRate = await prisma.exchangeRate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ExchangeRateUpdateManyArgs>(args: SelectSubset<T, ExchangeRateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ExchangeRates and returns the data updated in the database.
+     * @param {ExchangeRateUpdateManyAndReturnArgs} args - Arguments to update many ExchangeRates.
+     * @example
+     * // Update many ExchangeRates
+     * const exchangeRate = await prisma.exchangeRate.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ExchangeRates and only return the `id`
+     * const exchangeRateWithIdOnly = await prisma.exchangeRate.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ExchangeRateUpdateManyAndReturnArgs>(args: SelectSubset<T, ExchangeRateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ExchangeRate.
+     * @param {ExchangeRateUpsertArgs} args - Arguments to update or create a ExchangeRate.
+     * @example
+     * // Update or create a ExchangeRate
+     * const exchangeRate = await prisma.exchangeRate.upsert({
+     *   create: {
+     *     // ... data to create a ExchangeRate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ExchangeRate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ExchangeRateUpsertArgs>(args: SelectSubset<T, ExchangeRateUpsertArgs<ExtArgs>>): Prisma__ExchangeRateClient<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ExchangeRates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExchangeRateCountArgs} args - Arguments to filter ExchangeRates to count.
+     * @example
+     * // Count the number of ExchangeRates
+     * const count = await prisma.exchangeRate.count({
+     *   where: {
+     *     // ... the filter for the ExchangeRates we want to count
+     *   }
+     * })
+    **/
+    count<T extends ExchangeRateCountArgs>(
+      args?: Subset<T, ExchangeRateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ExchangeRateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ExchangeRate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExchangeRateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ExchangeRateAggregateArgs>(args: Subset<T, ExchangeRateAggregateArgs>): Prisma.PrismaPromise<GetExchangeRateAggregateType<T>>
+
+    /**
+     * Group by ExchangeRate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExchangeRateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ExchangeRateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ExchangeRateGroupByArgs['orderBy'] }
+        : { orderBy?: ExchangeRateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ExchangeRateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetExchangeRateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ExchangeRate model
+   */
+  readonly fields: ExchangeRateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ExchangeRate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ExchangeRateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    base<T extends CurrencyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CurrencyDefaultArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    target<T extends CurrencyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CurrencyDefaultArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tenant<T extends TenantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TenantDefaultArgs<ExtArgs>>): Prisma__TenantClient<$Result.GetResult<Prisma.$TenantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    hotel<T extends HotelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HotelDefaultArgs<ExtArgs>>): Prisma__HotelClient<$Result.GetResult<Prisma.$HotelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ExchangeRate model
+   */
+  interface ExchangeRateFieldRefs {
+    readonly id: FieldRef<"ExchangeRate", 'String'>
+    readonly baseCurrency: FieldRef<"ExchangeRate", 'String'>
+    readonly targetCurrency: FieldRef<"ExchangeRate", 'String'>
+    readonly rate: FieldRef<"ExchangeRate", 'Decimal'>
+    readonly createdAt: FieldRef<"ExchangeRate", 'DateTime'>
+    readonly updatedAt: FieldRef<"ExchangeRate", 'DateTime'>
+    readonly tenantId: FieldRef<"ExchangeRate", 'String'>
+    readonly hotelId: FieldRef<"ExchangeRate", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ExchangeRate findUnique
+   */
+  export type ExchangeRateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    /**
+     * Filter, which ExchangeRate to fetch.
+     */
+    where: ExchangeRateWhereUniqueInput
+  }
+
+  /**
+   * ExchangeRate findUniqueOrThrow
+   */
+  export type ExchangeRateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    /**
+     * Filter, which ExchangeRate to fetch.
+     */
+    where: ExchangeRateWhereUniqueInput
+  }
+
+  /**
+   * ExchangeRate findFirst
+   */
+  export type ExchangeRateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    /**
+     * Filter, which ExchangeRate to fetch.
+     */
+    where?: ExchangeRateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExchangeRates to fetch.
+     */
+    orderBy?: ExchangeRateOrderByWithRelationInput | ExchangeRateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ExchangeRates.
+     */
+    cursor?: ExchangeRateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExchangeRates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExchangeRates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ExchangeRates.
+     */
+    distinct?: ExchangeRateScalarFieldEnum | ExchangeRateScalarFieldEnum[]
+  }
+
+  /**
+   * ExchangeRate findFirstOrThrow
+   */
+  export type ExchangeRateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    /**
+     * Filter, which ExchangeRate to fetch.
+     */
+    where?: ExchangeRateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExchangeRates to fetch.
+     */
+    orderBy?: ExchangeRateOrderByWithRelationInput | ExchangeRateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ExchangeRates.
+     */
+    cursor?: ExchangeRateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExchangeRates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExchangeRates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ExchangeRates.
+     */
+    distinct?: ExchangeRateScalarFieldEnum | ExchangeRateScalarFieldEnum[]
+  }
+
+  /**
+   * ExchangeRate findMany
+   */
+  export type ExchangeRateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    /**
+     * Filter, which ExchangeRates to fetch.
+     */
+    where?: ExchangeRateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExchangeRates to fetch.
+     */
+    orderBy?: ExchangeRateOrderByWithRelationInput | ExchangeRateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ExchangeRates.
+     */
+    cursor?: ExchangeRateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExchangeRates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExchangeRates.
+     */
+    skip?: number
+    distinct?: ExchangeRateScalarFieldEnum | ExchangeRateScalarFieldEnum[]
+  }
+
+  /**
+   * ExchangeRate create
+   */
+  export type ExchangeRateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ExchangeRate.
+     */
+    data: XOR<ExchangeRateCreateInput, ExchangeRateUncheckedCreateInput>
+  }
+
+  /**
+   * ExchangeRate createMany
+   */
+  export type ExchangeRateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ExchangeRates.
+     */
+    data: ExchangeRateCreateManyInput | ExchangeRateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ExchangeRate createManyAndReturn
+   */
+  export type ExchangeRateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * The data used to create many ExchangeRates.
+     */
+    data: ExchangeRateCreateManyInput | ExchangeRateCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ExchangeRate update
+   */
+  export type ExchangeRateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ExchangeRate.
+     */
+    data: XOR<ExchangeRateUpdateInput, ExchangeRateUncheckedUpdateInput>
+    /**
+     * Choose, which ExchangeRate to update.
+     */
+    where: ExchangeRateWhereUniqueInput
+  }
+
+  /**
+   * ExchangeRate updateMany
+   */
+  export type ExchangeRateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ExchangeRates.
+     */
+    data: XOR<ExchangeRateUpdateManyMutationInput, ExchangeRateUncheckedUpdateManyInput>
+    /**
+     * Filter which ExchangeRates to update
+     */
+    where?: ExchangeRateWhereInput
+    /**
+     * Limit how many ExchangeRates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ExchangeRate updateManyAndReturn
+   */
+  export type ExchangeRateUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * The data used to update ExchangeRates.
+     */
+    data: XOR<ExchangeRateUpdateManyMutationInput, ExchangeRateUncheckedUpdateManyInput>
+    /**
+     * Filter which ExchangeRates to update
+     */
+    where?: ExchangeRateWhereInput
+    /**
+     * Limit how many ExchangeRates to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ExchangeRate upsert
+   */
+  export type ExchangeRateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ExchangeRate to update in case it exists.
+     */
+    where: ExchangeRateWhereUniqueInput
+    /**
+     * In case the ExchangeRate found by the `where` argument doesn't exist, create a new ExchangeRate with this data.
+     */
+    create: XOR<ExchangeRateCreateInput, ExchangeRateUncheckedCreateInput>
+    /**
+     * In case the ExchangeRate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ExchangeRateUpdateInput, ExchangeRateUncheckedUpdateInput>
+  }
+
+  /**
+   * ExchangeRate delete
+   */
+  export type ExchangeRateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    /**
+     * Filter which ExchangeRate to delete.
+     */
+    where: ExchangeRateWhereUniqueInput
+  }
+
+  /**
+   * ExchangeRate deleteMany
+   */
+  export type ExchangeRateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ExchangeRates to delete
+     */
+    where?: ExchangeRateWhereInput
+    /**
+     * Limit how many ExchangeRates to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ExchangeRate without action
+   */
+  export type ExchangeRateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Currency
+   */
+
+  export type AggregateCurrency = {
+    _count: CurrencyCountAggregateOutputType | null
+    _min: CurrencyMinAggregateOutputType | null
+    _max: CurrencyMaxAggregateOutputType | null
+  }
+
+  export type CurrencyMinAggregateOutputType = {
+    id: string | null
+    code: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CurrencyMaxAggregateOutputType = {
+    id: string | null
+    code: string | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CurrencyCountAggregateOutputType = {
+    id: number
+    code: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CurrencyMinAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CurrencyMaxAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CurrencyCountAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CurrencyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Currency to aggregate.
+     */
+    where?: CurrencyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Currencies to fetch.
+     */
+    orderBy?: CurrencyOrderByWithRelationInput | CurrencyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CurrencyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Currencies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Currencies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Currencies
+    **/
+    _count?: true | CurrencyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CurrencyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CurrencyMaxAggregateInputType
+  }
+
+  export type GetCurrencyAggregateType<T extends CurrencyAggregateArgs> = {
+        [P in keyof T & keyof AggregateCurrency]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCurrency[P]>
+      : GetScalarType<T[P], AggregateCurrency[P]>
+  }
+
+
+
+
+  export type CurrencyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CurrencyWhereInput
+    orderBy?: CurrencyOrderByWithAggregationInput | CurrencyOrderByWithAggregationInput[]
+    by: CurrencyScalarFieldEnum[] | CurrencyScalarFieldEnum
+    having?: CurrencyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CurrencyCountAggregateInputType | true
+    _min?: CurrencyMinAggregateInputType
+    _max?: CurrencyMaxAggregateInputType
+  }
+
+  export type CurrencyGroupByOutputType = {
+    id: string
+    code: string
+    name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CurrencyCountAggregateOutputType | null
+    _min: CurrencyMinAggregateOutputType | null
+    _max: CurrencyMaxAggregateOutputType | null
+  }
+
+  type GetCurrencyGroupByPayload<T extends CurrencyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CurrencyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CurrencyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CurrencyGroupByOutputType[P]>
+            : GetScalarType<T[P], CurrencyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CurrencySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    baseRates?: boolean | Currency$baseRatesArgs<ExtArgs>
+    targetRates?: boolean | Currency$targetRatesArgs<ExtArgs>
+    RatePlan?: boolean | Currency$RatePlanArgs<ExtArgs>
+    _count?: boolean | CurrencyCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["currency"]>
+
+  export type CurrencySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["currency"]>
+
+  export type CurrencySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["currency"]>
+
+  export type CurrencySelectScalar = {
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CurrencyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["currency"]>
+  export type CurrencyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baseRates?: boolean | Currency$baseRatesArgs<ExtArgs>
+    targetRates?: boolean | Currency$targetRatesArgs<ExtArgs>
+    RatePlan?: boolean | Currency$RatePlanArgs<ExtArgs>
+    _count?: boolean | CurrencyCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CurrencyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CurrencyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $CurrencyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Currency"
+    objects: {
+      baseRates: Prisma.$ExchangeRatePayload<ExtArgs>[]
+      targetRates: Prisma.$ExchangeRatePayload<ExtArgs>[]
+      RatePlan: Prisma.$RatePlanPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      code: string
+      name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["currency"]>
+    composites: {}
+  }
+
+  type CurrencyGetPayload<S extends boolean | null | undefined | CurrencyDefaultArgs> = $Result.GetResult<Prisma.$CurrencyPayload, S>
+
+  type CurrencyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CurrencyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CurrencyCountAggregateInputType | true
+    }
+
+  export interface CurrencyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Currency'], meta: { name: 'Currency' } }
+    /**
+     * Find zero or one Currency that matches the filter.
+     * @param {CurrencyFindUniqueArgs} args - Arguments to find a Currency
+     * @example
+     * // Get one Currency
+     * const currency = await prisma.currency.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CurrencyFindUniqueArgs>(args: SelectSubset<T, CurrencyFindUniqueArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Currency that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CurrencyFindUniqueOrThrowArgs} args - Arguments to find a Currency
+     * @example
+     * // Get one Currency
+     * const currency = await prisma.currency.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CurrencyFindUniqueOrThrowArgs>(args: SelectSubset<T, CurrencyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Currency that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyFindFirstArgs} args - Arguments to find a Currency
+     * @example
+     * // Get one Currency
+     * const currency = await prisma.currency.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CurrencyFindFirstArgs>(args?: SelectSubset<T, CurrencyFindFirstArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Currency that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyFindFirstOrThrowArgs} args - Arguments to find a Currency
+     * @example
+     * // Get one Currency
+     * const currency = await prisma.currency.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CurrencyFindFirstOrThrowArgs>(args?: SelectSubset<T, CurrencyFindFirstOrThrowArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Currencies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Currencies
+     * const currencies = await prisma.currency.findMany()
+     * 
+     * // Get first 10 Currencies
+     * const currencies = await prisma.currency.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const currencyWithIdOnly = await prisma.currency.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CurrencyFindManyArgs>(args?: SelectSubset<T, CurrencyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Currency.
+     * @param {CurrencyCreateArgs} args - Arguments to create a Currency.
+     * @example
+     * // Create one Currency
+     * const Currency = await prisma.currency.create({
+     *   data: {
+     *     // ... data to create a Currency
+     *   }
+     * })
+     * 
+     */
+    create<T extends CurrencyCreateArgs>(args: SelectSubset<T, CurrencyCreateArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Currencies.
+     * @param {CurrencyCreateManyArgs} args - Arguments to create many Currencies.
+     * @example
+     * // Create many Currencies
+     * const currency = await prisma.currency.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CurrencyCreateManyArgs>(args?: SelectSubset<T, CurrencyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Currencies and returns the data saved in the database.
+     * @param {CurrencyCreateManyAndReturnArgs} args - Arguments to create many Currencies.
+     * @example
+     * // Create many Currencies
+     * const currency = await prisma.currency.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Currencies and only return the `id`
+     * const currencyWithIdOnly = await prisma.currency.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CurrencyCreateManyAndReturnArgs>(args?: SelectSubset<T, CurrencyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Currency.
+     * @param {CurrencyDeleteArgs} args - Arguments to delete one Currency.
+     * @example
+     * // Delete one Currency
+     * const Currency = await prisma.currency.delete({
+     *   where: {
+     *     // ... filter to delete one Currency
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CurrencyDeleteArgs>(args: SelectSubset<T, CurrencyDeleteArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Currency.
+     * @param {CurrencyUpdateArgs} args - Arguments to update one Currency.
+     * @example
+     * // Update one Currency
+     * const currency = await prisma.currency.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CurrencyUpdateArgs>(args: SelectSubset<T, CurrencyUpdateArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Currencies.
+     * @param {CurrencyDeleteManyArgs} args - Arguments to filter Currencies to delete.
+     * @example
+     * // Delete a few Currencies
+     * const { count } = await prisma.currency.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CurrencyDeleteManyArgs>(args?: SelectSubset<T, CurrencyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Currencies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Currencies
+     * const currency = await prisma.currency.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CurrencyUpdateManyArgs>(args: SelectSubset<T, CurrencyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Currencies and returns the data updated in the database.
+     * @param {CurrencyUpdateManyAndReturnArgs} args - Arguments to update many Currencies.
+     * @example
+     * // Update many Currencies
+     * const currency = await prisma.currency.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Currencies and only return the `id`
+     * const currencyWithIdOnly = await prisma.currency.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CurrencyUpdateManyAndReturnArgs>(args: SelectSubset<T, CurrencyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Currency.
+     * @param {CurrencyUpsertArgs} args - Arguments to update or create a Currency.
+     * @example
+     * // Update or create a Currency
+     * const currency = await prisma.currency.upsert({
+     *   create: {
+     *     // ... data to create a Currency
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Currency we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CurrencyUpsertArgs>(args: SelectSubset<T, CurrencyUpsertArgs<ExtArgs>>): Prisma__CurrencyClient<$Result.GetResult<Prisma.$CurrencyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Currencies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyCountArgs} args - Arguments to filter Currencies to count.
+     * @example
+     * // Count the number of Currencies
+     * const count = await prisma.currency.count({
+     *   where: {
+     *     // ... the filter for the Currencies we want to count
+     *   }
+     * })
+    **/
+    count<T extends CurrencyCountArgs>(
+      args?: Subset<T, CurrencyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CurrencyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Currency.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CurrencyAggregateArgs>(args: Subset<T, CurrencyAggregateArgs>): Prisma.PrismaPromise<GetCurrencyAggregateType<T>>
+
+    /**
+     * Group by Currency.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CurrencyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CurrencyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CurrencyGroupByArgs['orderBy'] }
+        : { orderBy?: CurrencyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CurrencyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCurrencyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Currency model
+   */
+  readonly fields: CurrencyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Currency.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CurrencyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    baseRates<T extends Currency$baseRatesArgs<ExtArgs> = {}>(args?: Subset<T, Currency$baseRatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    targetRates<T extends Currency$targetRatesArgs<ExtArgs> = {}>(args?: Subset<T, Currency$targetRatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExchangeRatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    RatePlan<T extends Currency$RatePlanArgs<ExtArgs> = {}>(args?: Subset<T, Currency$RatePlanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RatePlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Currency model
+   */
+  interface CurrencyFieldRefs {
+    readonly id: FieldRef<"Currency", 'String'>
+    readonly code: FieldRef<"Currency", 'String'>
+    readonly name: FieldRef<"Currency", 'String'>
+    readonly createdAt: FieldRef<"Currency", 'DateTime'>
+    readonly updatedAt: FieldRef<"Currency", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Currency findUnique
+   */
+  export type CurrencyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CurrencyInclude<ExtArgs> | null
+    /**
+     * Filter, which Currency to fetch.
+     */
+    where: CurrencyWhereUniqueInput
+  }
+
+  /**
+   * Currency findUniqueOrThrow
+   */
+  export type CurrencyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CurrencyInclude<ExtArgs> | null
+    /**
+     * Filter, which Currency to fetch.
+     */
+    where: CurrencyWhereUniqueInput
+  }
+
+  /**
+   * Currency findFirst
+   */
+  export type CurrencyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CurrencyInclude<ExtArgs> | null
+    /**
+     * Filter, which Currency to fetch.
+     */
+    where?: CurrencyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Currencies to fetch.
+     */
+    orderBy?: CurrencyOrderByWithRelationInput | CurrencyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Currencies.
+     */
+    cursor?: CurrencyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Currencies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Currencies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Currencies.
+     */
+    distinct?: CurrencyScalarFieldEnum | CurrencyScalarFieldEnum[]
+  }
+
+  /**
+   * Currency findFirstOrThrow
+   */
+  export type CurrencyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CurrencyInclude<ExtArgs> | null
+    /**
+     * Filter, which Currency to fetch.
+     */
+    where?: CurrencyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Currencies to fetch.
+     */
+    orderBy?: CurrencyOrderByWithRelationInput | CurrencyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Currencies.
+     */
+    cursor?: CurrencyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Currencies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Currencies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Currencies.
+     */
+    distinct?: CurrencyScalarFieldEnum | CurrencyScalarFieldEnum[]
+  }
+
+  /**
+   * Currency findMany
+   */
+  export type CurrencyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CurrencyInclude<ExtArgs> | null
+    /**
+     * Filter, which Currencies to fetch.
+     */
+    where?: CurrencyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Currencies to fetch.
+     */
+    orderBy?: CurrencyOrderByWithRelationInput | CurrencyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Currencies.
+     */
+    cursor?: CurrencyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Currencies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Currencies.
+     */
+    skip?: number
+    distinct?: CurrencyScalarFieldEnum | CurrencyScalarFieldEnum[]
+  }
+
+  /**
+   * Currency create
+   */
+  export type CurrencyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CurrencyInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Currency.
+     */
+    data: XOR<CurrencyCreateInput, CurrencyUncheckedCreateInput>
+  }
+
+  /**
+   * Currency createMany
+   */
+  export type CurrencyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Currencies.
+     */
+    data: CurrencyCreateManyInput | CurrencyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Currency createManyAndReturn
+   */
+  export type CurrencyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * The data used to create many Currencies.
+     */
+    data: CurrencyCreateManyInput | CurrencyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Currency update
+   */
+  export type CurrencyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CurrencyInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Currency.
+     */
+    data: XOR<CurrencyUpdateInput, CurrencyUncheckedUpdateInput>
+    /**
+     * Choose, which Currency to update.
+     */
+    where: CurrencyWhereUniqueInput
+  }
+
+  /**
+   * Currency updateMany
+   */
+  export type CurrencyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Currencies.
+     */
+    data: XOR<CurrencyUpdateManyMutationInput, CurrencyUncheckedUpdateManyInput>
+    /**
+     * Filter which Currencies to update
+     */
+    where?: CurrencyWhereInput
+    /**
+     * Limit how many Currencies to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Currency updateManyAndReturn
+   */
+  export type CurrencyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * The data used to update Currencies.
+     */
+    data: XOR<CurrencyUpdateManyMutationInput, CurrencyUncheckedUpdateManyInput>
+    /**
+     * Filter which Currencies to update
+     */
+    where?: CurrencyWhereInput
+    /**
+     * Limit how many Currencies to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Currency upsert
+   */
+  export type CurrencyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CurrencyInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Currency to update in case it exists.
+     */
+    where: CurrencyWhereUniqueInput
+    /**
+     * In case the Currency found by the `where` argument doesn't exist, create a new Currency with this data.
+     */
+    create: XOR<CurrencyCreateInput, CurrencyUncheckedCreateInput>
+    /**
+     * In case the Currency was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CurrencyUpdateInput, CurrencyUncheckedUpdateInput>
+  }
+
+  /**
+   * Currency delete
+   */
+  export type CurrencyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CurrencyInclude<ExtArgs> | null
+    /**
+     * Filter which Currency to delete.
+     */
+    where: CurrencyWhereUniqueInput
+  }
+
+  /**
+   * Currency deleteMany
+   */
+  export type CurrencyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Currencies to delete
+     */
+    where?: CurrencyWhereInput
+    /**
+     * Limit how many Currencies to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Currency.baseRates
+   */
+  export type Currency$baseRatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    where?: ExchangeRateWhereInput
+    orderBy?: ExchangeRateOrderByWithRelationInput | ExchangeRateOrderByWithRelationInput[]
+    cursor?: ExchangeRateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ExchangeRateScalarFieldEnum | ExchangeRateScalarFieldEnum[]
+  }
+
+  /**
+   * Currency.targetRates
+   */
+  export type Currency$targetRatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExchangeRate
+     */
+    select?: ExchangeRateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExchangeRate
+     */
+    omit?: ExchangeRateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExchangeRateInclude<ExtArgs> | null
+    where?: ExchangeRateWhereInput
+    orderBy?: ExchangeRateOrderByWithRelationInput | ExchangeRateOrderByWithRelationInput[]
+    cursor?: ExchangeRateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ExchangeRateScalarFieldEnum | ExchangeRateScalarFieldEnum[]
+  }
+
+  /**
+   * Currency.RatePlan
+   */
+  export type Currency$RatePlanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RatePlan
+     */
+    select?: RatePlanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RatePlan
+     */
+    omit?: RatePlanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RatePlanInclude<ExtArgs> | null
+    where?: RatePlanWhereInput
+    orderBy?: RatePlanOrderByWithRelationInput | RatePlanOrderByWithRelationInput[]
+    cursor?: RatePlanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RatePlanScalarFieldEnum | RatePlanScalarFieldEnum[]
+  }
+
+  /**
+   * Currency without action
+   */
+  export type CurrencyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Currency
+     */
+    select?: CurrencySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Currency
+     */
+    omit?: CurrencyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CurrencyInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -16434,7 +19173,7 @@ export namespace Prisma {
     name: 'name',
     baseAdjType: 'baseAdjType',
     baseAdjVal: 'baseAdjVal',
-    currency: 'currency',
+    currencyId: 'currencyId',
     isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -16466,7 +19205,8 @@ export namespace Prisma {
     guestId: 'guestId',
     roomId: 'roomId',
     tenantId: 'tenantId',
-    hotelId: 'hotelId'
+    hotelId: 'hotelId',
+    ratePlanId: 'ratePlanId'
   };
 
   export type ReservationScalarFieldEnum = (typeof ReservationScalarFieldEnum)[keyof typeof ReservationScalarFieldEnum]
@@ -16479,6 +19219,7 @@ export namespace Prisma {
     status: 'status',
     tenantId: 'tenantId',
     hotelId: 'hotelId',
+    reservationId: 'reservationId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -16497,6 +19238,31 @@ export namespace Prisma {
   };
 
   export type POSOutletScalarFieldEnum = (typeof POSOutletScalarFieldEnum)[keyof typeof POSOutletScalarFieldEnum]
+
+
+  export const ExchangeRateScalarFieldEnum: {
+    id: 'id',
+    baseCurrency: 'baseCurrency',
+    targetCurrency: 'targetCurrency',
+    rate: 'rate',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    tenantId: 'tenantId',
+    hotelId: 'hotelId'
+  };
+
+  export type ExchangeRateScalarFieldEnum = (typeof ExchangeRateScalarFieldEnum)[keyof typeof ExchangeRateScalarFieldEnum]
+
+
+  export const CurrencyScalarFieldEnum: {
+    id: 'id',
+    code: 'code',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CurrencyScalarFieldEnum = (typeof CurrencyScalarFieldEnum)[keyof typeof CurrencyScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -16699,6 +19465,7 @@ export namespace Prisma {
     Folio?: FolioListRelationFilter
     POSOutlet?: POSOutletListRelationFilter
     RatePlan?: RatePlanListRelationFilter
+    exchangeRates?: ExchangeRateListRelationFilter
   }
 
   export type TenantOrderByWithRelationInput = {
@@ -16716,6 +19483,7 @@ export namespace Prisma {
     Folio?: FolioOrderByRelationAggregateInput
     POSOutlet?: POSOutletOrderByRelationAggregateInput
     RatePlan?: RatePlanOrderByRelationAggregateInput
+    exchangeRates?: ExchangeRateOrderByRelationAggregateInput
   }
 
   export type TenantWhereUniqueInput = Prisma.AtLeast<{
@@ -16736,6 +19504,7 @@ export namespace Prisma {
     Folio?: FolioListRelationFilter
     POSOutlet?: POSOutletListRelationFilter
     RatePlan?: RatePlanListRelationFilter
+    exchangeRates?: ExchangeRateListRelationFilter
   }, "id">
 
   export type TenantOrderByWithAggregationInput = {
@@ -16778,6 +19547,7 @@ export namespace Prisma {
     Folio?: FolioListRelationFilter
     POSOutlet?: POSOutletListRelationFilter
     RatePlan?: RatePlanListRelationFilter
+    exchangeRates?: ExchangeRateListRelationFilter
   }
 
   export type HotelOrderByWithRelationInput = {
@@ -16797,6 +19567,7 @@ export namespace Prisma {
     Folio?: FolioOrderByRelationAggregateInput
     POSOutlet?: POSOutletOrderByRelationAggregateInput
     RatePlan?: RatePlanOrderByRelationAggregateInput
+    exchangeRates?: ExchangeRateOrderByRelationAggregateInput
   }
 
   export type HotelWhereUniqueInput = Prisma.AtLeast<{
@@ -16819,6 +19590,7 @@ export namespace Prisma {
     Folio?: FolioListRelationFilter
     POSOutlet?: POSOutletListRelationFilter
     RatePlan?: RatePlanListRelationFilter
+    exchangeRates?: ExchangeRateListRelationFilter
   }, "id">
 
   export type HotelOrderByWithAggregationInput = {
@@ -17226,12 +19998,14 @@ export namespace Prisma {
     name?: StringFilter<"RatePlan"> | string
     baseAdjType?: EnumAdjTypeFilter<"RatePlan"> | $Enums.AdjType
     baseAdjVal?: DecimalFilter<"RatePlan"> | Decimal | DecimalJsLike | number | string
-    currency?: StringFilter<"RatePlan"> | string
+    currencyId?: StringFilter<"RatePlan"> | string
     isActive?: BoolFilter<"RatePlan"> | boolean
     createdAt?: DateTimeFilter<"RatePlan"> | Date | string
     updatedAt?: DateTimeFilter<"RatePlan"> | Date | string
     Tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
     Hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
+    reservation?: ReservationListRelationFilter
+    currency?: XOR<CurrencyScalarRelationFilter, CurrencyWhereInput>
   }
 
   export type RatePlanOrderByWithRelationInput = {
@@ -17242,12 +20016,14 @@ export namespace Prisma {
     name?: SortOrder
     baseAdjType?: SortOrder
     baseAdjVal?: SortOrder
-    currency?: SortOrder
+    currencyId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     Tenant?: TenantOrderByWithRelationInput
     Hotel?: HotelOrderByWithRelationInput
+    reservation?: ReservationOrderByRelationAggregateInput
+    currency?: CurrencyOrderByWithRelationInput
   }
 
   export type RatePlanWhereUniqueInput = Prisma.AtLeast<{
@@ -17262,12 +20038,14 @@ export namespace Prisma {
     name?: StringFilter<"RatePlan"> | string
     baseAdjType?: EnumAdjTypeFilter<"RatePlan"> | $Enums.AdjType
     baseAdjVal?: DecimalFilter<"RatePlan"> | Decimal | DecimalJsLike | number | string
-    currency?: StringFilter<"RatePlan"> | string
+    currencyId?: StringFilter<"RatePlan"> | string
     isActive?: BoolFilter<"RatePlan"> | boolean
     createdAt?: DateTimeFilter<"RatePlan"> | Date | string
     updatedAt?: DateTimeFilter<"RatePlan"> | Date | string
     Tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
     Hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
+    reservation?: ReservationListRelationFilter
+    currency?: XOR<CurrencyScalarRelationFilter, CurrencyWhereInput>
   }, "id" | "tenantId_hotelId_code">
 
   export type RatePlanOrderByWithAggregationInput = {
@@ -17278,7 +20056,7 @@ export namespace Prisma {
     name?: SortOrder
     baseAdjType?: SortOrder
     baseAdjVal?: SortOrder
-    currency?: SortOrder
+    currencyId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17300,7 +20078,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"RatePlan"> | string
     baseAdjType?: EnumAdjTypeWithAggregatesFilter<"RatePlan"> | $Enums.AdjType
     baseAdjVal?: DecimalWithAggregatesFilter<"RatePlan"> | Decimal | DecimalJsLike | number | string
-    currency?: StringWithAggregatesFilter<"RatePlan"> | string
+    currencyId?: StringWithAggregatesFilter<"RatePlan"> | string
     isActive?: BoolWithAggregatesFilter<"RatePlan"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"RatePlan"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"RatePlan"> | Date | string
@@ -17403,10 +20181,13 @@ export namespace Prisma {
     roomId?: StringFilter<"Reservation"> | string
     tenantId?: StringFilter<"Reservation"> | string
     hotelId?: StringFilter<"Reservation"> | string
+    ratePlanId?: StringFilter<"Reservation"> | string
     guest?: XOR<GuestScalarRelationFilter, GuestWhereInput>
     room?: XOR<RoomScalarRelationFilter, RoomWhereInput>
     tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
     hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
+    ratePlan?: XOR<RatePlanScalarRelationFilter, RatePlanWhereInput>
+    folio?: XOR<FolioNullableScalarRelationFilter, FolioWhereInput> | null
   }
 
   export type ReservationOrderByWithRelationInput = {
@@ -17418,10 +20199,13 @@ export namespace Prisma {
     roomId?: SortOrder
     tenantId?: SortOrder
     hotelId?: SortOrder
+    ratePlanId?: SortOrder
     guest?: GuestOrderByWithRelationInput
     room?: RoomOrderByWithRelationInput
     tenant?: TenantOrderByWithRelationInput
     hotel?: HotelOrderByWithRelationInput
+    ratePlan?: RatePlanOrderByWithRelationInput
+    folio?: FolioOrderByWithRelationInput
   }
 
   export type ReservationWhereUniqueInput = Prisma.AtLeast<{
@@ -17436,10 +20220,13 @@ export namespace Prisma {
     roomId?: StringFilter<"Reservation"> | string
     tenantId?: StringFilter<"Reservation"> | string
     hotelId?: StringFilter<"Reservation"> | string
+    ratePlanId?: StringFilter<"Reservation"> | string
     guest?: XOR<GuestScalarRelationFilter, GuestWhereInput>
     room?: XOR<RoomScalarRelationFilter, RoomWhereInput>
     tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
     hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
+    ratePlan?: XOR<RatePlanScalarRelationFilter, RatePlanWhereInput>
+    folio?: XOR<FolioNullableScalarRelationFilter, FolioWhereInput> | null
   }, "id">
 
   export type ReservationOrderByWithAggregationInput = {
@@ -17451,6 +20238,7 @@ export namespace Prisma {
     roomId?: SortOrder
     tenantId?: SortOrder
     hotelId?: SortOrder
+    ratePlanId?: SortOrder
     _count?: ReservationCountOrderByAggregateInput
     _max?: ReservationMaxOrderByAggregateInput
     _min?: ReservationMinOrderByAggregateInput
@@ -17468,6 +20256,7 @@ export namespace Prisma {
     roomId?: StringWithAggregatesFilter<"Reservation"> | string
     tenantId?: StringWithAggregatesFilter<"Reservation"> | string
     hotelId?: StringWithAggregatesFilter<"Reservation"> | string
+    ratePlanId?: StringWithAggregatesFilter<"Reservation"> | string
   }
 
   export type FolioWhereInput = {
@@ -17480,11 +20269,13 @@ export namespace Prisma {
     status?: EnumFolioStatusFilter<"Folio"> | $Enums.FolioStatus
     tenantId?: StringFilter<"Folio"> | string
     hotelId?: StringFilter<"Folio"> | string
+    reservationId?: StringNullableFilter<"Folio"> | string | null
     createdAt?: DateTimeFilter<"Folio"> | Date | string
     updatedAt?: DateTimeFilter<"Folio"> | Date | string
     guest?: XOR<GuestScalarRelationFilter, GuestWhereInput>
     tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
     hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
+    reservation?: XOR<ReservationNullableScalarRelationFilter, ReservationWhereInput> | null
   }
 
   export type FolioOrderByWithRelationInput = {
@@ -17494,15 +20285,18 @@ export namespace Prisma {
     status?: SortOrder
     tenantId?: SortOrder
     hotelId?: SortOrder
+    reservationId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     guest?: GuestOrderByWithRelationInput
     tenant?: TenantOrderByWithRelationInput
     hotel?: HotelOrderByWithRelationInput
+    reservation?: ReservationOrderByWithRelationInput
   }
 
   export type FolioWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    reservationId?: string
     AND?: FolioWhereInput | FolioWhereInput[]
     OR?: FolioWhereInput[]
     NOT?: FolioWhereInput | FolioWhereInput[]
@@ -17516,7 +20310,8 @@ export namespace Prisma {
     guest?: XOR<GuestScalarRelationFilter, GuestWhereInput>
     tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
     hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
-  }, "id">
+    reservation?: XOR<ReservationNullableScalarRelationFilter, ReservationWhereInput> | null
+  }, "id" | "reservationId">
 
   export type FolioOrderByWithAggregationInput = {
     id?: SortOrder
@@ -17525,6 +20320,7 @@ export namespace Prisma {
     status?: SortOrder
     tenantId?: SortOrder
     hotelId?: SortOrder
+    reservationId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: FolioCountOrderByAggregateInput
@@ -17544,6 +20340,7 @@ export namespace Prisma {
     status?: EnumFolioStatusWithAggregatesFilter<"Folio"> | $Enums.FolioStatus
     tenantId?: StringWithAggregatesFilter<"Folio"> | string
     hotelId?: StringWithAggregatesFilter<"Folio"> | string
+    reservationId?: StringNullableWithAggregatesFilter<"Folio"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Folio"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Folio"> | Date | string
   }
@@ -17616,6 +20413,149 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"POSOutlet"> | Date | string
   }
 
+  export type ExchangeRateWhereInput = {
+    AND?: ExchangeRateWhereInput | ExchangeRateWhereInput[]
+    OR?: ExchangeRateWhereInput[]
+    NOT?: ExchangeRateWhereInput | ExchangeRateWhereInput[]
+    id?: StringFilter<"ExchangeRate"> | string
+    baseCurrency?: StringFilter<"ExchangeRate"> | string
+    targetCurrency?: StringFilter<"ExchangeRate"> | string
+    rate?: DecimalFilter<"ExchangeRate"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFilter<"ExchangeRate"> | Date | string
+    updatedAt?: DateTimeFilter<"ExchangeRate"> | Date | string
+    tenantId?: StringFilter<"ExchangeRate"> | string
+    hotelId?: StringFilter<"ExchangeRate"> | string
+    base?: XOR<CurrencyScalarRelationFilter, CurrencyWhereInput>
+    target?: XOR<CurrencyScalarRelationFilter, CurrencyWhereInput>
+    tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
+    hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
+  }
+
+  export type ExchangeRateOrderByWithRelationInput = {
+    id?: SortOrder
+    baseCurrency?: SortOrder
+    targetCurrency?: SortOrder
+    rate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    tenantId?: SortOrder
+    hotelId?: SortOrder
+    base?: CurrencyOrderByWithRelationInput
+    target?: CurrencyOrderByWithRelationInput
+    tenant?: TenantOrderByWithRelationInput
+    hotel?: HotelOrderByWithRelationInput
+  }
+
+  export type ExchangeRateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    baseCurrency_targetCurrency?: ExchangeRateBaseCurrencyTargetCurrencyCompoundUniqueInput
+    AND?: ExchangeRateWhereInput | ExchangeRateWhereInput[]
+    OR?: ExchangeRateWhereInput[]
+    NOT?: ExchangeRateWhereInput | ExchangeRateWhereInput[]
+    baseCurrency?: StringFilter<"ExchangeRate"> | string
+    targetCurrency?: StringFilter<"ExchangeRate"> | string
+    rate?: DecimalFilter<"ExchangeRate"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFilter<"ExchangeRate"> | Date | string
+    updatedAt?: DateTimeFilter<"ExchangeRate"> | Date | string
+    tenantId?: StringFilter<"ExchangeRate"> | string
+    hotelId?: StringFilter<"ExchangeRate"> | string
+    base?: XOR<CurrencyScalarRelationFilter, CurrencyWhereInput>
+    target?: XOR<CurrencyScalarRelationFilter, CurrencyWhereInput>
+    tenant?: XOR<TenantScalarRelationFilter, TenantWhereInput>
+    hotel?: XOR<HotelScalarRelationFilter, HotelWhereInput>
+  }, "id" | "baseCurrency_targetCurrency">
+
+  export type ExchangeRateOrderByWithAggregationInput = {
+    id?: SortOrder
+    baseCurrency?: SortOrder
+    targetCurrency?: SortOrder
+    rate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    tenantId?: SortOrder
+    hotelId?: SortOrder
+    _count?: ExchangeRateCountOrderByAggregateInput
+    _avg?: ExchangeRateAvgOrderByAggregateInput
+    _max?: ExchangeRateMaxOrderByAggregateInput
+    _min?: ExchangeRateMinOrderByAggregateInput
+    _sum?: ExchangeRateSumOrderByAggregateInput
+  }
+
+  export type ExchangeRateScalarWhereWithAggregatesInput = {
+    AND?: ExchangeRateScalarWhereWithAggregatesInput | ExchangeRateScalarWhereWithAggregatesInput[]
+    OR?: ExchangeRateScalarWhereWithAggregatesInput[]
+    NOT?: ExchangeRateScalarWhereWithAggregatesInput | ExchangeRateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ExchangeRate"> | string
+    baseCurrency?: StringWithAggregatesFilter<"ExchangeRate"> | string
+    targetCurrency?: StringWithAggregatesFilter<"ExchangeRate"> | string
+    rate?: DecimalWithAggregatesFilter<"ExchangeRate"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeWithAggregatesFilter<"ExchangeRate"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ExchangeRate"> | Date | string
+    tenantId?: StringWithAggregatesFilter<"ExchangeRate"> | string
+    hotelId?: StringWithAggregatesFilter<"ExchangeRate"> | string
+  }
+
+  export type CurrencyWhereInput = {
+    AND?: CurrencyWhereInput | CurrencyWhereInput[]
+    OR?: CurrencyWhereInput[]
+    NOT?: CurrencyWhereInput | CurrencyWhereInput[]
+    id?: StringFilter<"Currency"> | string
+    code?: StringFilter<"Currency"> | string
+    name?: StringFilter<"Currency"> | string
+    createdAt?: DateTimeFilter<"Currency"> | Date | string
+    updatedAt?: DateTimeFilter<"Currency"> | Date | string
+    baseRates?: ExchangeRateListRelationFilter
+    targetRates?: ExchangeRateListRelationFilter
+    RatePlan?: RatePlanListRelationFilter
+  }
+
+  export type CurrencyOrderByWithRelationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    baseRates?: ExchangeRateOrderByRelationAggregateInput
+    targetRates?: ExchangeRateOrderByRelationAggregateInput
+    RatePlan?: RatePlanOrderByRelationAggregateInput
+  }
+
+  export type CurrencyWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    code?: string
+    AND?: CurrencyWhereInput | CurrencyWhereInput[]
+    OR?: CurrencyWhereInput[]
+    NOT?: CurrencyWhereInput | CurrencyWhereInput[]
+    name?: StringFilter<"Currency"> | string
+    createdAt?: DateTimeFilter<"Currency"> | Date | string
+    updatedAt?: DateTimeFilter<"Currency"> | Date | string
+    baseRates?: ExchangeRateListRelationFilter
+    targetRates?: ExchangeRateListRelationFilter
+    RatePlan?: RatePlanListRelationFilter
+  }, "id" | "code">
+
+  export type CurrencyOrderByWithAggregationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CurrencyCountOrderByAggregateInput
+    _max?: CurrencyMaxOrderByAggregateInput
+    _min?: CurrencyMinOrderByAggregateInput
+  }
+
+  export type CurrencyScalarWhereWithAggregatesInput = {
+    AND?: CurrencyScalarWhereWithAggregatesInput | CurrencyScalarWhereWithAggregatesInput[]
+    OR?: CurrencyScalarWhereWithAggregatesInput[]
+    NOT?: CurrencyScalarWhereWithAggregatesInput | CurrencyScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Currency"> | string
+    code?: StringWithAggregatesFilter<"Currency"> | string
+    name?: StringWithAggregatesFilter<"Currency"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Currency"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Currency"> | Date | string
+  }
+
   export type TenantCreateInput = {
     id?: string
     name: string
@@ -17631,6 +20571,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateInput = {
@@ -17648,6 +20589,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUpdateInput = {
@@ -17665,6 +20607,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateInput = {
@@ -17682,6 +20625,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantCreateManyInput = {
@@ -17721,6 +20665,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateInput = {
@@ -17739,6 +20684,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUpdateInput = {
@@ -17757,6 +20703,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateInput = {
@@ -17775,6 +20722,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelCreateManyInput = {
@@ -18183,12 +21131,13 @@ export namespace Prisma {
     name: string
     baseAdjType: $Enums.AdjType
     baseAdjVal: Decimal | DecimalJsLike | number | string
-    currency: string
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     Tenant: TenantCreateNestedOneWithoutRatePlanInput
     Hotel: HotelCreateNestedOneWithoutRatePlanInput
+    reservation?: ReservationCreateNestedManyWithoutRatePlanInput
+    currency: CurrencyCreateNestedOneWithoutRatePlanInput
   }
 
   export type RatePlanUncheckedCreateInput = {
@@ -18199,10 +21148,11 @@ export namespace Prisma {
     name: string
     baseAdjType: $Enums.AdjType
     baseAdjVal: Decimal | DecimalJsLike | number | string
-    currency: string
+    currencyId: string
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    reservation?: ReservationUncheckedCreateNestedManyWithoutRatePlanInput
   }
 
   export type RatePlanUpdateInput = {
@@ -18211,12 +21161,13 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
     baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Tenant?: TenantUpdateOneRequiredWithoutRatePlanNestedInput
     Hotel?: HotelUpdateOneRequiredWithoutRatePlanNestedInput
+    reservation?: ReservationUpdateManyWithoutRatePlanNestedInput
+    currency?: CurrencyUpdateOneRequiredWithoutRatePlanNestedInput
   }
 
   export type RatePlanUncheckedUpdateInput = {
@@ -18227,10 +21178,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
     baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
+    currencyId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reservation?: ReservationUncheckedUpdateManyWithoutRatePlanNestedInput
   }
 
   export type RatePlanCreateManyInput = {
@@ -18241,7 +21193,7 @@ export namespace Prisma {
     name: string
     baseAdjType: $Enums.AdjType
     baseAdjVal: Decimal | DecimalJsLike | number | string
-    currency: string
+    currencyId: string
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18253,7 +21205,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
     baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18267,7 +21218,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
     baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
+    currencyId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18372,6 +21323,8 @@ export namespace Prisma {
     room: RoomCreateNestedOneWithoutReservationInput
     tenant: TenantCreateNestedOneWithoutReservationInput
     hotel: HotelCreateNestedOneWithoutReservationInput
+    ratePlan: RatePlanCreateNestedOneWithoutReservationInput
+    folio?: FolioCreateNestedOneWithoutReservationInput
   }
 
   export type ReservationUncheckedCreateInput = {
@@ -18383,6 +21336,8 @@ export namespace Prisma {
     roomId: string
     tenantId: string
     hotelId: string
+    ratePlanId: string
+    folio?: FolioUncheckedCreateNestedOneWithoutReservationInput
   }
 
   export type ReservationUpdateInput = {
@@ -18394,6 +21349,8 @@ export namespace Prisma {
     room?: RoomUpdateOneRequiredWithoutReservationNestedInput
     tenant?: TenantUpdateOneRequiredWithoutReservationNestedInput
     hotel?: HotelUpdateOneRequiredWithoutReservationNestedInput
+    ratePlan?: RatePlanUpdateOneRequiredWithoutReservationNestedInput
+    folio?: FolioUpdateOneWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateInput = {
@@ -18405,6 +21362,8 @@ export namespace Prisma {
     roomId?: StringFieldUpdateOperationsInput | string
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    ratePlanId?: StringFieldUpdateOperationsInput | string
+    folio?: FolioUncheckedUpdateOneWithoutReservationNestedInput
   }
 
   export type ReservationCreateManyInput = {
@@ -18416,6 +21375,7 @@ export namespace Prisma {
     roomId: string
     tenantId: string
     hotelId: string
+    ratePlanId: string
   }
 
   export type ReservationUpdateManyMutationInput = {
@@ -18434,6 +21394,7 @@ export namespace Prisma {
     roomId?: StringFieldUpdateOperationsInput | string
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    ratePlanId?: StringFieldUpdateOperationsInput | string
   }
 
   export type FolioCreateInput = {
@@ -18445,6 +21406,7 @@ export namespace Prisma {
     guest: GuestCreateNestedOneWithoutFolioInput
     tenant: TenantCreateNestedOneWithoutFolioInput
     hotel: HotelCreateNestedOneWithoutFolioInput
+    reservation?: ReservationCreateNestedOneWithoutFolioInput
   }
 
   export type FolioUncheckedCreateInput = {
@@ -18454,6 +21416,7 @@ export namespace Prisma {
     status?: $Enums.FolioStatus
     tenantId: string
     hotelId: string
+    reservationId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18467,6 +21430,7 @@ export namespace Prisma {
     guest?: GuestUpdateOneRequiredWithoutFolioNestedInput
     tenant?: TenantUpdateOneRequiredWithoutFolioNestedInput
     hotel?: HotelUpdateOneRequiredWithoutFolioNestedInput
+    reservation?: ReservationUpdateOneWithoutFolioNestedInput
   }
 
   export type FolioUncheckedUpdateInput = {
@@ -18476,6 +21440,7 @@ export namespace Prisma {
     status?: EnumFolioStatusFieldUpdateOperationsInput | $Enums.FolioStatus
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    reservationId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18487,6 +21452,7 @@ export namespace Prisma {
     status?: $Enums.FolioStatus
     tenantId: string
     hotelId: string
+    reservationId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18506,6 +21472,7 @@ export namespace Prisma {
     status?: EnumFolioStatusFieldUpdateOperationsInput | $Enums.FolioStatus
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    reservationId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18574,6 +21541,147 @@ export namespace Prisma {
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExchangeRateCreateInput = {
+    id?: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    base: CurrencyCreateNestedOneWithoutBaseRatesInput
+    target: CurrencyCreateNestedOneWithoutTargetRatesInput
+    tenant: TenantCreateNestedOneWithoutExchangeRatesInput
+    hotel: HotelCreateNestedOneWithoutExchangeRatesInput
+  }
+
+  export type ExchangeRateUncheckedCreateInput = {
+    id?: string
+    baseCurrency: string
+    targetCurrency: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+    hotelId: string
+  }
+
+  export type ExchangeRateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    base?: CurrencyUpdateOneRequiredWithoutBaseRatesNestedInput
+    target?: CurrencyUpdateOneRequiredWithoutTargetRatesNestedInput
+    tenant?: TenantUpdateOneRequiredWithoutExchangeRatesNestedInput
+    hotel?: HotelUpdateOneRequiredWithoutExchangeRatesNestedInput
+  }
+
+  export type ExchangeRateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseCurrency?: StringFieldUpdateOperationsInput | string
+    targetCurrency?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExchangeRateCreateManyInput = {
+    id?: string
+    baseCurrency: string
+    targetCurrency: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+    hotelId: string
+  }
+
+  export type ExchangeRateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExchangeRateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseCurrency?: StringFieldUpdateOperationsInput | string
+    targetCurrency?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CurrencyCreateInput = {
+    id?: string
+    code: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    baseRates?: ExchangeRateCreateNestedManyWithoutBaseInput
+    targetRates?: ExchangeRateCreateNestedManyWithoutTargetInput
+    RatePlan?: RatePlanCreateNestedManyWithoutCurrencyInput
+  }
+
+  export type CurrencyUncheckedCreateInput = {
+    id?: string
+    code: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    baseRates?: ExchangeRateUncheckedCreateNestedManyWithoutBaseInput
+    targetRates?: ExchangeRateUncheckedCreateNestedManyWithoutTargetInput
+    RatePlan?: RatePlanUncheckedCreateNestedManyWithoutCurrencyInput
+  }
+
+  export type CurrencyUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    baseRates?: ExchangeRateUpdateManyWithoutBaseNestedInput
+    targetRates?: ExchangeRateUpdateManyWithoutTargetNestedInput
+    RatePlan?: RatePlanUpdateManyWithoutCurrencyNestedInput
+  }
+
+  export type CurrencyUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    baseRates?: ExchangeRateUncheckedUpdateManyWithoutBaseNestedInput
+    targetRates?: ExchangeRateUncheckedUpdateManyWithoutTargetNestedInput
+    RatePlan?: RatePlanUncheckedUpdateManyWithoutCurrencyNestedInput
+  }
+
+  export type CurrencyCreateManyInput = {
+    id?: string
+    code: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CurrencyUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CurrencyUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18664,6 +21772,12 @@ export namespace Prisma {
     none?: RatePlanWhereInput
   }
 
+  export type ExchangeRateListRelationFilter = {
+    every?: ExchangeRateWhereInput
+    some?: ExchangeRateWhereInput
+    none?: ExchangeRateWhereInput
+  }
+
   export type HotelOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -18701,6 +21815,10 @@ export namespace Prisma {
   }
 
   export type RatePlanOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ExchangeRateOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19144,6 +22262,11 @@ export namespace Prisma {
     not?: NestedEnumAdjTypeFilter<$PrismaModel> | $Enums.AdjType
   }
 
+  export type CurrencyScalarRelationFilter = {
+    is?: CurrencyWhereInput
+    isNot?: CurrencyWhereInput
+  }
+
   export type RatePlanTenantIdHotelIdCodeCompoundUniqueInput = {
     tenantId: string
     hotelId: string
@@ -19158,7 +22281,7 @@ export namespace Prisma {
     name?: SortOrder
     baseAdjType?: SortOrder
     baseAdjVal?: SortOrder
-    currency?: SortOrder
+    currencyId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19176,7 +22299,7 @@ export namespace Prisma {
     name?: SortOrder
     baseAdjType?: SortOrder
     baseAdjVal?: SortOrder
-    currency?: SortOrder
+    currencyId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19190,7 +22313,7 @@ export namespace Prisma {
     name?: SortOrder
     baseAdjType?: SortOrder
     baseAdjVal?: SortOrder
-    currency?: SortOrder
+    currencyId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -19268,6 +22391,16 @@ export namespace Prisma {
     isNot?: RoomWhereInput
   }
 
+  export type RatePlanScalarRelationFilter = {
+    is?: RatePlanWhereInput
+    isNot?: RatePlanWhereInput
+  }
+
+  export type FolioNullableScalarRelationFilter = {
+    is?: FolioWhereInput | null
+    isNot?: FolioWhereInput | null
+  }
+
   export type ReservationCountOrderByAggregateInput = {
     id?: SortOrder
     checkIn?: SortOrder
@@ -19277,6 +22410,7 @@ export namespace Prisma {
     roomId?: SortOrder
     tenantId?: SortOrder
     hotelId?: SortOrder
+    ratePlanId?: SortOrder
   }
 
   export type ReservationMaxOrderByAggregateInput = {
@@ -19288,6 +22422,7 @@ export namespace Prisma {
     roomId?: SortOrder
     tenantId?: SortOrder
     hotelId?: SortOrder
+    ratePlanId?: SortOrder
   }
 
   export type ReservationMinOrderByAggregateInput = {
@@ -19299,6 +22434,7 @@ export namespace Prisma {
     roomId?: SortOrder
     tenantId?: SortOrder
     hotelId?: SortOrder
+    ratePlanId?: SortOrder
   }
 
   export type EnumReservationStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -19318,6 +22454,11 @@ export namespace Prisma {
     not?: NestedEnumFolioStatusFilter<$PrismaModel> | $Enums.FolioStatus
   }
 
+  export type ReservationNullableScalarRelationFilter = {
+    is?: ReservationWhereInput | null
+    isNot?: ReservationWhereInput | null
+  }
+
   export type FolioCountOrderByAggregateInput = {
     id?: SortOrder
     guestId?: SortOrder
@@ -19325,6 +22466,7 @@ export namespace Prisma {
     status?: SortOrder
     tenantId?: SortOrder
     hotelId?: SortOrder
+    reservationId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19340,6 +22482,7 @@ export namespace Prisma {
     status?: SortOrder
     tenantId?: SortOrder
     hotelId?: SortOrder
+    reservationId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19351,6 +22494,7 @@ export namespace Prisma {
     status?: SortOrder
     tenantId?: SortOrder
     hotelId?: SortOrder
+    reservationId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19395,6 +22539,76 @@ export namespace Prisma {
     tenantId?: SortOrder
     hotelId?: SortOrder
     isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ExchangeRateBaseCurrencyTargetCurrencyCompoundUniqueInput = {
+    baseCurrency: string
+    targetCurrency: string
+  }
+
+  export type ExchangeRateCountOrderByAggregateInput = {
+    id?: SortOrder
+    baseCurrency?: SortOrder
+    targetCurrency?: SortOrder
+    rate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    tenantId?: SortOrder
+    hotelId?: SortOrder
+  }
+
+  export type ExchangeRateAvgOrderByAggregateInput = {
+    rate?: SortOrder
+  }
+
+  export type ExchangeRateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    baseCurrency?: SortOrder
+    targetCurrency?: SortOrder
+    rate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    tenantId?: SortOrder
+    hotelId?: SortOrder
+  }
+
+  export type ExchangeRateMinOrderByAggregateInput = {
+    id?: SortOrder
+    baseCurrency?: SortOrder
+    targetCurrency?: SortOrder
+    rate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    tenantId?: SortOrder
+    hotelId?: SortOrder
+  }
+
+  export type ExchangeRateSumOrderByAggregateInput = {
+    rate?: SortOrder
+  }
+
+  export type CurrencyCountOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CurrencyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CurrencyMinOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19469,6 +22683,13 @@ export namespace Prisma {
     connect?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
   }
 
+  export type ExchangeRateCreateNestedManyWithoutTenantInput = {
+    create?: XOR<ExchangeRateCreateWithoutTenantInput, ExchangeRateUncheckedCreateWithoutTenantInput> | ExchangeRateCreateWithoutTenantInput[] | ExchangeRateUncheckedCreateWithoutTenantInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutTenantInput | ExchangeRateCreateOrConnectWithoutTenantInput[]
+    createMany?: ExchangeRateCreateManyTenantInputEnvelope
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+  }
+
   export type HotelUncheckedCreateNestedManyWithoutTenantInput = {
     create?: XOR<HotelCreateWithoutTenantInput, HotelUncheckedCreateWithoutTenantInput> | HotelCreateWithoutTenantInput[] | HotelUncheckedCreateWithoutTenantInput[]
     connectOrCreate?: HotelCreateOrConnectWithoutTenantInput | HotelCreateOrConnectWithoutTenantInput[]
@@ -19537,6 +22758,13 @@ export namespace Prisma {
     connectOrCreate?: RatePlanCreateOrConnectWithoutTenantInput | RatePlanCreateOrConnectWithoutTenantInput[]
     createMany?: RatePlanCreateManyTenantInputEnvelope
     connect?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+  }
+
+  export type ExchangeRateUncheckedCreateNestedManyWithoutTenantInput = {
+    create?: XOR<ExchangeRateCreateWithoutTenantInput, ExchangeRateUncheckedCreateWithoutTenantInput> | ExchangeRateCreateWithoutTenantInput[] | ExchangeRateUncheckedCreateWithoutTenantInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutTenantInput | ExchangeRateCreateOrConnectWithoutTenantInput[]
+    createMany?: ExchangeRateCreateManyTenantInputEnvelope
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -19687,6 +22915,20 @@ export namespace Prisma {
     deleteMany?: RatePlanScalarWhereInput | RatePlanScalarWhereInput[]
   }
 
+  export type ExchangeRateUpdateManyWithoutTenantNestedInput = {
+    create?: XOR<ExchangeRateCreateWithoutTenantInput, ExchangeRateUncheckedCreateWithoutTenantInput> | ExchangeRateCreateWithoutTenantInput[] | ExchangeRateUncheckedCreateWithoutTenantInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutTenantInput | ExchangeRateCreateOrConnectWithoutTenantInput[]
+    upsert?: ExchangeRateUpsertWithWhereUniqueWithoutTenantInput | ExchangeRateUpsertWithWhereUniqueWithoutTenantInput[]
+    createMany?: ExchangeRateCreateManyTenantInputEnvelope
+    set?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    disconnect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    delete?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    update?: ExchangeRateUpdateWithWhereUniqueWithoutTenantInput | ExchangeRateUpdateWithWhereUniqueWithoutTenantInput[]
+    updateMany?: ExchangeRateUpdateManyWithWhereWithoutTenantInput | ExchangeRateUpdateManyWithWhereWithoutTenantInput[]
+    deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
+  }
+
   export type HotelUncheckedUpdateManyWithoutTenantNestedInput = {
     create?: XOR<HotelCreateWithoutTenantInput, HotelUncheckedCreateWithoutTenantInput> | HotelCreateWithoutTenantInput[] | HotelUncheckedCreateWithoutTenantInput[]
     connectOrCreate?: HotelCreateOrConnectWithoutTenantInput | HotelCreateOrConnectWithoutTenantInput[]
@@ -19827,6 +23069,20 @@ export namespace Prisma {
     deleteMany?: RatePlanScalarWhereInput | RatePlanScalarWhereInput[]
   }
 
+  export type ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput = {
+    create?: XOR<ExchangeRateCreateWithoutTenantInput, ExchangeRateUncheckedCreateWithoutTenantInput> | ExchangeRateCreateWithoutTenantInput[] | ExchangeRateUncheckedCreateWithoutTenantInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutTenantInput | ExchangeRateCreateOrConnectWithoutTenantInput[]
+    upsert?: ExchangeRateUpsertWithWhereUniqueWithoutTenantInput | ExchangeRateUpsertWithWhereUniqueWithoutTenantInput[]
+    createMany?: ExchangeRateCreateManyTenantInputEnvelope
+    set?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    disconnect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    delete?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    update?: ExchangeRateUpdateWithWhereUniqueWithoutTenantInput | ExchangeRateUpdateWithWhereUniqueWithoutTenantInput[]
+    updateMany?: ExchangeRateUpdateManyWithWhereWithoutTenantInput | ExchangeRateUpdateManyWithWhereWithoutTenantInput[]
+    deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
+  }
+
   export type TenantCreateNestedOneWithoutHotelsInput = {
     create?: XOR<TenantCreateWithoutHotelsInput, TenantUncheckedCreateWithoutHotelsInput>
     connectOrCreate?: TenantCreateOrConnectWithoutHotelsInput
@@ -19896,6 +23152,13 @@ export namespace Prisma {
     connect?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
   }
 
+  export type ExchangeRateCreateNestedManyWithoutHotelInput = {
+    create?: XOR<ExchangeRateCreateWithoutHotelInput, ExchangeRateUncheckedCreateWithoutHotelInput> | ExchangeRateCreateWithoutHotelInput[] | ExchangeRateUncheckedCreateWithoutHotelInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutHotelInput | ExchangeRateCreateOrConnectWithoutHotelInput[]
+    createMany?: ExchangeRateCreateManyHotelInputEnvelope
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+  }
+
   export type GuestUncheckedCreateNestedManyWithoutHotelInput = {
     create?: XOR<GuestCreateWithoutHotelInput, GuestUncheckedCreateWithoutHotelInput> | GuestCreateWithoutHotelInput[] | GuestUncheckedCreateWithoutHotelInput[]
     connectOrCreate?: GuestCreateOrConnectWithoutHotelInput | GuestCreateOrConnectWithoutHotelInput[]
@@ -19957,6 +23220,13 @@ export namespace Prisma {
     connectOrCreate?: RatePlanCreateOrConnectWithoutHotelInput | RatePlanCreateOrConnectWithoutHotelInput[]
     createMany?: RatePlanCreateManyHotelInputEnvelope
     connect?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+  }
+
+  export type ExchangeRateUncheckedCreateNestedManyWithoutHotelInput = {
+    create?: XOR<ExchangeRateCreateWithoutHotelInput, ExchangeRateUncheckedCreateWithoutHotelInput> | ExchangeRateCreateWithoutHotelInput[] | ExchangeRateUncheckedCreateWithoutHotelInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutHotelInput | ExchangeRateCreateOrConnectWithoutHotelInput[]
+    createMany?: ExchangeRateCreateManyHotelInputEnvelope
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
   }
 
   export type TenantUpdateOneRequiredWithoutHotelsNestedInput = {
@@ -20093,6 +23363,20 @@ export namespace Prisma {
     deleteMany?: RatePlanScalarWhereInput | RatePlanScalarWhereInput[]
   }
 
+  export type ExchangeRateUpdateManyWithoutHotelNestedInput = {
+    create?: XOR<ExchangeRateCreateWithoutHotelInput, ExchangeRateUncheckedCreateWithoutHotelInput> | ExchangeRateCreateWithoutHotelInput[] | ExchangeRateUncheckedCreateWithoutHotelInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutHotelInput | ExchangeRateCreateOrConnectWithoutHotelInput[]
+    upsert?: ExchangeRateUpsertWithWhereUniqueWithoutHotelInput | ExchangeRateUpsertWithWhereUniqueWithoutHotelInput[]
+    createMany?: ExchangeRateCreateManyHotelInputEnvelope
+    set?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    disconnect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    delete?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    update?: ExchangeRateUpdateWithWhereUniqueWithoutHotelInput | ExchangeRateUpdateWithWhereUniqueWithoutHotelInput[]
+    updateMany?: ExchangeRateUpdateManyWithWhereWithoutHotelInput | ExchangeRateUpdateManyWithWhereWithoutHotelInput[]
+    deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
+  }
+
   export type GuestUncheckedUpdateManyWithoutHotelNestedInput = {
     create?: XOR<GuestCreateWithoutHotelInput, GuestUncheckedCreateWithoutHotelInput> | GuestCreateWithoutHotelInput[] | GuestUncheckedCreateWithoutHotelInput[]
     connectOrCreate?: GuestCreateOrConnectWithoutHotelInput | GuestCreateOrConnectWithoutHotelInput[]
@@ -20217,6 +23501,20 @@ export namespace Prisma {
     update?: RatePlanUpdateWithWhereUniqueWithoutHotelInput | RatePlanUpdateWithWhereUniqueWithoutHotelInput[]
     updateMany?: RatePlanUpdateManyWithWhereWithoutHotelInput | RatePlanUpdateManyWithWhereWithoutHotelInput[]
     deleteMany?: RatePlanScalarWhereInput | RatePlanScalarWhereInput[]
+  }
+
+  export type ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput = {
+    create?: XOR<ExchangeRateCreateWithoutHotelInput, ExchangeRateUncheckedCreateWithoutHotelInput> | ExchangeRateCreateWithoutHotelInput[] | ExchangeRateUncheckedCreateWithoutHotelInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutHotelInput | ExchangeRateCreateOrConnectWithoutHotelInput[]
+    upsert?: ExchangeRateUpsertWithWhereUniqueWithoutHotelInput | ExchangeRateUpsertWithWhereUniqueWithoutHotelInput[]
+    createMany?: ExchangeRateCreateManyHotelInputEnvelope
+    set?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    disconnect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    delete?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    update?: ExchangeRateUpdateWithWhereUniqueWithoutHotelInput | ExchangeRateUpdateWithWhereUniqueWithoutHotelInput[]
+    updateMany?: ExchangeRateUpdateManyWithWhereWithoutHotelInput | ExchangeRateUpdateManyWithWhereWithoutHotelInput[]
+    deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
   }
 
   export type TenantCreateNestedOneWithoutUsersInput = {
@@ -20593,6 +23891,26 @@ export namespace Prisma {
     connect?: HotelWhereUniqueInput
   }
 
+  export type ReservationCreateNestedManyWithoutRatePlanInput = {
+    create?: XOR<ReservationCreateWithoutRatePlanInput, ReservationUncheckedCreateWithoutRatePlanInput> | ReservationCreateWithoutRatePlanInput[] | ReservationUncheckedCreateWithoutRatePlanInput[]
+    connectOrCreate?: ReservationCreateOrConnectWithoutRatePlanInput | ReservationCreateOrConnectWithoutRatePlanInput[]
+    createMany?: ReservationCreateManyRatePlanInputEnvelope
+    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
+  }
+
+  export type CurrencyCreateNestedOneWithoutRatePlanInput = {
+    create?: XOR<CurrencyCreateWithoutRatePlanInput, CurrencyUncheckedCreateWithoutRatePlanInput>
+    connectOrCreate?: CurrencyCreateOrConnectWithoutRatePlanInput
+    connect?: CurrencyWhereUniqueInput
+  }
+
+  export type ReservationUncheckedCreateNestedManyWithoutRatePlanInput = {
+    create?: XOR<ReservationCreateWithoutRatePlanInput, ReservationUncheckedCreateWithoutRatePlanInput> | ReservationCreateWithoutRatePlanInput[] | ReservationUncheckedCreateWithoutRatePlanInput[]
+    connectOrCreate?: ReservationCreateOrConnectWithoutRatePlanInput | ReservationCreateOrConnectWithoutRatePlanInput[]
+    createMany?: ReservationCreateManyRatePlanInputEnvelope
+    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
+  }
+
   export type EnumAdjTypeFieldUpdateOperationsInput = {
     set?: $Enums.AdjType
   }
@@ -20611,6 +23929,42 @@ export namespace Prisma {
     upsert?: HotelUpsertWithoutRatePlanInput
     connect?: HotelWhereUniqueInput
     update?: XOR<XOR<HotelUpdateToOneWithWhereWithoutRatePlanInput, HotelUpdateWithoutRatePlanInput>, HotelUncheckedUpdateWithoutRatePlanInput>
+  }
+
+  export type ReservationUpdateManyWithoutRatePlanNestedInput = {
+    create?: XOR<ReservationCreateWithoutRatePlanInput, ReservationUncheckedCreateWithoutRatePlanInput> | ReservationCreateWithoutRatePlanInput[] | ReservationUncheckedCreateWithoutRatePlanInput[]
+    connectOrCreate?: ReservationCreateOrConnectWithoutRatePlanInput | ReservationCreateOrConnectWithoutRatePlanInput[]
+    upsert?: ReservationUpsertWithWhereUniqueWithoutRatePlanInput | ReservationUpsertWithWhereUniqueWithoutRatePlanInput[]
+    createMany?: ReservationCreateManyRatePlanInputEnvelope
+    set?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
+    disconnect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
+    delete?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
+    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
+    update?: ReservationUpdateWithWhereUniqueWithoutRatePlanInput | ReservationUpdateWithWhereUniqueWithoutRatePlanInput[]
+    updateMany?: ReservationUpdateManyWithWhereWithoutRatePlanInput | ReservationUpdateManyWithWhereWithoutRatePlanInput[]
+    deleteMany?: ReservationScalarWhereInput | ReservationScalarWhereInput[]
+  }
+
+  export type CurrencyUpdateOneRequiredWithoutRatePlanNestedInput = {
+    create?: XOR<CurrencyCreateWithoutRatePlanInput, CurrencyUncheckedCreateWithoutRatePlanInput>
+    connectOrCreate?: CurrencyCreateOrConnectWithoutRatePlanInput
+    upsert?: CurrencyUpsertWithoutRatePlanInput
+    connect?: CurrencyWhereUniqueInput
+    update?: XOR<XOR<CurrencyUpdateToOneWithWhereWithoutRatePlanInput, CurrencyUpdateWithoutRatePlanInput>, CurrencyUncheckedUpdateWithoutRatePlanInput>
+  }
+
+  export type ReservationUncheckedUpdateManyWithoutRatePlanNestedInput = {
+    create?: XOR<ReservationCreateWithoutRatePlanInput, ReservationUncheckedCreateWithoutRatePlanInput> | ReservationCreateWithoutRatePlanInput[] | ReservationUncheckedCreateWithoutRatePlanInput[]
+    connectOrCreate?: ReservationCreateOrConnectWithoutRatePlanInput | ReservationCreateOrConnectWithoutRatePlanInput[]
+    upsert?: ReservationUpsertWithWhereUniqueWithoutRatePlanInput | ReservationUpsertWithWhereUniqueWithoutRatePlanInput[]
+    createMany?: ReservationCreateManyRatePlanInputEnvelope
+    set?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
+    disconnect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
+    delete?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
+    connect?: ReservationWhereUniqueInput | ReservationWhereUniqueInput[]
+    update?: ReservationUpdateWithWhereUniqueWithoutRatePlanInput | ReservationUpdateWithWhereUniqueWithoutRatePlanInput[]
+    updateMany?: ReservationUpdateManyWithWhereWithoutRatePlanInput | ReservationUpdateManyWithWhereWithoutRatePlanInput[]
+    deleteMany?: ReservationScalarWhereInput | ReservationScalarWhereInput[]
   }
 
   export type TenantCreateNestedOneWithoutGuestInput = {
@@ -20749,6 +24103,24 @@ export namespace Prisma {
     connect?: HotelWhereUniqueInput
   }
 
+  export type RatePlanCreateNestedOneWithoutReservationInput = {
+    create?: XOR<RatePlanCreateWithoutReservationInput, RatePlanUncheckedCreateWithoutReservationInput>
+    connectOrCreate?: RatePlanCreateOrConnectWithoutReservationInput
+    connect?: RatePlanWhereUniqueInput
+  }
+
+  export type FolioCreateNestedOneWithoutReservationInput = {
+    create?: XOR<FolioCreateWithoutReservationInput, FolioUncheckedCreateWithoutReservationInput>
+    connectOrCreate?: FolioCreateOrConnectWithoutReservationInput
+    connect?: FolioWhereUniqueInput
+  }
+
+  export type FolioUncheckedCreateNestedOneWithoutReservationInput = {
+    create?: XOR<FolioCreateWithoutReservationInput, FolioUncheckedCreateWithoutReservationInput>
+    connectOrCreate?: FolioCreateOrConnectWithoutReservationInput
+    connect?: FolioWhereUniqueInput
+  }
+
   export type EnumReservationStatusFieldUpdateOperationsInput = {
     set?: $Enums.ReservationStatus
   }
@@ -20785,6 +24157,34 @@ export namespace Prisma {
     update?: XOR<XOR<HotelUpdateToOneWithWhereWithoutReservationInput, HotelUpdateWithoutReservationInput>, HotelUncheckedUpdateWithoutReservationInput>
   }
 
+  export type RatePlanUpdateOneRequiredWithoutReservationNestedInput = {
+    create?: XOR<RatePlanCreateWithoutReservationInput, RatePlanUncheckedCreateWithoutReservationInput>
+    connectOrCreate?: RatePlanCreateOrConnectWithoutReservationInput
+    upsert?: RatePlanUpsertWithoutReservationInput
+    connect?: RatePlanWhereUniqueInput
+    update?: XOR<XOR<RatePlanUpdateToOneWithWhereWithoutReservationInput, RatePlanUpdateWithoutReservationInput>, RatePlanUncheckedUpdateWithoutReservationInput>
+  }
+
+  export type FolioUpdateOneWithoutReservationNestedInput = {
+    create?: XOR<FolioCreateWithoutReservationInput, FolioUncheckedCreateWithoutReservationInput>
+    connectOrCreate?: FolioCreateOrConnectWithoutReservationInput
+    upsert?: FolioUpsertWithoutReservationInput
+    disconnect?: FolioWhereInput | boolean
+    delete?: FolioWhereInput | boolean
+    connect?: FolioWhereUniqueInput
+    update?: XOR<XOR<FolioUpdateToOneWithWhereWithoutReservationInput, FolioUpdateWithoutReservationInput>, FolioUncheckedUpdateWithoutReservationInput>
+  }
+
+  export type FolioUncheckedUpdateOneWithoutReservationNestedInput = {
+    create?: XOR<FolioCreateWithoutReservationInput, FolioUncheckedCreateWithoutReservationInput>
+    connectOrCreate?: FolioCreateOrConnectWithoutReservationInput
+    upsert?: FolioUpsertWithoutReservationInput
+    disconnect?: FolioWhereInput | boolean
+    delete?: FolioWhereInput | boolean
+    connect?: FolioWhereUniqueInput
+    update?: XOR<XOR<FolioUpdateToOneWithWhereWithoutReservationInput, FolioUpdateWithoutReservationInput>, FolioUncheckedUpdateWithoutReservationInput>
+  }
+
   export type GuestCreateNestedOneWithoutFolioInput = {
     create?: XOR<GuestCreateWithoutFolioInput, GuestUncheckedCreateWithoutFolioInput>
     connectOrCreate?: GuestCreateOrConnectWithoutFolioInput
@@ -20801,6 +24201,12 @@ export namespace Prisma {
     create?: XOR<HotelCreateWithoutFolioInput, HotelUncheckedCreateWithoutFolioInput>
     connectOrCreate?: HotelCreateOrConnectWithoutFolioInput
     connect?: HotelWhereUniqueInput
+  }
+
+  export type ReservationCreateNestedOneWithoutFolioInput = {
+    create?: XOR<ReservationCreateWithoutFolioInput, ReservationUncheckedCreateWithoutFolioInput>
+    connectOrCreate?: ReservationCreateOrConnectWithoutFolioInput
+    connect?: ReservationWhereUniqueInput
   }
 
   export type EnumFolioStatusFieldUpdateOperationsInput = {
@@ -20831,6 +24237,16 @@ export namespace Prisma {
     update?: XOR<XOR<HotelUpdateToOneWithWhereWithoutFolioInput, HotelUpdateWithoutFolioInput>, HotelUncheckedUpdateWithoutFolioInput>
   }
 
+  export type ReservationUpdateOneWithoutFolioNestedInput = {
+    create?: XOR<ReservationCreateWithoutFolioInput, ReservationUncheckedCreateWithoutFolioInput>
+    connectOrCreate?: ReservationCreateOrConnectWithoutFolioInput
+    upsert?: ReservationUpsertWithoutFolioInput
+    disconnect?: ReservationWhereInput | boolean
+    delete?: ReservationWhereInput | boolean
+    connect?: ReservationWhereUniqueInput
+    update?: XOR<XOR<ReservationUpdateToOneWithWhereWithoutFolioInput, ReservationUpdateWithoutFolioInput>, ReservationUncheckedUpdateWithoutFolioInput>
+  }
+
   export type TenantCreateNestedOneWithoutPOSOutletInput = {
     create?: XOR<TenantCreateWithoutPOSOutletInput, TenantUncheckedCreateWithoutPOSOutletInput>
     connectOrCreate?: TenantCreateOrConnectWithoutPOSOutletInput
@@ -20857,6 +24273,188 @@ export namespace Prisma {
     upsert?: HotelUpsertWithoutPOSOutletInput
     connect?: HotelWhereUniqueInput
     update?: XOR<XOR<HotelUpdateToOneWithWhereWithoutPOSOutletInput, HotelUpdateWithoutPOSOutletInput>, HotelUncheckedUpdateWithoutPOSOutletInput>
+  }
+
+  export type CurrencyCreateNestedOneWithoutBaseRatesInput = {
+    create?: XOR<CurrencyCreateWithoutBaseRatesInput, CurrencyUncheckedCreateWithoutBaseRatesInput>
+    connectOrCreate?: CurrencyCreateOrConnectWithoutBaseRatesInput
+    connect?: CurrencyWhereUniqueInput
+  }
+
+  export type CurrencyCreateNestedOneWithoutTargetRatesInput = {
+    create?: XOR<CurrencyCreateWithoutTargetRatesInput, CurrencyUncheckedCreateWithoutTargetRatesInput>
+    connectOrCreate?: CurrencyCreateOrConnectWithoutTargetRatesInput
+    connect?: CurrencyWhereUniqueInput
+  }
+
+  export type TenantCreateNestedOneWithoutExchangeRatesInput = {
+    create?: XOR<TenantCreateWithoutExchangeRatesInput, TenantUncheckedCreateWithoutExchangeRatesInput>
+    connectOrCreate?: TenantCreateOrConnectWithoutExchangeRatesInput
+    connect?: TenantWhereUniqueInput
+  }
+
+  export type HotelCreateNestedOneWithoutExchangeRatesInput = {
+    create?: XOR<HotelCreateWithoutExchangeRatesInput, HotelUncheckedCreateWithoutExchangeRatesInput>
+    connectOrCreate?: HotelCreateOrConnectWithoutExchangeRatesInput
+    connect?: HotelWhereUniqueInput
+  }
+
+  export type CurrencyUpdateOneRequiredWithoutBaseRatesNestedInput = {
+    create?: XOR<CurrencyCreateWithoutBaseRatesInput, CurrencyUncheckedCreateWithoutBaseRatesInput>
+    connectOrCreate?: CurrencyCreateOrConnectWithoutBaseRatesInput
+    upsert?: CurrencyUpsertWithoutBaseRatesInput
+    connect?: CurrencyWhereUniqueInput
+    update?: XOR<XOR<CurrencyUpdateToOneWithWhereWithoutBaseRatesInput, CurrencyUpdateWithoutBaseRatesInput>, CurrencyUncheckedUpdateWithoutBaseRatesInput>
+  }
+
+  export type CurrencyUpdateOneRequiredWithoutTargetRatesNestedInput = {
+    create?: XOR<CurrencyCreateWithoutTargetRatesInput, CurrencyUncheckedCreateWithoutTargetRatesInput>
+    connectOrCreate?: CurrencyCreateOrConnectWithoutTargetRatesInput
+    upsert?: CurrencyUpsertWithoutTargetRatesInput
+    connect?: CurrencyWhereUniqueInput
+    update?: XOR<XOR<CurrencyUpdateToOneWithWhereWithoutTargetRatesInput, CurrencyUpdateWithoutTargetRatesInput>, CurrencyUncheckedUpdateWithoutTargetRatesInput>
+  }
+
+  export type TenantUpdateOneRequiredWithoutExchangeRatesNestedInput = {
+    create?: XOR<TenantCreateWithoutExchangeRatesInput, TenantUncheckedCreateWithoutExchangeRatesInput>
+    connectOrCreate?: TenantCreateOrConnectWithoutExchangeRatesInput
+    upsert?: TenantUpsertWithoutExchangeRatesInput
+    connect?: TenantWhereUniqueInput
+    update?: XOR<XOR<TenantUpdateToOneWithWhereWithoutExchangeRatesInput, TenantUpdateWithoutExchangeRatesInput>, TenantUncheckedUpdateWithoutExchangeRatesInput>
+  }
+
+  export type HotelUpdateOneRequiredWithoutExchangeRatesNestedInput = {
+    create?: XOR<HotelCreateWithoutExchangeRatesInput, HotelUncheckedCreateWithoutExchangeRatesInput>
+    connectOrCreate?: HotelCreateOrConnectWithoutExchangeRatesInput
+    upsert?: HotelUpsertWithoutExchangeRatesInput
+    connect?: HotelWhereUniqueInput
+    update?: XOR<XOR<HotelUpdateToOneWithWhereWithoutExchangeRatesInput, HotelUpdateWithoutExchangeRatesInput>, HotelUncheckedUpdateWithoutExchangeRatesInput>
+  }
+
+  export type ExchangeRateCreateNestedManyWithoutBaseInput = {
+    create?: XOR<ExchangeRateCreateWithoutBaseInput, ExchangeRateUncheckedCreateWithoutBaseInput> | ExchangeRateCreateWithoutBaseInput[] | ExchangeRateUncheckedCreateWithoutBaseInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutBaseInput | ExchangeRateCreateOrConnectWithoutBaseInput[]
+    createMany?: ExchangeRateCreateManyBaseInputEnvelope
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+  }
+
+  export type ExchangeRateCreateNestedManyWithoutTargetInput = {
+    create?: XOR<ExchangeRateCreateWithoutTargetInput, ExchangeRateUncheckedCreateWithoutTargetInput> | ExchangeRateCreateWithoutTargetInput[] | ExchangeRateUncheckedCreateWithoutTargetInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutTargetInput | ExchangeRateCreateOrConnectWithoutTargetInput[]
+    createMany?: ExchangeRateCreateManyTargetInputEnvelope
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+  }
+
+  export type RatePlanCreateNestedManyWithoutCurrencyInput = {
+    create?: XOR<RatePlanCreateWithoutCurrencyInput, RatePlanUncheckedCreateWithoutCurrencyInput> | RatePlanCreateWithoutCurrencyInput[] | RatePlanUncheckedCreateWithoutCurrencyInput[]
+    connectOrCreate?: RatePlanCreateOrConnectWithoutCurrencyInput | RatePlanCreateOrConnectWithoutCurrencyInput[]
+    createMany?: RatePlanCreateManyCurrencyInputEnvelope
+    connect?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+  }
+
+  export type ExchangeRateUncheckedCreateNestedManyWithoutBaseInput = {
+    create?: XOR<ExchangeRateCreateWithoutBaseInput, ExchangeRateUncheckedCreateWithoutBaseInput> | ExchangeRateCreateWithoutBaseInput[] | ExchangeRateUncheckedCreateWithoutBaseInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutBaseInput | ExchangeRateCreateOrConnectWithoutBaseInput[]
+    createMany?: ExchangeRateCreateManyBaseInputEnvelope
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+  }
+
+  export type ExchangeRateUncheckedCreateNestedManyWithoutTargetInput = {
+    create?: XOR<ExchangeRateCreateWithoutTargetInput, ExchangeRateUncheckedCreateWithoutTargetInput> | ExchangeRateCreateWithoutTargetInput[] | ExchangeRateUncheckedCreateWithoutTargetInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutTargetInput | ExchangeRateCreateOrConnectWithoutTargetInput[]
+    createMany?: ExchangeRateCreateManyTargetInputEnvelope
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+  }
+
+  export type RatePlanUncheckedCreateNestedManyWithoutCurrencyInput = {
+    create?: XOR<RatePlanCreateWithoutCurrencyInput, RatePlanUncheckedCreateWithoutCurrencyInput> | RatePlanCreateWithoutCurrencyInput[] | RatePlanUncheckedCreateWithoutCurrencyInput[]
+    connectOrCreate?: RatePlanCreateOrConnectWithoutCurrencyInput | RatePlanCreateOrConnectWithoutCurrencyInput[]
+    createMany?: RatePlanCreateManyCurrencyInputEnvelope
+    connect?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+  }
+
+  export type ExchangeRateUpdateManyWithoutBaseNestedInput = {
+    create?: XOR<ExchangeRateCreateWithoutBaseInput, ExchangeRateUncheckedCreateWithoutBaseInput> | ExchangeRateCreateWithoutBaseInput[] | ExchangeRateUncheckedCreateWithoutBaseInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutBaseInput | ExchangeRateCreateOrConnectWithoutBaseInput[]
+    upsert?: ExchangeRateUpsertWithWhereUniqueWithoutBaseInput | ExchangeRateUpsertWithWhereUniqueWithoutBaseInput[]
+    createMany?: ExchangeRateCreateManyBaseInputEnvelope
+    set?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    disconnect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    delete?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    update?: ExchangeRateUpdateWithWhereUniqueWithoutBaseInput | ExchangeRateUpdateWithWhereUniqueWithoutBaseInput[]
+    updateMany?: ExchangeRateUpdateManyWithWhereWithoutBaseInput | ExchangeRateUpdateManyWithWhereWithoutBaseInput[]
+    deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
+  }
+
+  export type ExchangeRateUpdateManyWithoutTargetNestedInput = {
+    create?: XOR<ExchangeRateCreateWithoutTargetInput, ExchangeRateUncheckedCreateWithoutTargetInput> | ExchangeRateCreateWithoutTargetInput[] | ExchangeRateUncheckedCreateWithoutTargetInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutTargetInput | ExchangeRateCreateOrConnectWithoutTargetInput[]
+    upsert?: ExchangeRateUpsertWithWhereUniqueWithoutTargetInput | ExchangeRateUpsertWithWhereUniqueWithoutTargetInput[]
+    createMany?: ExchangeRateCreateManyTargetInputEnvelope
+    set?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    disconnect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    delete?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    update?: ExchangeRateUpdateWithWhereUniqueWithoutTargetInput | ExchangeRateUpdateWithWhereUniqueWithoutTargetInput[]
+    updateMany?: ExchangeRateUpdateManyWithWhereWithoutTargetInput | ExchangeRateUpdateManyWithWhereWithoutTargetInput[]
+    deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
+  }
+
+  export type RatePlanUpdateManyWithoutCurrencyNestedInput = {
+    create?: XOR<RatePlanCreateWithoutCurrencyInput, RatePlanUncheckedCreateWithoutCurrencyInput> | RatePlanCreateWithoutCurrencyInput[] | RatePlanUncheckedCreateWithoutCurrencyInput[]
+    connectOrCreate?: RatePlanCreateOrConnectWithoutCurrencyInput | RatePlanCreateOrConnectWithoutCurrencyInput[]
+    upsert?: RatePlanUpsertWithWhereUniqueWithoutCurrencyInput | RatePlanUpsertWithWhereUniqueWithoutCurrencyInput[]
+    createMany?: RatePlanCreateManyCurrencyInputEnvelope
+    set?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+    disconnect?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+    delete?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+    connect?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+    update?: RatePlanUpdateWithWhereUniqueWithoutCurrencyInput | RatePlanUpdateWithWhereUniqueWithoutCurrencyInput[]
+    updateMany?: RatePlanUpdateManyWithWhereWithoutCurrencyInput | RatePlanUpdateManyWithWhereWithoutCurrencyInput[]
+    deleteMany?: RatePlanScalarWhereInput | RatePlanScalarWhereInput[]
+  }
+
+  export type ExchangeRateUncheckedUpdateManyWithoutBaseNestedInput = {
+    create?: XOR<ExchangeRateCreateWithoutBaseInput, ExchangeRateUncheckedCreateWithoutBaseInput> | ExchangeRateCreateWithoutBaseInput[] | ExchangeRateUncheckedCreateWithoutBaseInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutBaseInput | ExchangeRateCreateOrConnectWithoutBaseInput[]
+    upsert?: ExchangeRateUpsertWithWhereUniqueWithoutBaseInput | ExchangeRateUpsertWithWhereUniqueWithoutBaseInput[]
+    createMany?: ExchangeRateCreateManyBaseInputEnvelope
+    set?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    disconnect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    delete?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    update?: ExchangeRateUpdateWithWhereUniqueWithoutBaseInput | ExchangeRateUpdateWithWhereUniqueWithoutBaseInput[]
+    updateMany?: ExchangeRateUpdateManyWithWhereWithoutBaseInput | ExchangeRateUpdateManyWithWhereWithoutBaseInput[]
+    deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
+  }
+
+  export type ExchangeRateUncheckedUpdateManyWithoutTargetNestedInput = {
+    create?: XOR<ExchangeRateCreateWithoutTargetInput, ExchangeRateUncheckedCreateWithoutTargetInput> | ExchangeRateCreateWithoutTargetInput[] | ExchangeRateUncheckedCreateWithoutTargetInput[]
+    connectOrCreate?: ExchangeRateCreateOrConnectWithoutTargetInput | ExchangeRateCreateOrConnectWithoutTargetInput[]
+    upsert?: ExchangeRateUpsertWithWhereUniqueWithoutTargetInput | ExchangeRateUpsertWithWhereUniqueWithoutTargetInput[]
+    createMany?: ExchangeRateCreateManyTargetInputEnvelope
+    set?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    disconnect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    delete?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    connect?: ExchangeRateWhereUniqueInput | ExchangeRateWhereUniqueInput[]
+    update?: ExchangeRateUpdateWithWhereUniqueWithoutTargetInput | ExchangeRateUpdateWithWhereUniqueWithoutTargetInput[]
+    updateMany?: ExchangeRateUpdateManyWithWhereWithoutTargetInput | ExchangeRateUpdateManyWithWhereWithoutTargetInput[]
+    deleteMany?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
+  }
+
+  export type RatePlanUncheckedUpdateManyWithoutCurrencyNestedInput = {
+    create?: XOR<RatePlanCreateWithoutCurrencyInput, RatePlanUncheckedCreateWithoutCurrencyInput> | RatePlanCreateWithoutCurrencyInput[] | RatePlanUncheckedCreateWithoutCurrencyInput[]
+    connectOrCreate?: RatePlanCreateOrConnectWithoutCurrencyInput | RatePlanCreateOrConnectWithoutCurrencyInput[]
+    upsert?: RatePlanUpsertWithWhereUniqueWithoutCurrencyInput | RatePlanUpsertWithWhereUniqueWithoutCurrencyInput[]
+    createMany?: RatePlanCreateManyCurrencyInputEnvelope
+    set?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+    disconnect?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+    delete?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+    connect?: RatePlanWhereUniqueInput | RatePlanWhereUniqueInput[]
+    update?: RatePlanUpdateWithWhereUniqueWithoutCurrencyInput | RatePlanUpdateWithWhereUniqueWithoutCurrencyInput[]
+    updateMany?: RatePlanUpdateManyWithWhereWithoutCurrencyInput | RatePlanUpdateManyWithWhereWithoutCurrencyInput[]
+    deleteMany?: RatePlanScalarWhereInput | RatePlanScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -21114,6 +24712,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutTenantInput = {
@@ -21131,6 +24730,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutTenantInput = {
@@ -21313,6 +24913,8 @@ export namespace Prisma {
     guest: GuestCreateNestedOneWithoutReservationInput
     room: RoomCreateNestedOneWithoutReservationInput
     hotel: HotelCreateNestedOneWithoutReservationInput
+    ratePlan: RatePlanCreateNestedOneWithoutReservationInput
+    folio?: FolioCreateNestedOneWithoutReservationInput
   }
 
   export type ReservationUncheckedCreateWithoutTenantInput = {
@@ -21323,6 +24925,8 @@ export namespace Prisma {
     guestId: string
     roomId: string
     hotelId: string
+    ratePlanId: string
+    folio?: FolioUncheckedCreateNestedOneWithoutReservationInput
   }
 
   export type ReservationCreateOrConnectWithoutTenantInput = {
@@ -21343,6 +24947,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     guest: GuestCreateNestedOneWithoutFolioInput
     hotel: HotelCreateNestedOneWithoutFolioInput
+    reservation?: ReservationCreateNestedOneWithoutFolioInput
   }
 
   export type FolioUncheckedCreateWithoutTenantInput = {
@@ -21351,6 +24956,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     status?: $Enums.FolioStatus
     hotelId: string
+    reservationId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -21399,11 +25005,12 @@ export namespace Prisma {
     name: string
     baseAdjType: $Enums.AdjType
     baseAdjVal: Decimal | DecimalJsLike | number | string
-    currency: string
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     Hotel: HotelCreateNestedOneWithoutRatePlanInput
+    reservation?: ReservationCreateNestedManyWithoutRatePlanInput
+    currency: CurrencyCreateNestedOneWithoutRatePlanInput
   }
 
   export type RatePlanUncheckedCreateWithoutTenantInput = {
@@ -21413,10 +25020,11 @@ export namespace Prisma {
     name: string
     baseAdjType: $Enums.AdjType
     baseAdjVal: Decimal | DecimalJsLike | number | string
-    currency: string
+    currencyId: string
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    reservation?: ReservationUncheckedCreateNestedManyWithoutRatePlanInput
   }
 
   export type RatePlanCreateOrConnectWithoutTenantInput = {
@@ -21426,6 +25034,36 @@ export namespace Prisma {
 
   export type RatePlanCreateManyTenantInputEnvelope = {
     data: RatePlanCreateManyTenantInput | RatePlanCreateManyTenantInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ExchangeRateCreateWithoutTenantInput = {
+    id?: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    base: CurrencyCreateNestedOneWithoutBaseRatesInput
+    target: CurrencyCreateNestedOneWithoutTargetRatesInput
+    hotel: HotelCreateNestedOneWithoutExchangeRatesInput
+  }
+
+  export type ExchangeRateUncheckedCreateWithoutTenantInput = {
+    id?: string
+    baseCurrency: string
+    targetCurrency: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hotelId: string
+  }
+
+  export type ExchangeRateCreateOrConnectWithoutTenantInput = {
+    where: ExchangeRateWhereUniqueInput
+    create: XOR<ExchangeRateCreateWithoutTenantInput, ExchangeRateUncheckedCreateWithoutTenantInput>
+  }
+
+  export type ExchangeRateCreateManyTenantInputEnvelope = {
+    data: ExchangeRateCreateManyTenantInput | ExchangeRateCreateManyTenantInput[]
     skipDuplicates?: boolean
   }
 
@@ -21635,6 +25273,7 @@ export namespace Prisma {
     roomId?: StringFilter<"Reservation"> | string
     tenantId?: StringFilter<"Reservation"> | string
     hotelId?: StringFilter<"Reservation"> | string
+    ratePlanId?: StringFilter<"Reservation"> | string
   }
 
   export type FolioUpsertWithWhereUniqueWithoutTenantInput = {
@@ -21663,6 +25302,7 @@ export namespace Prisma {
     status?: EnumFolioStatusFilter<"Folio"> | $Enums.FolioStatus
     tenantId?: StringFilter<"Folio"> | string
     hotelId?: StringFilter<"Folio"> | string
+    reservationId?: StringNullableFilter<"Folio"> | string | null
     createdAt?: DateTimeFilter<"Folio"> | Date | string
     updatedAt?: DateTimeFilter<"Folio"> | Date | string
   }
@@ -21723,10 +25363,40 @@ export namespace Prisma {
     name?: StringFilter<"RatePlan"> | string
     baseAdjType?: EnumAdjTypeFilter<"RatePlan"> | $Enums.AdjType
     baseAdjVal?: DecimalFilter<"RatePlan"> | Decimal | DecimalJsLike | number | string
-    currency?: StringFilter<"RatePlan"> | string
+    currencyId?: StringFilter<"RatePlan"> | string
     isActive?: BoolFilter<"RatePlan"> | boolean
     createdAt?: DateTimeFilter<"RatePlan"> | Date | string
     updatedAt?: DateTimeFilter<"RatePlan"> | Date | string
+  }
+
+  export type ExchangeRateUpsertWithWhereUniqueWithoutTenantInput = {
+    where: ExchangeRateWhereUniqueInput
+    update: XOR<ExchangeRateUpdateWithoutTenantInput, ExchangeRateUncheckedUpdateWithoutTenantInput>
+    create: XOR<ExchangeRateCreateWithoutTenantInput, ExchangeRateUncheckedCreateWithoutTenantInput>
+  }
+
+  export type ExchangeRateUpdateWithWhereUniqueWithoutTenantInput = {
+    where: ExchangeRateWhereUniqueInput
+    data: XOR<ExchangeRateUpdateWithoutTenantInput, ExchangeRateUncheckedUpdateWithoutTenantInput>
+  }
+
+  export type ExchangeRateUpdateManyWithWhereWithoutTenantInput = {
+    where: ExchangeRateScalarWhereInput
+    data: XOR<ExchangeRateUpdateManyMutationInput, ExchangeRateUncheckedUpdateManyWithoutTenantInput>
+  }
+
+  export type ExchangeRateScalarWhereInput = {
+    AND?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
+    OR?: ExchangeRateScalarWhereInput[]
+    NOT?: ExchangeRateScalarWhereInput | ExchangeRateScalarWhereInput[]
+    id?: StringFilter<"ExchangeRate"> | string
+    baseCurrency?: StringFilter<"ExchangeRate"> | string
+    targetCurrency?: StringFilter<"ExchangeRate"> | string
+    rate?: DecimalFilter<"ExchangeRate"> | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFilter<"ExchangeRate"> | Date | string
+    updatedAt?: DateTimeFilter<"ExchangeRate"> | Date | string
+    tenantId?: StringFilter<"ExchangeRate"> | string
+    hotelId?: StringFilter<"ExchangeRate"> | string
   }
 
   export type TenantCreateWithoutHotelsInput = {
@@ -21743,6 +25413,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutHotelsInput = {
@@ -21759,6 +25430,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutHotelsInput = {
@@ -21936,6 +25608,8 @@ export namespace Prisma {
     guest: GuestCreateNestedOneWithoutReservationInput
     room: RoomCreateNestedOneWithoutReservationInput
     tenant: TenantCreateNestedOneWithoutReservationInput
+    ratePlan: RatePlanCreateNestedOneWithoutReservationInput
+    folio?: FolioCreateNestedOneWithoutReservationInput
   }
 
   export type ReservationUncheckedCreateWithoutHotelInput = {
@@ -21946,6 +25620,8 @@ export namespace Prisma {
     guestId: string
     roomId: string
     tenantId: string
+    ratePlanId: string
+    folio?: FolioUncheckedCreateNestedOneWithoutReservationInput
   }
 
   export type ReservationCreateOrConnectWithoutHotelInput = {
@@ -21966,6 +25642,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     guest: GuestCreateNestedOneWithoutFolioInput
     tenant: TenantCreateNestedOneWithoutFolioInput
+    reservation?: ReservationCreateNestedOneWithoutFolioInput
   }
 
   export type FolioUncheckedCreateWithoutHotelInput = {
@@ -21974,6 +25651,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     status?: $Enums.FolioStatus
     tenantId: string
+    reservationId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22022,11 +25700,12 @@ export namespace Prisma {
     name: string
     baseAdjType: $Enums.AdjType
     baseAdjVal: Decimal | DecimalJsLike | number | string
-    currency: string
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     Tenant: TenantCreateNestedOneWithoutRatePlanInput
+    reservation?: ReservationCreateNestedManyWithoutRatePlanInput
+    currency: CurrencyCreateNestedOneWithoutRatePlanInput
   }
 
   export type RatePlanUncheckedCreateWithoutHotelInput = {
@@ -22036,10 +25715,11 @@ export namespace Prisma {
     name: string
     baseAdjType: $Enums.AdjType
     baseAdjVal: Decimal | DecimalJsLike | number | string
-    currency: string
+    currencyId: string
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    reservation?: ReservationUncheckedCreateNestedManyWithoutRatePlanInput
   }
 
   export type RatePlanCreateOrConnectWithoutHotelInput = {
@@ -22049,6 +25729,36 @@ export namespace Prisma {
 
   export type RatePlanCreateManyHotelInputEnvelope = {
     data: RatePlanCreateManyHotelInput | RatePlanCreateManyHotelInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ExchangeRateCreateWithoutHotelInput = {
+    id?: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    base: CurrencyCreateNestedOneWithoutBaseRatesInput
+    target: CurrencyCreateNestedOneWithoutTargetRatesInput
+    tenant: TenantCreateNestedOneWithoutExchangeRatesInput
+  }
+
+  export type ExchangeRateUncheckedCreateWithoutHotelInput = {
+    id?: string
+    baseCurrency: string
+    targetCurrency: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+  }
+
+  export type ExchangeRateCreateOrConnectWithoutHotelInput = {
+    where: ExchangeRateWhereUniqueInput
+    create: XOR<ExchangeRateCreateWithoutHotelInput, ExchangeRateUncheckedCreateWithoutHotelInput>
+  }
+
+  export type ExchangeRateCreateManyHotelInputEnvelope = {
+    data: ExchangeRateCreateManyHotelInput | ExchangeRateCreateManyHotelInput[]
     skipDuplicates?: boolean
   }
 
@@ -22077,6 +25787,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutHotelsInput = {
@@ -22093,6 +25804,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type GuestUpsertWithWhereUniqueWithoutHotelInput = {
@@ -22239,6 +25951,22 @@ export namespace Prisma {
     data: XOR<RatePlanUpdateManyMutationInput, RatePlanUncheckedUpdateManyWithoutHotelInput>
   }
 
+  export type ExchangeRateUpsertWithWhereUniqueWithoutHotelInput = {
+    where: ExchangeRateWhereUniqueInput
+    update: XOR<ExchangeRateUpdateWithoutHotelInput, ExchangeRateUncheckedUpdateWithoutHotelInput>
+    create: XOR<ExchangeRateCreateWithoutHotelInput, ExchangeRateUncheckedCreateWithoutHotelInput>
+  }
+
+  export type ExchangeRateUpdateWithWhereUniqueWithoutHotelInput = {
+    where: ExchangeRateWhereUniqueInput
+    data: XOR<ExchangeRateUpdateWithoutHotelInput, ExchangeRateUncheckedUpdateWithoutHotelInput>
+  }
+
+  export type ExchangeRateUpdateManyWithWhereWithoutHotelInput = {
+    where: ExchangeRateScalarWhereInput
+    data: XOR<ExchangeRateUpdateManyMutationInput, ExchangeRateUncheckedUpdateManyWithoutHotelInput>
+  }
+
   export type TenantCreateWithoutUsersInput = {
     id?: string
     name: string
@@ -22253,6 +25981,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutUsersInput = {
@@ -22269,6 +25998,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutUsersInput = {
@@ -22291,6 +26021,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutUserInput = {
@@ -22308,6 +26039,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutUserInput = {
@@ -22365,6 +26097,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutUsersInput = {
@@ -22381,6 +26114,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutUserInput = {
@@ -22409,6 +26143,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutUserInput = {
@@ -22426,6 +26161,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type RoleUpsertWithoutUsersInput = {
@@ -22473,6 +26209,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutRoleInput = {
@@ -22489,6 +26226,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutRoleInput = {
@@ -22511,6 +26249,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutRoleInput = {
@@ -22528,6 +26267,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutRoleInput = {
@@ -22619,6 +26359,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutRoleInput = {
@@ -22635,6 +26376,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutRoleInput = {
@@ -22663,6 +26405,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutRoleInput = {
@@ -22680,6 +26423,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type UserUpsertWithWhereUniqueWithoutRoleInput = {
@@ -22808,6 +26552,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutRoomInput = {
@@ -22824,6 +26569,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutRoomInput = {
@@ -22846,6 +26592,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutRoomInput = {
@@ -22863,6 +26610,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutRoomInput = {
@@ -22878,6 +26626,8 @@ export namespace Prisma {
     guest: GuestCreateNestedOneWithoutReservationInput
     tenant: TenantCreateNestedOneWithoutReservationInput
     hotel: HotelCreateNestedOneWithoutReservationInput
+    ratePlan: RatePlanCreateNestedOneWithoutReservationInput
+    folio?: FolioCreateNestedOneWithoutReservationInput
   }
 
   export type ReservationUncheckedCreateWithoutRoomInput = {
@@ -22888,6 +26638,8 @@ export namespace Prisma {
     guestId: string
     tenantId: string
     hotelId: string
+    ratePlanId: string
+    folio?: FolioUncheckedCreateNestedOneWithoutReservationInput
   }
 
   export type ReservationCreateOrConnectWithoutRoomInput = {
@@ -22958,6 +26710,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutRoomInput = {
@@ -22974,6 +26727,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutRoomInput = {
@@ -23002,6 +26756,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutRoomInput = {
@@ -23019,6 +26774,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type ReservationUpsertWithWhereUniqueWithoutRoomInput = {
@@ -23051,6 +26807,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutRoomTypeInput = {
@@ -23067,6 +26824,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutRoomTypeInput = {
@@ -23089,6 +26847,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutRoomTypeInput = {
@@ -23106,6 +26865,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutRoomTypeInput = {
@@ -23166,6 +26926,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutRoomTypeInput = {
@@ -23182,6 +26943,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutRoomTypeInput = {
@@ -23210,6 +26972,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutRoomTypeInput = {
@@ -23227,6 +26990,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type RoomUpsertWithWhereUniqueWithoutRoomTypeInput = {
@@ -23259,6 +27023,7 @@ export namespace Prisma {
     Reservation?: ReservationCreateNestedManyWithoutTenantInput
     Folio?: FolioCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutRatePlanInput = {
@@ -23275,6 +27040,7 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedCreateNestedManyWithoutTenantInput
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutRatePlanInput = {
@@ -23297,6 +27063,7 @@ export namespace Prisma {
     Reservation?: ReservationCreateNestedManyWithoutHotelInput
     Folio?: FolioCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutRatePlanInput = {
@@ -23314,11 +27081,71 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedCreateNestedManyWithoutHotelInput
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutRatePlanInput = {
     where: HotelWhereUniqueInput
     create: XOR<HotelCreateWithoutRatePlanInput, HotelUncheckedCreateWithoutRatePlanInput>
+  }
+
+  export type ReservationCreateWithoutRatePlanInput = {
+    id?: string
+    checkIn: Date | string
+    checkOut: Date | string
+    status?: $Enums.ReservationStatus
+    guest: GuestCreateNestedOneWithoutReservationInput
+    room: RoomCreateNestedOneWithoutReservationInput
+    tenant: TenantCreateNestedOneWithoutReservationInput
+    hotel: HotelCreateNestedOneWithoutReservationInput
+    folio?: FolioCreateNestedOneWithoutReservationInput
+  }
+
+  export type ReservationUncheckedCreateWithoutRatePlanInput = {
+    id?: string
+    checkIn: Date | string
+    checkOut: Date | string
+    status?: $Enums.ReservationStatus
+    guestId: string
+    roomId: string
+    tenantId: string
+    hotelId: string
+    folio?: FolioUncheckedCreateNestedOneWithoutReservationInput
+  }
+
+  export type ReservationCreateOrConnectWithoutRatePlanInput = {
+    where: ReservationWhereUniqueInput
+    create: XOR<ReservationCreateWithoutRatePlanInput, ReservationUncheckedCreateWithoutRatePlanInput>
+  }
+
+  export type ReservationCreateManyRatePlanInputEnvelope = {
+    data: ReservationCreateManyRatePlanInput | ReservationCreateManyRatePlanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CurrencyCreateWithoutRatePlanInput = {
+    id?: string
+    code: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    baseRates?: ExchangeRateCreateNestedManyWithoutBaseInput
+    targetRates?: ExchangeRateCreateNestedManyWithoutTargetInput
+  }
+
+  export type CurrencyUncheckedCreateWithoutRatePlanInput = {
+    id?: string
+    code: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    baseRates?: ExchangeRateUncheckedCreateNestedManyWithoutBaseInput
+    targetRates?: ExchangeRateUncheckedCreateNestedManyWithoutTargetInput
+  }
+
+  export type CurrencyCreateOrConnectWithoutRatePlanInput = {
+    where: CurrencyWhereUniqueInput
+    create: XOR<CurrencyCreateWithoutRatePlanInput, CurrencyUncheckedCreateWithoutRatePlanInput>
   }
 
   export type TenantUpsertWithoutRatePlanInput = {
@@ -23346,6 +27173,7 @@ export namespace Prisma {
     Reservation?: ReservationUpdateManyWithoutTenantNestedInput
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutRatePlanInput = {
@@ -23362,6 +27190,7 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedUpdateManyWithoutTenantNestedInput
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutRatePlanInput = {
@@ -23390,6 +27219,7 @@ export namespace Prisma {
     Reservation?: ReservationUpdateManyWithoutHotelNestedInput
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutRatePlanInput = {
@@ -23407,6 +27237,54 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedUpdateManyWithoutHotelNestedInput
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+  }
+
+  export type ReservationUpsertWithWhereUniqueWithoutRatePlanInput = {
+    where: ReservationWhereUniqueInput
+    update: XOR<ReservationUpdateWithoutRatePlanInput, ReservationUncheckedUpdateWithoutRatePlanInput>
+    create: XOR<ReservationCreateWithoutRatePlanInput, ReservationUncheckedCreateWithoutRatePlanInput>
+  }
+
+  export type ReservationUpdateWithWhereUniqueWithoutRatePlanInput = {
+    where: ReservationWhereUniqueInput
+    data: XOR<ReservationUpdateWithoutRatePlanInput, ReservationUncheckedUpdateWithoutRatePlanInput>
+  }
+
+  export type ReservationUpdateManyWithWhereWithoutRatePlanInput = {
+    where: ReservationScalarWhereInput
+    data: XOR<ReservationUpdateManyMutationInput, ReservationUncheckedUpdateManyWithoutRatePlanInput>
+  }
+
+  export type CurrencyUpsertWithoutRatePlanInput = {
+    update: XOR<CurrencyUpdateWithoutRatePlanInput, CurrencyUncheckedUpdateWithoutRatePlanInput>
+    create: XOR<CurrencyCreateWithoutRatePlanInput, CurrencyUncheckedCreateWithoutRatePlanInput>
+    where?: CurrencyWhereInput
+  }
+
+  export type CurrencyUpdateToOneWithWhereWithoutRatePlanInput = {
+    where?: CurrencyWhereInput
+    data: XOR<CurrencyUpdateWithoutRatePlanInput, CurrencyUncheckedUpdateWithoutRatePlanInput>
+  }
+
+  export type CurrencyUpdateWithoutRatePlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    baseRates?: ExchangeRateUpdateManyWithoutBaseNestedInput
+    targetRates?: ExchangeRateUpdateManyWithoutTargetNestedInput
+  }
+
+  export type CurrencyUncheckedUpdateWithoutRatePlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    baseRates?: ExchangeRateUncheckedUpdateManyWithoutBaseNestedInput
+    targetRates?: ExchangeRateUncheckedUpdateManyWithoutTargetNestedInput
   }
 
   export type TenantCreateWithoutGuestInput = {
@@ -23423,6 +27301,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutGuestInput = {
@@ -23439,6 +27318,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutGuestInput = {
@@ -23461,6 +27341,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutGuestInput = {
@@ -23478,6 +27359,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutGuestInput = {
@@ -23493,6 +27375,8 @@ export namespace Prisma {
     room: RoomCreateNestedOneWithoutReservationInput
     tenant: TenantCreateNestedOneWithoutReservationInput
     hotel: HotelCreateNestedOneWithoutReservationInput
+    ratePlan: RatePlanCreateNestedOneWithoutReservationInput
+    folio?: FolioCreateNestedOneWithoutReservationInput
   }
 
   export type ReservationUncheckedCreateWithoutGuestInput = {
@@ -23503,6 +27387,8 @@ export namespace Prisma {
     roomId: string
     tenantId: string
     hotelId: string
+    ratePlanId: string
+    folio?: FolioUncheckedCreateNestedOneWithoutReservationInput
   }
 
   export type ReservationCreateOrConnectWithoutGuestInput = {
@@ -23523,6 +27409,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     tenant: TenantCreateNestedOneWithoutFolioInput
     hotel: HotelCreateNestedOneWithoutFolioInput
+    reservation?: ReservationCreateNestedOneWithoutFolioInput
   }
 
   export type FolioUncheckedCreateWithoutGuestInput = {
@@ -23531,6 +27418,7 @@ export namespace Prisma {
     status?: $Enums.FolioStatus
     tenantId: string
     hotelId: string
+    reservationId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -23570,6 +27458,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutGuestInput = {
@@ -23586,6 +27475,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutGuestInput = {
@@ -23614,6 +27504,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutGuestInput = {
@@ -23631,6 +27522,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type ReservationUpsertWithWhereUniqueWithoutGuestInput = {
@@ -23733,6 +27625,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutReservationInput = {
@@ -23749,6 +27642,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutReservationInput = {
@@ -23771,6 +27665,7 @@ export namespace Prisma {
     Folio?: FolioCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutReservationInput = {
@@ -23788,11 +27683,72 @@ export namespace Prisma {
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutReservationInput = {
     where: HotelWhereUniqueInput
     create: XOR<HotelCreateWithoutReservationInput, HotelUncheckedCreateWithoutReservationInput>
+  }
+
+  export type RatePlanCreateWithoutReservationInput = {
+    id?: string
+    code: string
+    name: string
+    baseAdjType: $Enums.AdjType
+    baseAdjVal: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Tenant: TenantCreateNestedOneWithoutRatePlanInput
+    Hotel: HotelCreateNestedOneWithoutRatePlanInput
+    currency: CurrencyCreateNestedOneWithoutRatePlanInput
+  }
+
+  export type RatePlanUncheckedCreateWithoutReservationInput = {
+    id?: string
+    tenantId: string
+    hotelId: string
+    code: string
+    name: string
+    baseAdjType: $Enums.AdjType
+    baseAdjVal: Decimal | DecimalJsLike | number | string
+    currencyId: string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RatePlanCreateOrConnectWithoutReservationInput = {
+    where: RatePlanWhereUniqueInput
+    create: XOR<RatePlanCreateWithoutReservationInput, RatePlanUncheckedCreateWithoutReservationInput>
+  }
+
+  export type FolioCreateWithoutReservationInput = {
+    id?: string
+    balance?: Decimal | DecimalJsLike | number | string
+    status?: $Enums.FolioStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    guest: GuestCreateNestedOneWithoutFolioInput
+    tenant: TenantCreateNestedOneWithoutFolioInput
+    hotel: HotelCreateNestedOneWithoutFolioInput
+  }
+
+  export type FolioUncheckedCreateWithoutReservationInput = {
+    id?: string
+    guestId: string
+    balance?: Decimal | DecimalJsLike | number | string
+    status?: $Enums.FolioStatus
+    tenantId: string
+    hotelId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FolioCreateOrConnectWithoutReservationInput = {
+    where: FolioWhereUniqueInput
+    create: XOR<FolioCreateWithoutReservationInput, FolioUncheckedCreateWithoutReservationInput>
   }
 
   export type GuestUpsertWithoutReservationInput = {
@@ -23886,6 +27842,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutReservationInput = {
@@ -23902,6 +27859,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutReservationInput = {
@@ -23930,6 +27888,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutReservationInput = {
@@ -23947,6 +27906,79 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+  }
+
+  export type RatePlanUpsertWithoutReservationInput = {
+    update: XOR<RatePlanUpdateWithoutReservationInput, RatePlanUncheckedUpdateWithoutReservationInput>
+    create: XOR<RatePlanCreateWithoutReservationInput, RatePlanUncheckedCreateWithoutReservationInput>
+    where?: RatePlanWhereInput
+  }
+
+  export type RatePlanUpdateToOneWithWhereWithoutReservationInput = {
+    where?: RatePlanWhereInput
+    data: XOR<RatePlanUpdateWithoutReservationInput, RatePlanUncheckedUpdateWithoutReservationInput>
+  }
+
+  export type RatePlanUpdateWithoutReservationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
+    baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Tenant?: TenantUpdateOneRequiredWithoutRatePlanNestedInput
+    Hotel?: HotelUpdateOneRequiredWithoutRatePlanNestedInput
+    currency?: CurrencyUpdateOneRequiredWithoutRatePlanNestedInput
+  }
+
+  export type RatePlanUncheckedUpdateWithoutReservationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
+    baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currencyId?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FolioUpsertWithoutReservationInput = {
+    update: XOR<FolioUpdateWithoutReservationInput, FolioUncheckedUpdateWithoutReservationInput>
+    create: XOR<FolioCreateWithoutReservationInput, FolioUncheckedCreateWithoutReservationInput>
+    where?: FolioWhereInput
+  }
+
+  export type FolioUpdateToOneWithWhereWithoutReservationInput = {
+    where?: FolioWhereInput
+    data: XOR<FolioUpdateWithoutReservationInput, FolioUncheckedUpdateWithoutReservationInput>
+  }
+
+  export type FolioUpdateWithoutReservationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: EnumFolioStatusFieldUpdateOperationsInput | $Enums.FolioStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    guest?: GuestUpdateOneRequiredWithoutFolioNestedInput
+    tenant?: TenantUpdateOneRequiredWithoutFolioNestedInput
+    hotel?: HotelUpdateOneRequiredWithoutFolioNestedInput
+  }
+
+  export type FolioUncheckedUpdateWithoutReservationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    guestId?: StringFieldUpdateOperationsInput | string
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    status?: EnumFolioStatusFieldUpdateOperationsInput | $Enums.FolioStatus
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GuestCreateWithoutFolioInput = {
@@ -23994,6 +28026,7 @@ export namespace Prisma {
     Reservation?: ReservationCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutFolioInput = {
@@ -24010,6 +28043,7 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedCreateNestedManyWithoutTenantInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutFolioInput = {
@@ -24032,6 +28066,7 @@ export namespace Prisma {
     Reservation?: ReservationCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutFolioInput = {
@@ -24049,11 +28084,41 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedCreateNestedManyWithoutHotelInput
     POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutFolioInput = {
     where: HotelWhereUniqueInput
     create: XOR<HotelCreateWithoutFolioInput, HotelUncheckedCreateWithoutFolioInput>
+  }
+
+  export type ReservationCreateWithoutFolioInput = {
+    id?: string
+    checkIn: Date | string
+    checkOut: Date | string
+    status?: $Enums.ReservationStatus
+    guest: GuestCreateNestedOneWithoutReservationInput
+    room: RoomCreateNestedOneWithoutReservationInput
+    tenant: TenantCreateNestedOneWithoutReservationInput
+    hotel: HotelCreateNestedOneWithoutReservationInput
+    ratePlan: RatePlanCreateNestedOneWithoutReservationInput
+  }
+
+  export type ReservationUncheckedCreateWithoutFolioInput = {
+    id?: string
+    checkIn: Date | string
+    checkOut: Date | string
+    status?: $Enums.ReservationStatus
+    guestId: string
+    roomId: string
+    tenantId: string
+    hotelId: string
+    ratePlanId: string
+  }
+
+  export type ReservationCreateOrConnectWithoutFolioInput = {
+    where: ReservationWhereUniqueInput
+    create: XOR<ReservationCreateWithoutFolioInput, ReservationUncheckedCreateWithoutFolioInput>
   }
 
   export type GuestUpsertWithoutFolioInput = {
@@ -24118,6 +28183,7 @@ export namespace Prisma {
     Reservation?: ReservationUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutFolioInput = {
@@ -24134,6 +28200,7 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedUpdateManyWithoutTenantNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutFolioInput = {
@@ -24162,6 +28229,7 @@ export namespace Prisma {
     Reservation?: ReservationUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutFolioInput = {
@@ -24179,6 +28247,42 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+  }
+
+  export type ReservationUpsertWithoutFolioInput = {
+    update: XOR<ReservationUpdateWithoutFolioInput, ReservationUncheckedUpdateWithoutFolioInput>
+    create: XOR<ReservationCreateWithoutFolioInput, ReservationUncheckedCreateWithoutFolioInput>
+    where?: ReservationWhereInput
+  }
+
+  export type ReservationUpdateToOneWithWhereWithoutFolioInput = {
+    where?: ReservationWhereInput
+    data: XOR<ReservationUpdateWithoutFolioInput, ReservationUncheckedUpdateWithoutFolioInput>
+  }
+
+  export type ReservationUpdateWithoutFolioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    checkIn?: DateTimeFieldUpdateOperationsInput | Date | string
+    checkOut?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumReservationStatusFieldUpdateOperationsInput | $Enums.ReservationStatus
+    guest?: GuestUpdateOneRequiredWithoutReservationNestedInput
+    room?: RoomUpdateOneRequiredWithoutReservationNestedInput
+    tenant?: TenantUpdateOneRequiredWithoutReservationNestedInput
+    hotel?: HotelUpdateOneRequiredWithoutReservationNestedInput
+    ratePlan?: RatePlanUpdateOneRequiredWithoutReservationNestedInput
+  }
+
+  export type ReservationUncheckedUpdateWithoutFolioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    checkIn?: DateTimeFieldUpdateOperationsInput | Date | string
+    checkOut?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumReservationStatusFieldUpdateOperationsInput | $Enums.ReservationStatus
+    guestId?: StringFieldUpdateOperationsInput | string
+    roomId?: StringFieldUpdateOperationsInput | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+    ratePlanId?: StringFieldUpdateOperationsInput | string
   }
 
   export type TenantCreateWithoutPOSOutletInput = {
@@ -24195,6 +28299,7 @@ export namespace Prisma {
     Reservation?: ReservationCreateNestedManyWithoutTenantInput
     Folio?: FolioCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutTenantInput
   }
 
   export type TenantUncheckedCreateWithoutPOSOutletInput = {
@@ -24211,6 +28316,7 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedCreateNestedManyWithoutTenantInput
     Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutTenantInput
   }
 
   export type TenantCreateOrConnectWithoutPOSOutletInput = {
@@ -24233,6 +28339,7 @@ export namespace Prisma {
     Reservation?: ReservationCreateNestedManyWithoutHotelInput
     Folio?: FolioCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateCreateNestedManyWithoutHotelInput
   }
 
   export type HotelUncheckedCreateWithoutPOSOutletInput = {
@@ -24250,6 +28357,7 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedCreateNestedManyWithoutHotelInput
     Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
     RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+    exchangeRates?: ExchangeRateUncheckedCreateNestedManyWithoutHotelInput
   }
 
   export type HotelCreateOrConnectWithoutPOSOutletInput = {
@@ -24282,6 +28390,7 @@ export namespace Prisma {
     Reservation?: ReservationUpdateManyWithoutTenantNestedInput
     Folio?: FolioUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutTenantNestedInput
   }
 
   export type TenantUncheckedUpdateWithoutPOSOutletInput = {
@@ -24298,6 +28407,7 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedUpdateManyWithoutTenantNestedInput
     Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutTenantNestedInput
   }
 
   export type HotelUpsertWithoutPOSOutletInput = {
@@ -24326,6 +28436,7 @@ export namespace Prisma {
     Reservation?: ReservationUpdateManyWithoutHotelNestedInput
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutPOSOutletInput = {
@@ -24343,6 +28454,437 @@ export namespace Prisma {
     Reservation?: ReservationUncheckedUpdateManyWithoutHotelNestedInput
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
+  }
+
+  export type CurrencyCreateWithoutBaseRatesInput = {
+    id?: string
+    code: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    targetRates?: ExchangeRateCreateNestedManyWithoutTargetInput
+    RatePlan?: RatePlanCreateNestedManyWithoutCurrencyInput
+  }
+
+  export type CurrencyUncheckedCreateWithoutBaseRatesInput = {
+    id?: string
+    code: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    targetRates?: ExchangeRateUncheckedCreateNestedManyWithoutTargetInput
+    RatePlan?: RatePlanUncheckedCreateNestedManyWithoutCurrencyInput
+  }
+
+  export type CurrencyCreateOrConnectWithoutBaseRatesInput = {
+    where: CurrencyWhereUniqueInput
+    create: XOR<CurrencyCreateWithoutBaseRatesInput, CurrencyUncheckedCreateWithoutBaseRatesInput>
+  }
+
+  export type CurrencyCreateWithoutTargetRatesInput = {
+    id?: string
+    code: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    baseRates?: ExchangeRateCreateNestedManyWithoutBaseInput
+    RatePlan?: RatePlanCreateNestedManyWithoutCurrencyInput
+  }
+
+  export type CurrencyUncheckedCreateWithoutTargetRatesInput = {
+    id?: string
+    code: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    baseRates?: ExchangeRateUncheckedCreateNestedManyWithoutBaseInput
+    RatePlan?: RatePlanUncheckedCreateNestedManyWithoutCurrencyInput
+  }
+
+  export type CurrencyCreateOrConnectWithoutTargetRatesInput = {
+    where: CurrencyWhereUniqueInput
+    create: XOR<CurrencyCreateWithoutTargetRatesInput, CurrencyUncheckedCreateWithoutTargetRatesInput>
+  }
+
+  export type TenantCreateWithoutExchangeRatesInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hotels?: HotelCreateNestedManyWithoutTenantInput
+    Users?: UserCreateNestedManyWithoutTenantInput
+    Role?: RoleCreateNestedManyWithoutTenantInput
+    RoomType?: RoomTypeCreateNestedManyWithoutTenantInput
+    Room?: RoomCreateNestedManyWithoutTenantInput
+    Guest?: GuestCreateNestedManyWithoutTenantInput
+    Reservation?: ReservationCreateNestedManyWithoutTenantInput
+    Folio?: FolioCreateNestedManyWithoutTenantInput
+    POSOutlet?: POSOutletCreateNestedManyWithoutTenantInput
+    RatePlan?: RatePlanCreateNestedManyWithoutTenantInput
+  }
+
+  export type TenantUncheckedCreateWithoutExchangeRatesInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hotels?: HotelUncheckedCreateNestedManyWithoutTenantInput
+    Users?: UserUncheckedCreateNestedManyWithoutTenantInput
+    Role?: RoleUncheckedCreateNestedManyWithoutTenantInput
+    RoomType?: RoomTypeUncheckedCreateNestedManyWithoutTenantInput
+    Room?: RoomUncheckedCreateNestedManyWithoutTenantInput
+    Guest?: GuestUncheckedCreateNestedManyWithoutTenantInput
+    Reservation?: ReservationUncheckedCreateNestedManyWithoutTenantInput
+    Folio?: FolioUncheckedCreateNestedManyWithoutTenantInput
+    POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutTenantInput
+    RatePlan?: RatePlanUncheckedCreateNestedManyWithoutTenantInput
+  }
+
+  export type TenantCreateOrConnectWithoutExchangeRatesInput = {
+    where: TenantWhereUniqueInput
+    create: XOR<TenantCreateWithoutExchangeRatesInput, TenantUncheckedCreateWithoutExchangeRatesInput>
+  }
+
+  export type HotelCreateWithoutExchangeRatesInput = {
+    id?: string
+    name: string
+    country: string
+    city: string
+    address: string
+    tenant: TenantCreateNestedOneWithoutHotelsInput
+    Guest?: GuestCreateNestedManyWithoutHotelInput
+    RoomType?: RoomTypeCreateNestedManyWithoutHotelInput
+    Room?: RoomCreateNestedManyWithoutHotelInput
+    Role?: RoleCreateNestedManyWithoutHotelInput
+    User?: UserCreateNestedManyWithoutHotelInput
+    Reservation?: ReservationCreateNestedManyWithoutHotelInput
+    Folio?: FolioCreateNestedManyWithoutHotelInput
+    POSOutlet?: POSOutletCreateNestedManyWithoutHotelInput
+    RatePlan?: RatePlanCreateNestedManyWithoutHotelInput
+  }
+
+  export type HotelUncheckedCreateWithoutExchangeRatesInput = {
+    id?: string
+    name: string
+    country: string
+    city: string
+    address: string
+    tenantId: string
+    Guest?: GuestUncheckedCreateNestedManyWithoutHotelInput
+    RoomType?: RoomTypeUncheckedCreateNestedManyWithoutHotelInput
+    Room?: RoomUncheckedCreateNestedManyWithoutHotelInput
+    Role?: RoleUncheckedCreateNestedManyWithoutHotelInput
+    User?: UserUncheckedCreateNestedManyWithoutHotelInput
+    Reservation?: ReservationUncheckedCreateNestedManyWithoutHotelInput
+    Folio?: FolioUncheckedCreateNestedManyWithoutHotelInput
+    POSOutlet?: POSOutletUncheckedCreateNestedManyWithoutHotelInput
+    RatePlan?: RatePlanUncheckedCreateNestedManyWithoutHotelInput
+  }
+
+  export type HotelCreateOrConnectWithoutExchangeRatesInput = {
+    where: HotelWhereUniqueInput
+    create: XOR<HotelCreateWithoutExchangeRatesInput, HotelUncheckedCreateWithoutExchangeRatesInput>
+  }
+
+  export type CurrencyUpsertWithoutBaseRatesInput = {
+    update: XOR<CurrencyUpdateWithoutBaseRatesInput, CurrencyUncheckedUpdateWithoutBaseRatesInput>
+    create: XOR<CurrencyCreateWithoutBaseRatesInput, CurrencyUncheckedCreateWithoutBaseRatesInput>
+    where?: CurrencyWhereInput
+  }
+
+  export type CurrencyUpdateToOneWithWhereWithoutBaseRatesInput = {
+    where?: CurrencyWhereInput
+    data: XOR<CurrencyUpdateWithoutBaseRatesInput, CurrencyUncheckedUpdateWithoutBaseRatesInput>
+  }
+
+  export type CurrencyUpdateWithoutBaseRatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    targetRates?: ExchangeRateUpdateManyWithoutTargetNestedInput
+    RatePlan?: RatePlanUpdateManyWithoutCurrencyNestedInput
+  }
+
+  export type CurrencyUncheckedUpdateWithoutBaseRatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    targetRates?: ExchangeRateUncheckedUpdateManyWithoutTargetNestedInput
+    RatePlan?: RatePlanUncheckedUpdateManyWithoutCurrencyNestedInput
+  }
+
+  export type CurrencyUpsertWithoutTargetRatesInput = {
+    update: XOR<CurrencyUpdateWithoutTargetRatesInput, CurrencyUncheckedUpdateWithoutTargetRatesInput>
+    create: XOR<CurrencyCreateWithoutTargetRatesInput, CurrencyUncheckedCreateWithoutTargetRatesInput>
+    where?: CurrencyWhereInput
+  }
+
+  export type CurrencyUpdateToOneWithWhereWithoutTargetRatesInput = {
+    where?: CurrencyWhereInput
+    data: XOR<CurrencyUpdateWithoutTargetRatesInput, CurrencyUncheckedUpdateWithoutTargetRatesInput>
+  }
+
+  export type CurrencyUpdateWithoutTargetRatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    baseRates?: ExchangeRateUpdateManyWithoutBaseNestedInput
+    RatePlan?: RatePlanUpdateManyWithoutCurrencyNestedInput
+  }
+
+  export type CurrencyUncheckedUpdateWithoutTargetRatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    baseRates?: ExchangeRateUncheckedUpdateManyWithoutBaseNestedInput
+    RatePlan?: RatePlanUncheckedUpdateManyWithoutCurrencyNestedInput
+  }
+
+  export type TenantUpsertWithoutExchangeRatesInput = {
+    update: XOR<TenantUpdateWithoutExchangeRatesInput, TenantUncheckedUpdateWithoutExchangeRatesInput>
+    create: XOR<TenantCreateWithoutExchangeRatesInput, TenantUncheckedCreateWithoutExchangeRatesInput>
+    where?: TenantWhereInput
+  }
+
+  export type TenantUpdateToOneWithWhereWithoutExchangeRatesInput = {
+    where?: TenantWhereInput
+    data: XOR<TenantUpdateWithoutExchangeRatesInput, TenantUncheckedUpdateWithoutExchangeRatesInput>
+  }
+
+  export type TenantUpdateWithoutExchangeRatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hotels?: HotelUpdateManyWithoutTenantNestedInput
+    Users?: UserUpdateManyWithoutTenantNestedInput
+    Role?: RoleUpdateManyWithoutTenantNestedInput
+    RoomType?: RoomTypeUpdateManyWithoutTenantNestedInput
+    Room?: RoomUpdateManyWithoutTenantNestedInput
+    Guest?: GuestUpdateManyWithoutTenantNestedInput
+    Reservation?: ReservationUpdateManyWithoutTenantNestedInput
+    Folio?: FolioUpdateManyWithoutTenantNestedInput
+    POSOutlet?: POSOutletUpdateManyWithoutTenantNestedInput
+    RatePlan?: RatePlanUpdateManyWithoutTenantNestedInput
+  }
+
+  export type TenantUncheckedUpdateWithoutExchangeRatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hotels?: HotelUncheckedUpdateManyWithoutTenantNestedInput
+    Users?: UserUncheckedUpdateManyWithoutTenantNestedInput
+    Role?: RoleUncheckedUpdateManyWithoutTenantNestedInput
+    RoomType?: RoomTypeUncheckedUpdateManyWithoutTenantNestedInput
+    Room?: RoomUncheckedUpdateManyWithoutTenantNestedInput
+    Guest?: GuestUncheckedUpdateManyWithoutTenantNestedInput
+    Reservation?: ReservationUncheckedUpdateManyWithoutTenantNestedInput
+    Folio?: FolioUncheckedUpdateManyWithoutTenantNestedInput
+    POSOutlet?: POSOutletUncheckedUpdateManyWithoutTenantNestedInput
+    RatePlan?: RatePlanUncheckedUpdateManyWithoutTenantNestedInput
+  }
+
+  export type HotelUpsertWithoutExchangeRatesInput = {
+    update: XOR<HotelUpdateWithoutExchangeRatesInput, HotelUncheckedUpdateWithoutExchangeRatesInput>
+    create: XOR<HotelCreateWithoutExchangeRatesInput, HotelUncheckedCreateWithoutExchangeRatesInput>
+    where?: HotelWhereInput
+  }
+
+  export type HotelUpdateToOneWithWhereWithoutExchangeRatesInput = {
+    where?: HotelWhereInput
+    data: XOR<HotelUpdateWithoutExchangeRatesInput, HotelUncheckedUpdateWithoutExchangeRatesInput>
+  }
+
+  export type HotelUpdateWithoutExchangeRatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    tenant?: TenantUpdateOneRequiredWithoutHotelsNestedInput
+    Guest?: GuestUpdateManyWithoutHotelNestedInput
+    RoomType?: RoomTypeUpdateManyWithoutHotelNestedInput
+    Room?: RoomUpdateManyWithoutHotelNestedInput
+    Role?: RoleUpdateManyWithoutHotelNestedInput
+    User?: UserUpdateManyWithoutHotelNestedInput
+    Reservation?: ReservationUpdateManyWithoutHotelNestedInput
+    Folio?: FolioUpdateManyWithoutHotelNestedInput
+    POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
+    RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+  }
+
+  export type HotelUncheckedUpdateWithoutExchangeRatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    country?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    Guest?: GuestUncheckedUpdateManyWithoutHotelNestedInput
+    RoomType?: RoomTypeUncheckedUpdateManyWithoutHotelNestedInput
+    Room?: RoomUncheckedUpdateManyWithoutHotelNestedInput
+    Role?: RoleUncheckedUpdateManyWithoutHotelNestedInput
+    User?: UserUncheckedUpdateManyWithoutHotelNestedInput
+    Reservation?: ReservationUncheckedUpdateManyWithoutHotelNestedInput
+    Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
+    POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
+    RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+  }
+
+  export type ExchangeRateCreateWithoutBaseInput = {
+    id?: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    target: CurrencyCreateNestedOneWithoutTargetRatesInput
+    tenant: TenantCreateNestedOneWithoutExchangeRatesInput
+    hotel: HotelCreateNestedOneWithoutExchangeRatesInput
+  }
+
+  export type ExchangeRateUncheckedCreateWithoutBaseInput = {
+    id?: string
+    targetCurrency: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+    hotelId: string
+  }
+
+  export type ExchangeRateCreateOrConnectWithoutBaseInput = {
+    where: ExchangeRateWhereUniqueInput
+    create: XOR<ExchangeRateCreateWithoutBaseInput, ExchangeRateUncheckedCreateWithoutBaseInput>
+  }
+
+  export type ExchangeRateCreateManyBaseInputEnvelope = {
+    data: ExchangeRateCreateManyBaseInput | ExchangeRateCreateManyBaseInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ExchangeRateCreateWithoutTargetInput = {
+    id?: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    base: CurrencyCreateNestedOneWithoutBaseRatesInput
+    tenant: TenantCreateNestedOneWithoutExchangeRatesInput
+    hotel: HotelCreateNestedOneWithoutExchangeRatesInput
+  }
+
+  export type ExchangeRateUncheckedCreateWithoutTargetInput = {
+    id?: string
+    baseCurrency: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+    hotelId: string
+  }
+
+  export type ExchangeRateCreateOrConnectWithoutTargetInput = {
+    where: ExchangeRateWhereUniqueInput
+    create: XOR<ExchangeRateCreateWithoutTargetInput, ExchangeRateUncheckedCreateWithoutTargetInput>
+  }
+
+  export type ExchangeRateCreateManyTargetInputEnvelope = {
+    data: ExchangeRateCreateManyTargetInput | ExchangeRateCreateManyTargetInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RatePlanCreateWithoutCurrencyInput = {
+    id?: string
+    code: string
+    name: string
+    baseAdjType: $Enums.AdjType
+    baseAdjVal: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    Tenant: TenantCreateNestedOneWithoutRatePlanInput
+    Hotel: HotelCreateNestedOneWithoutRatePlanInput
+    reservation?: ReservationCreateNestedManyWithoutRatePlanInput
+  }
+
+  export type RatePlanUncheckedCreateWithoutCurrencyInput = {
+    id?: string
+    tenantId: string
+    hotelId: string
+    code: string
+    name: string
+    baseAdjType: $Enums.AdjType
+    baseAdjVal: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reservation?: ReservationUncheckedCreateNestedManyWithoutRatePlanInput
+  }
+
+  export type RatePlanCreateOrConnectWithoutCurrencyInput = {
+    where: RatePlanWhereUniqueInput
+    create: XOR<RatePlanCreateWithoutCurrencyInput, RatePlanUncheckedCreateWithoutCurrencyInput>
+  }
+
+  export type RatePlanCreateManyCurrencyInputEnvelope = {
+    data: RatePlanCreateManyCurrencyInput | RatePlanCreateManyCurrencyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ExchangeRateUpsertWithWhereUniqueWithoutBaseInput = {
+    where: ExchangeRateWhereUniqueInput
+    update: XOR<ExchangeRateUpdateWithoutBaseInput, ExchangeRateUncheckedUpdateWithoutBaseInput>
+    create: XOR<ExchangeRateCreateWithoutBaseInput, ExchangeRateUncheckedCreateWithoutBaseInput>
+  }
+
+  export type ExchangeRateUpdateWithWhereUniqueWithoutBaseInput = {
+    where: ExchangeRateWhereUniqueInput
+    data: XOR<ExchangeRateUpdateWithoutBaseInput, ExchangeRateUncheckedUpdateWithoutBaseInput>
+  }
+
+  export type ExchangeRateUpdateManyWithWhereWithoutBaseInput = {
+    where: ExchangeRateScalarWhereInput
+    data: XOR<ExchangeRateUpdateManyMutationInput, ExchangeRateUncheckedUpdateManyWithoutBaseInput>
+  }
+
+  export type ExchangeRateUpsertWithWhereUniqueWithoutTargetInput = {
+    where: ExchangeRateWhereUniqueInput
+    update: XOR<ExchangeRateUpdateWithoutTargetInput, ExchangeRateUncheckedUpdateWithoutTargetInput>
+    create: XOR<ExchangeRateCreateWithoutTargetInput, ExchangeRateUncheckedCreateWithoutTargetInput>
+  }
+
+  export type ExchangeRateUpdateWithWhereUniqueWithoutTargetInput = {
+    where: ExchangeRateWhereUniqueInput
+    data: XOR<ExchangeRateUpdateWithoutTargetInput, ExchangeRateUncheckedUpdateWithoutTargetInput>
+  }
+
+  export type ExchangeRateUpdateManyWithWhereWithoutTargetInput = {
+    where: ExchangeRateScalarWhereInput
+    data: XOR<ExchangeRateUpdateManyMutationInput, ExchangeRateUncheckedUpdateManyWithoutTargetInput>
+  }
+
+  export type RatePlanUpsertWithWhereUniqueWithoutCurrencyInput = {
+    where: RatePlanWhereUniqueInput
+    update: XOR<RatePlanUpdateWithoutCurrencyInput, RatePlanUncheckedUpdateWithoutCurrencyInput>
+    create: XOR<RatePlanCreateWithoutCurrencyInput, RatePlanUncheckedCreateWithoutCurrencyInput>
+  }
+
+  export type RatePlanUpdateWithWhereUniqueWithoutCurrencyInput = {
+    where: RatePlanWhereUniqueInput
+    data: XOR<RatePlanUpdateWithoutCurrencyInput, RatePlanUncheckedUpdateWithoutCurrencyInput>
+  }
+
+  export type RatePlanUpdateManyWithWhereWithoutCurrencyInput = {
+    where: RatePlanScalarWhereInput
+    data: XOR<RatePlanUpdateManyMutationInput, RatePlanUncheckedUpdateManyWithoutCurrencyInput>
   }
 
   export type HotelCreateManyTenantInput = {
@@ -24411,6 +28953,7 @@ export namespace Prisma {
     guestId: string
     roomId: string
     hotelId: string
+    ratePlanId: string
   }
 
   export type FolioCreateManyTenantInput = {
@@ -24419,6 +28962,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     status?: $Enums.FolioStatus
     hotelId: string
+    reservationId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -24439,10 +28983,20 @@ export namespace Prisma {
     name: string
     baseAdjType: $Enums.AdjType
     baseAdjVal: Decimal | DecimalJsLike | number | string
-    currency: string
+    currencyId: string
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type ExchangeRateCreateManyTenantInput = {
+    id?: string
+    baseCurrency: string
+    targetCurrency: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hotelId: string
   }
 
   export type HotelUpdateWithoutTenantInput = {
@@ -24460,6 +29014,7 @@ export namespace Prisma {
     Folio?: FolioUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateWithoutTenantInput = {
@@ -24477,6 +29032,7 @@ export namespace Prisma {
     Folio?: FolioUncheckedUpdateManyWithoutHotelNestedInput
     POSOutlet?: POSOutletUncheckedUpdateManyWithoutHotelNestedInput
     RatePlan?: RatePlanUncheckedUpdateManyWithoutHotelNestedInput
+    exchangeRates?: ExchangeRateUncheckedUpdateManyWithoutHotelNestedInput
   }
 
   export type HotelUncheckedUpdateManyWithoutTenantInput = {
@@ -24657,6 +29213,8 @@ export namespace Prisma {
     guest?: GuestUpdateOneRequiredWithoutReservationNestedInput
     room?: RoomUpdateOneRequiredWithoutReservationNestedInput
     hotel?: HotelUpdateOneRequiredWithoutReservationNestedInput
+    ratePlan?: RatePlanUpdateOneRequiredWithoutReservationNestedInput
+    folio?: FolioUpdateOneWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateWithoutTenantInput = {
@@ -24667,6 +29225,8 @@ export namespace Prisma {
     guestId?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    ratePlanId?: StringFieldUpdateOperationsInput | string
+    folio?: FolioUncheckedUpdateOneWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateManyWithoutTenantInput = {
@@ -24677,6 +29237,7 @@ export namespace Prisma {
     guestId?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    ratePlanId?: StringFieldUpdateOperationsInput | string
   }
 
   export type FolioUpdateWithoutTenantInput = {
@@ -24687,6 +29248,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     guest?: GuestUpdateOneRequiredWithoutFolioNestedInput
     hotel?: HotelUpdateOneRequiredWithoutFolioNestedInput
+    reservation?: ReservationUpdateOneWithoutFolioNestedInput
   }
 
   export type FolioUncheckedUpdateWithoutTenantInput = {
@@ -24695,6 +29257,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     status?: EnumFolioStatusFieldUpdateOperationsInput | $Enums.FolioStatus
     hotelId?: StringFieldUpdateOperationsInput | string
+    reservationId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -24705,6 +29268,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     status?: EnumFolioStatusFieldUpdateOperationsInput | $Enums.FolioStatus
     hotelId?: StringFieldUpdateOperationsInput | string
+    reservationId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -24742,11 +29306,12 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
     baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Hotel?: HotelUpdateOneRequiredWithoutRatePlanNestedInput
+    reservation?: ReservationUpdateManyWithoutRatePlanNestedInput
+    currency?: CurrencyUpdateOneRequiredWithoutRatePlanNestedInput
   }
 
   export type RatePlanUncheckedUpdateWithoutTenantInput = {
@@ -24756,10 +29321,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
     baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
+    currencyId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reservation?: ReservationUncheckedUpdateManyWithoutRatePlanNestedInput
   }
 
   export type RatePlanUncheckedUpdateManyWithoutTenantInput = {
@@ -24769,10 +29335,40 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
     baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
+    currencyId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExchangeRateUpdateWithoutTenantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    base?: CurrencyUpdateOneRequiredWithoutBaseRatesNestedInput
+    target?: CurrencyUpdateOneRequiredWithoutTargetRatesNestedInput
+    hotel?: HotelUpdateOneRequiredWithoutExchangeRatesNestedInput
+  }
+
+  export type ExchangeRateUncheckedUpdateWithoutTenantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseCurrency?: StringFieldUpdateOperationsInput | string
+    targetCurrency?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExchangeRateUncheckedUpdateManyWithoutTenantInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseCurrency?: StringFieldUpdateOperationsInput | string
+    targetCurrency?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hotelId?: StringFieldUpdateOperationsInput | string
   }
 
   export type GuestCreateManyHotelInput = {
@@ -24833,6 +29429,7 @@ export namespace Prisma {
     guestId: string
     roomId: string
     tenantId: string
+    ratePlanId: string
   }
 
   export type FolioCreateManyHotelInput = {
@@ -24841,6 +29438,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     status?: $Enums.FolioStatus
     tenantId: string
+    reservationId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -24861,10 +29459,20 @@ export namespace Prisma {
     name: string
     baseAdjType: $Enums.AdjType
     baseAdjVal: Decimal | DecimalJsLike | number | string
-    currency: string
+    currencyId: string
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type ExchangeRateCreateManyHotelInput = {
+    id?: string
+    baseCurrency: string
+    targetCurrency: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
   }
 
   export type GuestUpdateWithoutHotelInput = {
@@ -25037,6 +29645,8 @@ export namespace Prisma {
     guest?: GuestUpdateOneRequiredWithoutReservationNestedInput
     room?: RoomUpdateOneRequiredWithoutReservationNestedInput
     tenant?: TenantUpdateOneRequiredWithoutReservationNestedInput
+    ratePlan?: RatePlanUpdateOneRequiredWithoutReservationNestedInput
+    folio?: FolioUpdateOneWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateWithoutHotelInput = {
@@ -25047,6 +29657,8 @@ export namespace Prisma {
     guestId?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     tenantId?: StringFieldUpdateOperationsInput | string
+    ratePlanId?: StringFieldUpdateOperationsInput | string
+    folio?: FolioUncheckedUpdateOneWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateManyWithoutHotelInput = {
@@ -25057,6 +29669,7 @@ export namespace Prisma {
     guestId?: StringFieldUpdateOperationsInput | string
     roomId?: StringFieldUpdateOperationsInput | string
     tenantId?: StringFieldUpdateOperationsInput | string
+    ratePlanId?: StringFieldUpdateOperationsInput | string
   }
 
   export type FolioUpdateWithoutHotelInput = {
@@ -25067,6 +29680,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     guest?: GuestUpdateOneRequiredWithoutFolioNestedInput
     tenant?: TenantUpdateOneRequiredWithoutFolioNestedInput
+    reservation?: ReservationUpdateOneWithoutFolioNestedInput
   }
 
   export type FolioUncheckedUpdateWithoutHotelInput = {
@@ -25075,6 +29689,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     status?: EnumFolioStatusFieldUpdateOperationsInput | $Enums.FolioStatus
     tenantId?: StringFieldUpdateOperationsInput | string
+    reservationId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -25085,6 +29700,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     status?: EnumFolioStatusFieldUpdateOperationsInput | $Enums.FolioStatus
     tenantId?: StringFieldUpdateOperationsInput | string
+    reservationId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -25122,11 +29738,12 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
     baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Tenant?: TenantUpdateOneRequiredWithoutRatePlanNestedInput
+    reservation?: ReservationUpdateManyWithoutRatePlanNestedInput
+    currency?: CurrencyUpdateOneRequiredWithoutRatePlanNestedInput
   }
 
   export type RatePlanUncheckedUpdateWithoutHotelInput = {
@@ -25136,10 +29753,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
     baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
+    currencyId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reservation?: ReservationUncheckedUpdateManyWithoutRatePlanNestedInput
   }
 
   export type RatePlanUncheckedUpdateManyWithoutHotelInput = {
@@ -25149,10 +29767,40 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
     baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
+    currencyId?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExchangeRateUpdateWithoutHotelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    base?: CurrencyUpdateOneRequiredWithoutBaseRatesNestedInput
+    target?: CurrencyUpdateOneRequiredWithoutTargetRatesNestedInput
+    tenant?: TenantUpdateOneRequiredWithoutExchangeRatesNestedInput
+  }
+
+  export type ExchangeRateUncheckedUpdateWithoutHotelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseCurrency?: StringFieldUpdateOperationsInput | string
+    targetCurrency?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExchangeRateUncheckedUpdateManyWithoutHotelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseCurrency?: StringFieldUpdateOperationsInput | string
+    targetCurrency?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserCreateManyRoleInput = {
@@ -25271,6 +29919,7 @@ export namespace Prisma {
     guestId: string
     tenantId: string
     hotelId: string
+    ratePlanId: string
   }
 
   export type ReservationUpdateWithoutRoomInput = {
@@ -25281,6 +29930,8 @@ export namespace Prisma {
     guest?: GuestUpdateOneRequiredWithoutReservationNestedInput
     tenant?: TenantUpdateOneRequiredWithoutReservationNestedInput
     hotel?: HotelUpdateOneRequiredWithoutReservationNestedInput
+    ratePlan?: RatePlanUpdateOneRequiredWithoutReservationNestedInput
+    folio?: FolioUpdateOneWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateWithoutRoomInput = {
@@ -25291,6 +29942,8 @@ export namespace Prisma {
     guestId?: StringFieldUpdateOperationsInput | string
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    ratePlanId?: StringFieldUpdateOperationsInput | string
+    folio?: FolioUncheckedUpdateOneWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateManyWithoutRoomInput = {
@@ -25301,6 +29954,7 @@ export namespace Prisma {
     guestId?: StringFieldUpdateOperationsInput | string
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    ratePlanId?: StringFieldUpdateOperationsInput | string
   }
 
   export type RoomCreateManyRoomTypeInput = {
@@ -25337,6 +29991,52 @@ export namespace Prisma {
     hotelId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type ReservationCreateManyRatePlanInput = {
+    id?: string
+    checkIn: Date | string
+    checkOut: Date | string
+    status?: $Enums.ReservationStatus
+    guestId: string
+    roomId: string
+    tenantId: string
+    hotelId: string
+  }
+
+  export type ReservationUpdateWithoutRatePlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    checkIn?: DateTimeFieldUpdateOperationsInput | Date | string
+    checkOut?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumReservationStatusFieldUpdateOperationsInput | $Enums.ReservationStatus
+    guest?: GuestUpdateOneRequiredWithoutReservationNestedInput
+    room?: RoomUpdateOneRequiredWithoutReservationNestedInput
+    tenant?: TenantUpdateOneRequiredWithoutReservationNestedInput
+    hotel?: HotelUpdateOneRequiredWithoutReservationNestedInput
+    folio?: FolioUpdateOneWithoutReservationNestedInput
+  }
+
+  export type ReservationUncheckedUpdateWithoutRatePlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    checkIn?: DateTimeFieldUpdateOperationsInput | Date | string
+    checkOut?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumReservationStatusFieldUpdateOperationsInput | $Enums.ReservationStatus
+    guestId?: StringFieldUpdateOperationsInput | string
+    roomId?: StringFieldUpdateOperationsInput | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+    folio?: FolioUncheckedUpdateOneWithoutReservationNestedInput
+  }
+
+  export type ReservationUncheckedUpdateManyWithoutRatePlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    checkIn?: DateTimeFieldUpdateOperationsInput | Date | string
+    checkOut?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumReservationStatusFieldUpdateOperationsInput | $Enums.ReservationStatus
+    guestId?: StringFieldUpdateOperationsInput | string
+    roomId?: StringFieldUpdateOperationsInput | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type ReservationCreateManyGuestInput = {
     id?: string
     checkIn: Date | string
@@ -25345,6 +30045,7 @@ export namespace Prisma {
     roomId: string
     tenantId: string
     hotelId: string
+    ratePlanId: string
   }
 
   export type FolioCreateManyGuestInput = {
@@ -25353,6 +30054,7 @@ export namespace Prisma {
     status?: $Enums.FolioStatus
     tenantId: string
     hotelId: string
+    reservationId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -25365,6 +30067,8 @@ export namespace Prisma {
     room?: RoomUpdateOneRequiredWithoutReservationNestedInput
     tenant?: TenantUpdateOneRequiredWithoutReservationNestedInput
     hotel?: HotelUpdateOneRequiredWithoutReservationNestedInput
+    ratePlan?: RatePlanUpdateOneRequiredWithoutReservationNestedInput
+    folio?: FolioUpdateOneWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateWithoutGuestInput = {
@@ -25375,6 +30079,8 @@ export namespace Prisma {
     roomId?: StringFieldUpdateOperationsInput | string
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    ratePlanId?: StringFieldUpdateOperationsInput | string
+    folio?: FolioUncheckedUpdateOneWithoutReservationNestedInput
   }
 
   export type ReservationUncheckedUpdateManyWithoutGuestInput = {
@@ -25385,6 +30091,7 @@ export namespace Prisma {
     roomId?: StringFieldUpdateOperationsInput | string
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    ratePlanId?: StringFieldUpdateOperationsInput | string
   }
 
   export type FolioUpdateWithoutGuestInput = {
@@ -25395,6 +30102,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tenant?: TenantUpdateOneRequiredWithoutFolioNestedInput
     hotel?: HotelUpdateOneRequiredWithoutFolioNestedInput
+    reservation?: ReservationUpdateOneWithoutFolioNestedInput
   }
 
   export type FolioUncheckedUpdateWithoutGuestInput = {
@@ -25403,6 +30111,7 @@ export namespace Prisma {
     status?: EnumFolioStatusFieldUpdateOperationsInput | $Enums.FolioStatus
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    reservationId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -25413,6 +30122,141 @@ export namespace Prisma {
     status?: EnumFolioStatusFieldUpdateOperationsInput | $Enums.FolioStatus
     tenantId?: StringFieldUpdateOperationsInput | string
     hotelId?: StringFieldUpdateOperationsInput | string
+    reservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExchangeRateCreateManyBaseInput = {
+    id?: string
+    targetCurrency: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+    hotelId: string
+  }
+
+  export type ExchangeRateCreateManyTargetInput = {
+    id?: string
+    baseCurrency: string
+    rate: Decimal | DecimalJsLike | number | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    tenantId: string
+    hotelId: string
+  }
+
+  export type RatePlanCreateManyCurrencyInput = {
+    id?: string
+    tenantId: string
+    hotelId: string
+    code: string
+    name: string
+    baseAdjType: $Enums.AdjType
+    baseAdjVal: Decimal | DecimalJsLike | number | string
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ExchangeRateUpdateWithoutBaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    target?: CurrencyUpdateOneRequiredWithoutTargetRatesNestedInput
+    tenant?: TenantUpdateOneRequiredWithoutExchangeRatesNestedInput
+    hotel?: HotelUpdateOneRequiredWithoutExchangeRatesNestedInput
+  }
+
+  export type ExchangeRateUncheckedUpdateWithoutBaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    targetCurrency?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExchangeRateUncheckedUpdateManyWithoutBaseInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    targetCurrency?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExchangeRateUpdateWithoutTargetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    base?: CurrencyUpdateOneRequiredWithoutBaseRatesNestedInput
+    tenant?: TenantUpdateOneRequiredWithoutExchangeRatesNestedInput
+    hotel?: HotelUpdateOneRequiredWithoutExchangeRatesNestedInput
+  }
+
+  export type ExchangeRateUncheckedUpdateWithoutTargetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseCurrency?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExchangeRateUncheckedUpdateManyWithoutTargetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baseCurrency?: StringFieldUpdateOperationsInput | string
+    rate?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RatePlanUpdateWithoutCurrencyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
+    baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Tenant?: TenantUpdateOneRequiredWithoutRatePlanNestedInput
+    Hotel?: HotelUpdateOneRequiredWithoutRatePlanNestedInput
+    reservation?: ReservationUpdateManyWithoutRatePlanNestedInput
+  }
+
+  export type RatePlanUncheckedUpdateWithoutCurrencyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
+    baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reservation?: ReservationUncheckedUpdateManyWithoutRatePlanNestedInput
+  }
+
+  export type RatePlanUncheckedUpdateManyWithoutCurrencyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tenantId?: StringFieldUpdateOperationsInput | string
+    hotelId?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    baseAdjType?: EnumAdjTypeFieldUpdateOperationsInput | $Enums.AdjType
+    baseAdjVal?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
