@@ -14,7 +14,6 @@ export const addAmenity = async (req: Request, res: Response, next: NextFunction
         }
 
         if (!req.ability?.can("create", "Amenity")) {
-            console.log("Ability : ", req.ability)
             return next(errorHandler(403, "Forbidden: insufficient permissions"));
         }
 
